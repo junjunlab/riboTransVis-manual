@@ -1,16 +1,11 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-
-<head>
-
-<meta charset="utf-8" />
-<meta name="generator" content="quarto-1.6.42" />
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-
-<meta name="author" content="Jun Zhang" />
-
-<title>2  Extract sequence – RiboTransVis</title>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Jun Zhang">
+<title>2&nbsp; Extract sequence – RiboTransVis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -59,8 +54,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-<!-- htmldependencies:E3FAD763 -->
-<script id="quarto-search-options" type="application/json">{
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Object-construct.html" rel="next">
+<link href="./Preprocessing.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-f1075ac1703e165f0c9b3df650605ffb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -86,46 +97,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-<script defer data-domain="r4ds.hadley.nz" src="https://plausible.io/js/plausible.js"></script>
-
-
+}</script><script defer="" data-domain="r4ds.hadley.nz" src="https://plausible.io/js/plausible.js"></script>
 </head>
-
-<body>
+<body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn"
-      data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" 
-      aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation"
-      onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <h1 class="quarto-secondary-nav-title no-breadcrumbs"></h1>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" role="link"
-        aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation"
-        onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Preprocessing-into.html">Preprocessing introduction</a></li><li class="breadcrumb-item"><a href="./Extract-sequence.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Extract sequence</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="/">
-      RiboTransVis
-      </a> 
+      <a href="./">RiboTransVis</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/junjunlab/riboTransVis"  title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/junjunlab/riboTransVis" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -141,61 +135,214 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/index.html" class="sidebar-item-text sidebar-link">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome!</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/Introduction.html" class="sidebar-item-text sidebar-link">
+  <a href="./Introduction.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="/Preprocessing-into.html" class="sidebar-item-text sidebar-link">
+            <a href="./Preprocessing-into.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preprocessing introduction</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/Preprocessing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>1</span>  <span class='chapter-title'>Preprocessing</span></span></a>
+  <a href="./Preprocessing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preprocessing</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/Extract-sequence.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class='chapter-number'>2</span>  <span class='chapter-title'>Extract sequence</span></span></a>
+  <a href="./Extract-sequence.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Extract sequence</span></span></a>
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/Object-construct.html" class="sidebar-item-text sidebar-link">
+  <a href="./Object-construct.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Object construct</span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./Quality-assessment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quality assessment</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Ribo-QC.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Ribo-seq QC check</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Length-plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Length distribution</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Frame-plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">In frame ratio</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Periodicy-check.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Periodicity check</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Feature-plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Feature distribution</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Meta-frame-plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Meta frame plot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Meta-heatmap-plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Meta heatmap plot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Offset-check.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Offset check</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Whole-metagene-plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Whole metegene plot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Metagene-plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Metagene plot</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Offset-correction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Offset correction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Polarity-calculation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Polarity score</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Codon-occupancy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Codon occupancy</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Multipeptide-occupancy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Multiple peptides occupancy</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Peptide-motif-plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Peptide motif plot</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Motif-centered.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Motif centered analysis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Track-plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Track plot</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Gene-expression-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Global gene expression analysis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Pathway-enrichment-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pathway enrichment analysis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./More-examples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">More examples</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Ubiquitin-conjugase-Rad6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Ubiquitin conjugase Rad6</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./DENR-promotes-translation-reinitiation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">DENR promotes translation reinitiation</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" ></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <div id="quarto-toc-target"></div>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li><a href="#preparing-transcript-sequences" id="toc-preparing-transcript-sequences" class="nav-link active" data-scroll-target="#preparing-transcript-sequences"><span class="header-section-number">2.1</span> Preparing Transcript Sequences</a></li>
+  <li><a href="#renaming-transcript-sequences-from-ensembl" id="toc-renaming-transcript-sequences-from-ensembl" class="nav-link" data-scroll-target="#renaming-transcript-sequences-from-ensembl"><span class="header-section-number">2.2</span> Renaming Transcript Sequences from Ensembl</a></li>
+  <li><a href="#extracting-the-transcriptome-file" id="toc-extracting-the-transcriptome-file" class="nav-link" data-scroll-target="#extracting-the-transcriptome-file"><span class="header-section-number">2.3</span> Extracting the Transcriptome File</a></li>
+  <li><a href="#extracting-cds-sequences" id="toc-extracting-cds-sequences" class="nav-link" data-scroll-target="#extracting-cds-sequences"><span class="header-section-number">2.4</span> Extracting CDS Sequences</a></li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/junjunlab/riboTransVis/edit/main/Extract-sequence.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/junjunlab/riboTransVis/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>  <span class="chapter-title">Extract sequence</span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Preprocessing-into.html">Preprocessing introduction</a></li><li class="breadcrumb-item"><a href="./Extract-sequence.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Extract sequence</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title">
+<span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Extract sequence</span>
+</h1>
 </div>
 
 
@@ -209,28 +356,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header>
-
-<nav id="TOC" role="doc-toc">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#preparing-transcript-sequences" id="toc-preparing-transcript-sequences"><span class="header-section-number">2.1</span> Preparing Transcript Sequences</a></li>
-  <li><a href="#renaming-transcript-sequences-from-ensembl" id="toc-renaming-transcript-sequences-from-ensembl"><span class="header-section-number">2.2</span> Renaming Transcript Sequences from Ensembl</a></li>
-  <li><a href="#extracting-the-transcriptome-file" id="toc-extracting-the-transcriptome-file"><span class="header-section-number">2.3</span> Extracting the Transcriptome File</a></li>
-  <li><a href="#extracting-cds-sequences" id="toc-extracting-cds-sequences"><span class="header-section-number">2.4</span> Extracting CDS Sequences</a></li>
-  </ul>
-</nav>
-<section id="preparing-transcript-sequences" class="level2" data-number="2.1">
-<h2 data-number="2.1"><span class="header-section-number">2.1</span> Preparing Transcript Sequences</h2>
+</header><section id="preparing-transcript-sequences" class="level2" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="preparing-transcript-sequences">
+<span class="header-section-number">2.1</span> Preparing Transcript Sequences</h2>
 <p>The riboTransVis package provides several functions to extract transcript and CDS sequences, facilitating seamless integration with downstream analyses within the package.</p>
-</section>
-<section id="renaming-transcript-sequences-from-ensembl" class="level2" data-number="2.2">
-<h2 data-number="2.2"><span class="header-section-number">2.2</span> Renaming Transcript Sequences from Ensembl</h2>
+</section><section id="renaming-transcript-sequences-from-ensembl" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="renaming-transcript-sequences-from-ensembl">
+<span class="header-section-number">2.2</span> Renaming Transcript Sequences from Ensembl</h2>
 <p>If you are aligning reads to the <strong>transcriptome</strong> and working with <strong>transcriptome-aligned BAM</strong> files, riboTransVis requires transcript sequence names in a specific format: <strong>transcript_ID|gene_name</strong>.</p>
 <p>If you downloaded transcriptome sequence files from the Ensembl database, you can use the <strong>prepare_transcript_file()</strong> function to convert the sequence names to the required format. Below is an example using a transcriptome FASTA file of S. cerevisiae (yeast) downloaded from Ensembl:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>wget https<span class="sc">:</span><span class="er">//</span>ftp.ensembl.org<span class="sc">/</span>pub<span class="sc">/</span>release<span class="dv">-113</span><span class="sc">/</span>fasta<span class="sc">/</span>saccharomyces_cerevisiae<span class="sc">/</span>cdna<span class="sc">/</span>Saccharomyces_cerevisiae.R64<span class="dv">-1</span><span class="fl">-1.</span>cdna.all.fa.gz</span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>wget https<span class="sc">:</span><span class="er">//</span>ftp.ensembl.org<span class="sc">/</span>pub<span class="sc">/</span>release<span class="dv">-113</span><span class="sc">/</span>fasta<span class="sc">/</span>saccharomyces_cerevisiae<span class="sc">/</span>cdna<span class="sc">/</span>Saccharomyces_cerevisiae.R64<span class="dv">-1</span><span class="fl">-1.</span>cdna.all.fa.gz</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>zless Saccharomyces_cerevisiae.R64<span class="dv">-1</span><span class="fl">-1.</span>cdna.all.fa.gz</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -251,57 +385,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>TCCAAGATTGTTTTCTTCACTTGGTCTCCAGACACTGCTCCAGTCAGATCTAAGATGGTC</span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>TATGCATCCTCCAAGGATGCCTTAAGAAGAGCCTTAAACGGTGTCTCTACCGATGTTCAA</span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>GGTACTGATTTTTCCGAAGTTTCTTACGATTCTGTTTTGGAAAGAGTCAGCAGAGGCGCT</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>GGTTCTCATTAA</span></code></pre></div>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>GGTTCTCATTAA</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Simply providing the input FASTA file and specifying the output FASTA file is sufficient to complete the conversion:</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(riboTransVis)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">prepare_transcipt_file</span>(<span class="at">transcript_fa =</span> <span class="st">&quot;../Saccharomyces_cerevisiae.R64-1-1.cdna.all.fa&quot;</span>,</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">output_path =</span> <span class="st">&quot;../sac_trans.fa&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/junjunlab/riboTransVis">riboTransVis</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/riboTransVis/man/prepare_transcipt_file.html">prepare_transcipt_file</a></span><span class="op">(</span>transcript_fa <span class="op">=</span> <span class="st">"../Saccharomyces_cerevisiae.R64-1-1.cdna.all.fa"</span>,</span>
+<span>                       output_path <span class="op">=</span> <span class="st">"../sac_trans.fa"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The figure below shows a comparison of the transcriptome FASTA file before and after ID conversion:</p>
-<p><img src="image/trans.png" class="img-fluid" /></p>
-</section>
-<section id="extracting-the-transcriptome-file" class="level2" data-number="2.3">
-<h2 data-number="2.3"><span class="header-section-number">2.3</span> Extracting the Transcriptome File</h2>
+<p><img src="image/trans.png" class="img-fluid"></p>
+</section><section id="extracting-the-transcriptome-file" class="level2" data-number="2.3"><h2 data-number="2.3" class="anchored" data-anchor-id="extracting-the-transcriptome-file">
+<span class="header-section-number">2.3</span> Extracting the Transcriptome File</h2>
 <p>Alternatively, riboTransVis provides the <strong>get_transcript_sequence()</strong> function, which can be used to extract all transcript sequences based on the genome FASTA file and the corresponding GTF annotation file.</p>
 <p>Since most genes in yeast species <strong>lack annotated UTR regions</strong>, it is often beneficial to extend the transcript sequences upstream and downstream to facilitate Ribo-seq–related analyses. This can be done using the <strong>extend</strong> parameter. Typically, an extension of <strong>50</strong> nucleotides is sufficient.</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_transcript_sequence</span>(<span class="at">genome_file =</span> <span class="st">&quot;../../index-data/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa&quot;</span>,</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">gtf_file =</span> <span class="st">&quot;../../index-data/Saccharomyces_cerevisiae.R64-1-1.112.gtf&quot;</span>,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">feature =</span> <span class="st">&quot;exon&quot;</span>,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">extend =</span> T,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                        <span class="at">extend_upstream =</span> <span class="dv">50</span>,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">extend_downstream =</span> <span class="dv">50</span>,</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>                        <span class="at">output_file =</span> <span class="st">&quot;sac_trans.fa&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/riboTransVis/man/get_transcript_sequence.html">get_transcript_sequence</a></span><span class="op">(</span>genome_file <span class="op">=</span> <span class="st">"../../index-data/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa"</span>,</span>
+<span>                        gtf_file <span class="op">=</span> <span class="st">"../../index-data/Saccharomyces_cerevisiae.R64-1-1.112.gtf"</span>,</span>
+<span>                        feature <span class="op">=</span> <span class="st">"exon"</span>,</span>
+<span>                        extend <span class="op">=</span> <span class="cn">T</span>,</span>
+<span>                        extend_upstream <span class="op">=</span> <span class="fl">50</span>,</span>
+<span>                        extend_downstream <span class="op">=</span> <span class="fl">50</span>,</span>
+<span>                        output_file <span class="op">=</span> <span class="st">"sac_trans.fa"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="extracting-cds-sequences" class="level2" data-number="2.4">
-<h2 data-number="2.4"><span class="header-section-number">2.4</span> Extracting CDS Sequences</h2>
+</section><section id="extracting-cds-sequences" class="level2" data-number="2.4"><h2 data-number="2.4" class="anchored" data-anchor-id="extracting-cds-sequences">
+<span class="header-section-number">2.4</span> Extracting CDS Sequences</h2>
 <p>In certain analyses, coding sequence (CDS) information may be required. You can extract the CDS regions from all transcripts by setting <strong>feature = “CDS”</strong>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_transcript_sequence</span>(<span class="at">genome_file =</span> <span class="st">&quot;../../index-data/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa&quot;</span>,</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">gtf_file =</span> <span class="st">&quot;../../index-data/Saccharomyces_cerevisiae.R64-1-1.112.gtf&quot;</span>,</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">feature =</span> <span class="st">&quot;CDS&quot;</span>,</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">output_file =</span> <span class="st">&quot;sac_cds.fa&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/riboTransVis/man/get_transcript_sequence.html">get_transcript_sequence</a></span><span class="op">(</span>genome_file <span class="op">=</span> <span class="st">"../../index-data/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa"</span>,</span>
+<span>                        gtf_file <span class="op">=</span> <span class="st">"../../index-data/Saccharomyces_cerevisiae.R64-1-1.112.gtf"</span>,</span>
+<span>                        feature <span class="op">=</span> <span class="st">"CDS"</span>,</span>
+<span>                        output_file <span class="op">=</span> <span class="st">"sac_cds.fa"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="quarto-navigation-envelope" class="hidden">
-<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyLXRpdGxl">RiboTransVis</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXItdGl0bGU=">RiboTransVis</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uZXh0">Object construct</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1wcmV2"><span class="chapter-number">1</span>  <span class="chapter-title">Preprocessing</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9pbmRleC5odG1sV2VsY29tZSE=">Welcome!</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9JbnRyb2R1Y3Rpb24uaHRtbEludHJvZHVjdGlvbg==">Introduction</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOnF1YXJ0by1zaWRlYmFyLXNlY3Rpb24tMQ==">Preprocessing introduction</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9QcmVwcm9jZXNzaW5nLmh0bWw8c3Bhbi1jbGFzcz0nY2hhcHRlci1udW1iZXInPjE8L3NwYW4+LS08c3Bhbi1jbGFzcz0nY2hhcHRlci10aXRsZSc+UHJlcHJvY2Vzc2luZzwvc3Bhbj4="><span class="chapter-number">1</span>  <span class="chapter-title">Preprocessing</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9FeHRyYWN0LXNlcXVlbmNlLmh0bWw8c3Bhbi1jbGFzcz0nY2hhcHRlci1udW1iZXInPjI8L3NwYW4+LS08c3Bhbi1jbGFzcz0nY2hhcHRlci10aXRsZSc+RXh0cmFjdC1zZXF1ZW5jZTwvc3Bhbj4="><span class="chapter-number">2</span>  <span class="chapter-title">Extract sequence</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9PYmplY3QtY29uc3RydWN0Lmh0bWxPYmplY3QtY29uc3RydWN0">Object construct</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWJyZWFkY3J1bWJzLVByZXByb2Nlc3NpbmctaW50cm9kdWN0aW9u">Preprocessing introduction</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWJyZWFkY3J1bWJzLTxzcGFuLWNsYXNzPSdjaGFwdGVyLW51bWJlcic+Mjwvc3Bhbj4tLTxzcGFuLWNsYXNzPSdjaGFwdGVyLXRpdGxlJz5FeHRyYWN0LXNlcXVlbmNlPC9zcGFuPg=="><span class="chapter-number">2</span>  <span class="chapter-title">Extract sequence</span></span></p>
-<div class="hidden quarto-markdown-envelope-contents" data-render-id="Zm9vdGVyLWxlZnQ=">
-<p>riboTransVis documentation was written by Jun Zhang.</p>
-</div>
-<div class="hidden quarto-markdown-envelope-contents" data-render-id="Zm9vdGVyLXJpZ2h0">
-<p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
-</div>
-</div>
-<div id="quarto-meta-markdown" class="hidden">
-<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGF0aXRsZQ=="><span class="chapter-number">2</span>  <span class="chapter-title">Extract sequence</span> – RiboTransVis</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkdGl0bGU="><span class="chapter-number">2</span>  <span class="chapter-title">Extract sequence</span> – RiboTransVis</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZHRpdGxl"><span class="chapter-number">2</span>  <span class="chapter-title">Extract sequence</span> – RiboTransVis</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGFzaXRlbmFtZQ==">RiboTransVis</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkZGVzYw=="></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZGRkZXNj"></span></p>
-</div>
-</section>
 
-</main> <!-- /main -->
-<script id = "quarto-html-after-body" type="application/javascript">
+
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -717,36 +836,30 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a  href="/Preprocessing.html" class="pagination-link" aria-label="Preprocessing">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class='chapter-number'>1</span>  <span class='chapter-title'>Preprocessing</span></span>
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./Preprocessing.html" class="pagination-link" aria-label="Preprocessing">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preprocessing</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a  href="/Object-construct.html" class="pagination-link" aria-label="Object construct">
+      <a href="./Object-construct.html" class="pagination-link" aria-label="Object construct">
         <span class="nav-page-text">Object construct</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
-      <div class='footer-contents'>riboTransVis documentation was written by Jun Zhang.
-</div>  
-    </div>   
+<p>riboTransVis documentation was written by Jun Zhang.</p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
-    </div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/junjunlab/riboTransVis/edit/main/Extract-sequence.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/junjunlab/riboTransVis/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
-      <div class='footer-contents'>This book was built with <a href="https://quarto.org/">Quarto</a>.
-</div>  
-    </div>
+<p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
   </div>
 </footer>
 
-</body>
 
-</html>
+</body></html>
