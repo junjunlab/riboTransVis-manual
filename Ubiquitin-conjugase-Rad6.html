@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Jun Zhang">
+<title>13&nbsp; Ubiquitin conjugase Rad6 – RiboTransVis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./DENR-promotes-translation-reinitiation.html" rel="next">
+<link href="./More-examples.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-f1075ac1703e165f0c9b3df650605ffb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><script defer="" data-domain="r4ds.hadley.nz" src="https://plausible.io/js/plausible.js"></script>
+</head>
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./More-examples.html">More examples</a></li><li class="breadcrumb-item"><a href="./Ubiquitin-conjugase-Rad6.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Ubiquitin conjugase Rad6</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">RiboTransVis</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/junjunlab/riboTransVis" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome!</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./Preprocessing-into.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preprocessing introduction</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Preprocessing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preprocessing</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Extract-sequence.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Extract sequence</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Object-construct.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Object construct</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./Quality-assessment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quality assessment</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Ribo-QC.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Ribo-seq QC check</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Length-plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Length distribution</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Frame-plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">In frame ratio</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Periodicy-check.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Periodicity check</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Feature-plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Feature distribution</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Meta-frame-plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Meta frame plot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Meta-heatmap-plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Meta heatmap plot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Offset-check.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Offset check</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Whole-metagene-plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Whole metegene plot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Metagene-plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Metagene plot</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Offset-correction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Offset correction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Polarity-calculation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Polarity score</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Codon-occupancy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Codon occupancy</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Multipeptide-occupancy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Multiple peptides occupancy</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Motif-centered.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Motif centered analysis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Track-plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Track plot</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./More-examples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">More examples</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Ubiquitin-conjugase-Rad6.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Ubiquitin conjugase Rad6</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./DENR-promotes-translation-reinitiation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">DENR promotes translation reinitiation</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li><a href="#intro" id="toc-intro" class="nav-link active" data-scroll-target="#intro"><span class="header-section-number">13.1</span> Intro</a></li>
+  <li><a href="#data-download" id="toc-data-download" class="nav-link" data-scroll-target="#data-download"><span class="header-section-number">13.2</span> <strong>Data Download</strong></a></li>
+  <li><a href="#adapter-trimming" id="toc-adapter-trimming" class="nav-link" data-scroll-target="#adapter-trimming"><span class="header-section-number">13.3</span> <strong>Adapter Trimming</strong></a></li>
+  <li><a href="#removal-of-rrna-contamination" id="toc-removal-of-rrna-contamination" class="nav-link" data-scroll-target="#removal-of-rrna-contamination"><span class="header-section-number">13.4</span> <strong>Removal of rRNA Contamination</strong></a></li>
+  <li>
+<a href="#genome-alignment" id="toc-genome-alignment" class="nav-link" data-scroll-target="#genome-alignment"><span class="header-section-number">13.5</span> <strong>Genome Alignment</strong></a>
+  <ul class="collapse">
+<li><a href="#step-1-build-star-genome-index" id="toc-step-1-build-star-genome-index" class="nav-link" data-scroll-target="#step-1-build-star-genome-index"><span class="header-section-number">13.5.1</span> <strong>Step 1: Build STAR Genome Index</strong></a></li>
+  <li><a href="#step-2-align-reads-to-the-genome" id="toc-step-2-align-reads-to-the-genome" class="nav-link" data-scroll-target="#step-2-align-reads-to-the-genome"><span class="header-section-number">13.5.2</span> <strong>Step 2: Align Reads to the Genome</strong></a></li>
+  </ul>
+</li>
+  <li><a href="#constructing-a-ribotrans-object" id="toc-constructing-a-ribotrans-object" class="nav-link" data-scroll-target="#constructing-a-ribotrans-object"><span class="header-section-number">13.6</span> <strong>Constructing a ribotrans Object</strong></a></li>
+  <li>
+<a href="#ribo-seq-quality-control" id="toc-ribo-seq-quality-control" class="nav-link" data-scroll-target="#ribo-seq-quality-control"><span class="header-section-number">13.7</span> <strong>Ribo-seq Quality Control</strong></a>
+  <ul class="collapse">
+<li><a href="#length-distribution" id="toc-length-distribution" class="nav-link" data-scroll-target="#length-distribution"><span class="header-section-number">13.7.1</span> Length distribution</a></li>
+  <li><a href="#frame-proportion" id="toc-frame-proportion" class="nav-link" data-scroll-target="#frame-proportion"><span class="header-section-number">13.7.2</span> Frame <strong>proportion</strong></a></li>
+  <li><a href="#feature-distribution" id="toc-feature-distribution" class="nav-link" data-scroll-target="#feature-distribution"><span class="header-section-number">13.7.3</span> Feature distribution</a></li>
+  <li><a href="#distribution-around-start-and-stop-codons" id="toc-distribution-around-start-and-stop-codons" class="nav-link" data-scroll-target="#distribution-around-start-and-stop-codons"><span class="header-section-number">13.7.4</span> Distribution around start and stop codons</a></li>
+  <li><a href="#offset-check" id="toc-offset-check" class="nav-link" data-scroll-target="#offset-check"><span class="header-section-number">13.7.5</span> Offset check</a></li>
+  <li><a href="#save-ribotrans-object" id="toc-save-ribotrans-object" class="nav-link" data-scroll-target="#save-ribotrans-object"><span class="header-section-number">13.7.6</span> Save ribotrans object</a></li>
+  </ul>
+</li>
+  <li><a href="#offset-correction" id="toc-offset-correction" class="nav-link" data-scroll-target="#offset-correction"><span class="header-section-number">13.8</span> Offset correction</a></li>
+  <li>
+<a href="#tri-peptide-analysis" id="toc-tri-peptide-analysis" class="nav-link" data-scroll-target="#tri-peptide-analysis"><span class="header-section-number">13.9</span> Tri-peptide analysis</a>
+  <ul class="collapse">
+<li><a href="#extract-cds-sequence" id="toc-extract-cds-sequence" class="nav-link" data-scroll-target="#extract-cds-sequence"><span class="header-section-number">13.9.1</span> Extract CDS sequence</a></li>
+  <li><a href="#tri-peptide-pause-score-calculation" id="toc-tri-peptide-pause-score-calculation" class="nav-link" data-scroll-target="#tri-peptide-pause-score-calculation"><span class="header-section-number">13.9.2</span> Tri-peptide pause score calculation</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#gene-ribosome-occupancy" id="toc-gene-ribosome-occupancy" class="nav-link" data-scroll-target="#gene-ribosome-occupancy"><span class="header-section-number">13.10</span> Gene ribosome occupancy</a>
+  <ul class="collapse">
+<li><a href="#with-biological-replicates" id="toc-with-biological-replicates" class="nav-link" data-scroll-target="#with-biological-replicates"><span class="header-section-number">13.10.1</span> With biological replicates</a></li>
+  <li><a href="#biological-replicates-combination" id="toc-biological-replicates-combination" class="nav-link" data-scroll-target="#biological-replicates-combination"><span class="header-section-number">13.10.2</span> Biological replicates combination</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#motif-centered-analysis" id="toc-motif-centered-analysis" class="nav-link" data-scroll-target="#motif-centered-analysis"><span class="header-section-number">13.11</span> Motif-centered analysis</a>
+  <ul class="collapse">
+<li><a href="#with-biological-replicates-1" id="toc-with-biological-replicates-1" class="nav-link" data-scroll-target="#with-biological-replicates-1"><span class="header-section-number">13.11.1</span> With biological replicates</a></li>
+  <li><a href="#biological-replicates-combination-1" id="toc-biological-replicates-combination-1" class="nav-link" data-scroll-target="#biological-replicates-combination-1"><span class="header-section-number">13.11.2</span> Biological replicates combination</a></li>
+  </ul>
+</li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/junjunlab/riboTransVis/edit/main/Ubiquitin-conjugase-Rad6.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/junjunlab/riboTransVis/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./More-examples.html">More examples</a></li><li class="breadcrumb-item"><a href="./Ubiquitin-conjugase-Rad6.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Ubiquitin conjugase Rad6</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title">
+<span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Ubiquitin conjugase Rad6</span>
+</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><section id="intro" class="level2" data-number="13.1"><h2 data-number="13.1" class="anchored" data-anchor-id="intro">
+<span class="header-section-number">13.1</span> Intro</h2>
+<p>In this section, we demonstrate how to use riboTransVis to reproduce the key findings from the Cell Reports article titled <strong>“The ubiquitin conjugase Rad6 mediates ribosome pausing during oxidative stress”</strong> by Meydan et al.&nbsp;(2023).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="image/rad6.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>This study uncovers a novel mechanism of translation regulation in Saccharomyces cerevisiae mediated by the <strong>ubiquitin-conjugating enzyme Rad6</strong> under conditions of oxidative stress. Using Ribo-seq and Disome-seq approaches, the researchers show that Rad6 is essential for promoting ribosome pausing—particularly at <strong>isoleucine-proline (XIP)</strong> motifs—upon treatment with hydrogen <strong>peroxide (H₂O₂)</strong>. These pause sites are thought to trigger ribosome collisions and contribute to translation repression.</p>
+<p>Importantly, Rad6 modifies ribosomes via K63-linked polyubiquitin chains, a process independent of the ribosome-associated quality control (RQC) pathway. In rad6Δ cells, redox-induced pausing signatures are lost, global translation is less inhibited, and there is abnormal activation of antioxidant response genes. The study also reveals that Rad6 contributes to activation of the integrated stress response (ISR) via eIF2α phosphorylation and modulates the translation of the transcription factor GCN4.</p>
+<p>These findings highlight an alternative translation control pathway—termed redox control of translation by ubiquitin (RTU)—where Rad6-mediated ubiquitination regulates translation elongation during oxidative stress, thereby shaping the cellular stress response.</p>
+</section><section id="data-download" class="level2" data-number="13.2"><h2 data-number="13.2" class="anchored" data-anchor-id="data-download">
+<span class="header-section-number">13.2</span> <strong>Data Download</strong>
+</h2>
+<p>The GEO accession number for the dataset associated with the study is <strong>GSE226082</strong>. To access the sequencing data, you can search for this number in the GEO (Gene Expression Omnibus) database. Additionally, the corresponding SRA (Sequence Read Archive) project number is <strong>PRJNA938481</strong>. Using this SRA ID, you can retrieve the FASTQ raw sequencing data from the <strong>SRA Explorer platform</strong>.</p>
+<p>To speed up the download, we recommend using the Aspera high-speed file transfer protocol. On the SRA Explorer website, you can locate the Aspera download links for the FASTQ data files corresponding to each sample in the study:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="image/geo.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env bash</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR236<span class="sc">/</span><span class="dv">023</span><span class="sc">/</span>SRR23617123<span class="sc">/</span>SRR23617123.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR23617123.fastq.gz SUB280_WT_rep1_F.fastq.gz</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR236<span class="sc">/</span><span class="dv">021</span><span class="sc">/</span>SRR23617121<span class="sc">/</span>SRR23617121.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR23617121.fastq.gz SUB280_WT_peroxide_rep1_F.fastq.gz</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR236<span class="sc">/</span><span class="dv">020</span><span class="sc">/</span>SRR23617120<span class="sc">/</span>SRR23617120.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR23617120.fastq.gz SUB280_WT_peroxide_rep2_F.fastq.gz</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR236<span class="sc">/</span><span class="dv">022</span><span class="sc">/</span>SRR23617122<span class="sc">/</span>SRR23617122.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR23617122.fastq.gz SUB280_WT_rep2_F.fastq.gz</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR236<span class="sc">/</span><span class="dv">018</span><span class="sc">/</span>SRR23617118<span class="sc">/</span>SRR23617118.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR23617118.fastq.gz SUB280_rad6_rep2_F.fastq.gz</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR236<span class="sc">/</span><span class="dv">019</span><span class="sc">/</span>SRR23617119<span class="sc">/</span>SRR23617119.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR23617119.fastq.gz SUB280_rad6_rep1_F.fastq.gz</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR236<span class="sc">/</span><span class="dv">017</span><span class="sc">/</span>SRR23617117<span class="sc">/</span>SRR23617117.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR23617117.fastq.gz SUB280_rad6_peroxide_rep1_F.fastq.gz</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR236<span class="sc">/</span><span class="dv">014</span><span class="sc">/</span>SRR23617114<span class="sc">/</span>SRR23617114.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR23617114.fastq.gz SUB280_hel2_peroxide_F.fastq.gz</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR236<span class="sc">/</span><span class="dv">016</span><span class="sc">/</span>SRR23617116<span class="sc">/</span>SRR23617116.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR23617116.fastq.gz SUB280_rad6_peroxide_rep2_F.fastq.gz</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR236<span class="sc">/</span><span class="dv">015</span><span class="sc">/</span>SRR23617115<span class="sc">/</span>SRR23617115.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR23617115.fastq.gz SUB280_hel2_F.fastq.gz</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR236<span class="sc">/</span><span class="dv">011</span><span class="sc">/</span>SRR23617111<span class="sc">/</span>SRR23617111.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR23617111.fastq.gz SUB280_rad6_RAD6_C88A_F.fastq.gz</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR236<span class="sc">/</span><span class="dv">013</span><span class="sc">/</span>SRR23617113<span class="sc">/</span>SRR23617113.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR23617113.fastq.gz SUB280_rad6_RAD6_F.fastq.gz</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR236<span class="sc">/</span><span class="dv">012</span><span class="sc">/</span>SRR23617112<span class="sc">/</span>SRR23617112.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR23617112.fastq.gz SUB280_rad6_RAD6_peroxide_F.fastq.gz</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR236<span class="sc">/</span><span class="dv">008</span><span class="sc">/</span>SRR23617108<span class="sc">/</span>SRR23617108.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR23617108.fastq.gz S288C_WT_peroxide_F.fastq.gz</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR236<span class="sc">/</span><span class="dv">010</span><span class="sc">/</span>SRR23617110<span class="sc">/</span>SRR23617110.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR23617110.fastq.gz SUB280_rad6_RAD6_C88A_peroxide_F.fastq.gz</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR236<span class="sc">/</span><span class="dv">009</span><span class="sc">/</span>SRR23617109<span class="sc">/</span>SRR23617109.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR23617109.fastq.gz S288C_WT_F.fastq.gz</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR236<span class="sc">/</span><span class="dv">007</span><span class="sc">/</span>SRR23617107<span class="sc">/</span>SRR23617107.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR23617107.fastq.gz S288C_rad6_F.fastq.gz</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR236<span class="sc">/</span><span class="dv">005</span><span class="sc">/</span>SRR23617105<span class="sc">/</span>SRR23617105.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR23617105.fastq.gz SUB280_WT_rep1_Fd.fastq.gz</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR236<span class="sc">/</span><span class="dv">003</span><span class="sc">/</span>SRR23617103<span class="sc">/</span>SRR23617103.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR23617103.fastq.gz SUB280_WT_peroxide_rep1_Fd.fastq.gz</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR236<span class="sc">/</span><span class="dv">006</span><span class="sc">/</span>SRR23617106<span class="sc">/</span>SRR23617106.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR23617106.fastq.gz S288C_rad6_peroxide_F.fastq.gz</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR236<span class="sc">/</span><span class="dv">002</span><span class="sc">/</span>SRR23617102<span class="sc">/</span>SRR23617102.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR23617102.fastq.gz SUB280_WT_peroxide_rep2_Fd.fastq.gz</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR236<span class="sc">/</span><span class="dv">004</span><span class="sc">/</span>SRR23617104<span class="sc">/</span>SRR23617104.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR23617104.fastq.gz SUB280_WT_rep2_Fd.fastq.gz</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR236<span class="sc">/</span><span class="dv">001</span><span class="sc">/</span>SRR23617101<span class="sc">/</span>SRR23617101.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR23617101.fastq.gz SUB280_rad6_Fd.fastq.gz</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR236<span class="sc">/</span><span class="dv">000</span><span class="sc">/</span>SRR23617100<span class="sc">/</span>SRR23617100.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR23617100.fastq.gz SUB280_rad6_peroxide_Fd.fastq.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="adapter-trimming" class="level2" data-number="13.3"><h2 data-number="13.3" class="anchored" data-anchor-id="adapter-trimming">
+<span class="header-section-number">13.3</span> <strong>Adapter Trimming</strong>
+</h2>
+<p>After running FastQC on the raw FASTQ files, we observed the presence of adapter contamination in the sequencing reads. According to the Methods section of the original publication, adapter trimming was performed using <strong>Cutadapt</strong>.</p>
+<p>We applied Cutadapt to remove unwanted bases from both ends of the reads. In particular, <strong>we trimmed 2 nucleotides from the 5′ end (using -u 2) and 5 nucleotides from the 3′ end (using -u -5)</strong>.</p>
+<p>Here is the bash script we used to batch-process multiple FASTQ files:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adapter trimming with Cutadapt for all samples</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="cf">in</span> SUB280_WT_rep1_F SUB280_WT_rep2_F SUB280_WT_peroxide_rep1_F SUB280_WT_peroxide_rep2_F SUB280_rad6_rep1_F SUB280_rad6_rep2_F SUB280_rad6_peroxide_rep1_F SUB280_rad6_peroxide_rep2_F SUB280_hel2_F SUB280_hel2_peroxide_F SUB280_rad6_RAD6_F SUB280_rad6_RAD6_peroxide_F SUB280_rad6_RAD6_C88A_F SUB280_rad6_RAD6_C88A_peroxide_F S288C_WT_F S288C_WT_peroxide_F S288C_rad6_F S288C_rad6_peroxide_F SUB280_WT_rep1_Fd SUB280_WT_rep2_Fd SUB280_WT_peroxide_rep1_Fd SUB280_WT_peroxide_rep2_Fd SUB280_rad6_Fd SUB280_rad6_peroxide_Fd</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>do</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        cutadapt <span class="sc">-</span>j <span class="dv">20</span> <span class="sc">-</span>u <span class="dv">2</span> <span class="sc">-</span>u <span class="sc">-</span><span class="dv">5</span> <span class="sc">-</span>o .<span class="sc">/</span><span class="er">$</span>{i}_trim.fq.gz ..<span class="sc">/</span><span class="fl">1.</span>raw<span class="sc">-</span>data<span class="sc">/</span><span class="er">$</span>{i}.fastq.gz</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>done</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="removal-of-rrna-contamination" class="level2" data-number="13.4"><h2 data-number="13.4" class="anchored" data-anchor-id="removal-of-rrna-contamination">
+<span class="header-section-number">13.4</span> <strong>Removal of rRNA Contamination</strong>
+</h2>
+<p>After adapter trimming, the cleaned sequencing reads still contain a proportion of ribosomal RNA (rRNA) contaminants, which can interfere with downstream translational profiling. To eliminate these reads, we aligned the trimmed reads against a reference index of Saccharomyces cerevisiae rRNA sequences using <strong>Bowtie2</strong>.</p>
+<p>Following the original study’s pipeline, reads that did not map to rRNA were retained for downstream analyses. The alignment was performed with the following shell script:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove reads that map to rRNA</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="cf">in</span> SUB280_WT_rep1_F SUB280_WT_rep2_F SUB280_WT_peroxide_rep1_F SUB280_WT_peroxide_rep2_F SUB280_rad6_rep1_F SUB280_rad6_rep2_F SUB280_rad6_peroxide_rep1_F SUB280_rad6_peroxide_rep2_F SUB280_hel2_F SUB280_hel2_peroxide_F SUB280_rad6_RAD6_F SUB280_rad6_RAD6_peroxide_F SUB280_rad6_RAD6_C88A_F SUB280_rad6_RAD6_C88A_peroxide_F S288C_WT_F S288C_WT_peroxide_F S288C_rad6_F S288C_rad6_peroxide_F SUB280_WT_rep1_Fd SUB280_WT_rep2_Fd SUB280_WT_peroxide_rep1_Fd SUB280_WT_peroxide_rep2_Fd SUB280_rad6_Fd SUB280_rad6_peroxide_Fd</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>do</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        bowtie2 <span class="sc">-</span>p <span class="dv">20</span> <span class="sc">-</span>x ..<span class="sc">/</span>..<span class="sc">/</span>index<span class="sc">-</span>data<span class="sc">/</span>sac<span class="sc">-</span>rRNA<span class="sc">-</span>index<span class="sc">/</span>Saccharomyces<span class="sc">-</span>cerevisiae<span class="sc">-</span>rRNA \</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                <span class="sc">--</span>un<span class="sc">-</span>gz <span class="sc">$</span>{i}.rmrRNA.fq.gz \</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>                <span class="sc">-</span>U ..<span class="sc">/</span><span class="fl">2.</span>trim<span class="sc">-</span>data<span class="sc">/</span><span class="er">$</span>{i}_trim.fq.gz \</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>                <span class="sc">-</span>S .<span class="sc">/</span>null</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>done</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="genome-alignment" class="level2" data-number="13.5"><h2 data-number="13.5" class="anchored" data-anchor-id="genome-alignment">
+<span class="header-section-number">13.5</span> <strong>Genome Alignment</strong>
+</h2>
+<p>After removing rRNA contaminants, the remaining clean reads were aligned to the reference genome of Saccharomyces cerevisiae using the STAR aligner, which is well-suited for spliced alignment of both RNA-seq and ribosome profiling reads. Prior to read alignment, a STAR genome index must be generated.</p>
+<section id="step-1-build-star-genome-index" class="level3" data-number="13.5.1"><h3 data-number="13.5.1" class="anchored" data-anchor-id="step-1-build-star-genome-index">
+<span class="header-section-number">13.5.1</span> <strong>Step 1: Build STAR Genome Index</strong>
+</h3>
+<p>Before mapping reads to the genome, we need to generate an indexed genome with a corresponding annotation file (GTF). Below is the command used to build the STAR index:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>STAR <span class="sc">--</span>runThreadN <span class="dv">15</span> \</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>     <span class="sc">--</span>runMode genomeGenerate \</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>     <span class="sc">--</span>genomeDir sac<span class="sc">-</span>star<span class="sc">-</span>genome<span class="sc">-</span>index<span class="sc">/</span> \</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>     <span class="sc">--</span>genomeFastaFiles .<span class="sc">/</span>Saccharomyces_cerevisiae.R64<span class="dv">-1</span><span class="fl">-1.</span>dna.toplevel.fa \</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>     <span class="sc">--</span>sjdbGTFfile Saccharomyces_cerevisiae.R64<span class="dv">-1-1</span>.<span class="fl">112.</span>gtf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="explanation-of-parameters" class="level4" data-number="13.5.1.1"><h4 data-number="13.5.1.1" class="anchored" data-anchor-id="explanation-of-parameters">
+<span class="header-section-number">13.5.1.1</span> Explanation of parameters:</h4>
+<ul>
+<li><p><code>--runThreadN 15</code>: Use 15 CPU threads to speed up indexing.</p></li>
+<li><p><code>--runMode genomeGenerate</code>: Instructs STAR to generate the genome index.</p></li>
+<li><p><code>--genomeDir</code>: Output directory for the STAR index files.</p></li>
+<li><p><code>--genomeFastaFiles</code>: Path to the FASTA file of the yeast genome (S. cerevisiae R64-1-1 build).</p></li>
+<li><p><code>--sjdbGTFfile</code>: Path to the GTF annotation file for splice junctions.</p></li>
+</ul>
+<p>Once built, this index can be reused for alignment across all samples.</p>
+</section></section><section id="step-2-align-reads-to-the-genome" class="level3" data-number="13.5.2"><h3 data-number="13.5.2" class="anchored" data-anchor-id="step-2-align-reads-to-the-genome">
+<span class="header-section-number">13.5.2</span> <strong>Step 2: Align Reads to the Genome</strong>
+</h3>
+<p>With the index in place, we mapped the rRNA-depleted FASTQ files to the genome using the following shell script:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Align reads to the yeast genome using STAR</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="cf">in</span> SUB280_WT_rep1_F SUB280_WT_rep2_F SUB280_WT_peroxide_rep1_F SUB280_WT_peroxide_rep2_F \</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>         SUB280_rad6_rep1_F SUB280_rad6_rep2_F SUB280_rad6_peroxide_rep1_F SUB280_rad6_peroxide_rep2_F \</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>         SUB280_hel2_F SUB280_hel2_peroxide_F SUB280_rad6_RAD6_F SUB280_rad6_RAD6_peroxide_F \</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>         SUB280_rad6_RAD6_C88A_F SUB280_rad6_RAD6_C88A_peroxide_F S288C_WT_F S288C_WT_peroxide_F \</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>         S288C_rad6_F S288C_rad6_peroxide_F \</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>         SUB280_WT_rep1_Fd SUB280_WT_rep2_Fd SUB280_WT_peroxide_rep1_Fd SUB280_WT_peroxide_rep2_Fd \</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>         SUB280_rad6_Fd SUB280_rad6_peroxide_Fd</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>do</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    STAR <span class="sc">--</span>runThreadN <span class="dv">20</span> \</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>         <span class="sc">--</span>outFilterType Normal \</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>         <span class="sc">--</span>alignEndsType EndToEnd \</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>         <span class="sc">--</span>outFilterMismatchNmax <span class="dv">1</span> \</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>         <span class="sc">--</span>outFilterMultimapNmax <span class="dv">1</span> \</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>         <span class="sc">--</span>genomeDir ..<span class="sc">/</span>..<span class="sc">/</span>index<span class="sc">-</span>data<span class="sc">/</span>sac<span class="sc">-</span>star<span class="sc">-</span>genome<span class="sc">-</span>index \</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>         <span class="sc">--</span>readFilesCommand gunzip <span class="sc">-</span>c \</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>         <span class="sc">--</span>readFilesIn ..<span class="sc">/</span><span class="fl">3.</span>rmrRNA<span class="sc">-</span>data<span class="sc">/</span><span class="er">$</span>{i}.rmrRNA.fq.gz \</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>         <span class="sc">--</span>outFileNamePrefix .<span class="sc">/</span><span class="er">$</span>{i} \</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>         <span class="sc">--</span>outSAMtype BAM SortedByCoordinate \</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>         <span class="sc">--</span>quantMode GeneCounts \</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>         <span class="sc">--</span>outSAMattributes All</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>done</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section><section id="constructing-a-ribotrans-object" class="level2" data-number="13.6"><h2 data-number="13.6" class="anchored" data-anchor-id="constructing-a-ribotrans-object">
+<span class="header-section-number">13.6</span> <strong>Constructing a ribotrans Object</strong>
+</h2>
+<p>After obtaining the aligned BAM files, we proceeded to downstream analysis using the riboTransVis package. The first step involves creating a <strong>ribotrans</strong> object by selecting a subset of ribosome profiling (Ribo-seq) samples representative of different genetic backgrounds and experimental conditions. Once constructed, we performed a quality control (QC) analysis by extracting read information from all alignments.</p>
+<p>In accordance with the original publication, ribosome footprints were assigned using the <strong>3′ end</strong> of reads (<code>assignment_mode = "end3"</code>):</p>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/junjunlab/riboTransVis">riboTransVis</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># sample names</span></span>
+<span><span class="va">sp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"WT_rep1"</span>,<span class="st">"WT_rep2"</span>,</span>
+<span>        <span class="st">"WT_peroxide_rep1"</span>,<span class="st">"WT_peroxide_rep2"</span>,</span>
+<span>        <span class="st">"rad6_rep1"</span>,<span class="st">"rad6_rep2"</span>,</span>
+<span>        <span class="st">"rad6_peroxide_rep1"</span>,<span class="st">"rad6_peroxide_rep2"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># group names</span></span>
+<span><span class="va">gp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"WT"</span>,<span class="st">"WT"</span>,<span class="st">"WT_peroxide"</span>,<span class="st">"WT_peroxide"</span>,</span>
+<span>        <span class="st">"rad6"</span>,<span class="st">"rad6"</span>,<span class="st">"rad6_peroxide"</span>,<span class="st">"rad6_peroxide"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># bams</span></span>
+<span><span class="va">ribobams</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"SUB280_WT_rep1_FAligned.sortedByCoord.out.bam"</span>,</span>
+<span>              <span class="st">"SUB280_WT_rep2_FAligned.sortedByCoord.out.bam"</span>,</span>
+<span>              <span class="st">"SUB280_WT_peroxide_rep1_FAligned.sortedByCoord.out.bam"</span>,</span>
+<span>              <span class="st">"SUB280_WT_peroxide_rep2_FAligned.sortedByCoord.out.bam"</span>,</span>
+<span>              <span class="st">"SUB280_rad6_rep1_FAligned.sortedByCoord.out.bam"</span>,</span>
+<span>              <span class="st">"SUB280_rad6_rep2_FAligned.sortedByCoord.out.bam"</span>,</span>
+<span>              <span class="st">"SUB280_rad6_peroxide_rep1_FAligned.sortedByCoord.out.bam"</span>,</span>
+<span>              <span class="st">"SUB280_rad6_peroxide_rep2_FAligned.sortedByCoord.out.bam"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># construct_ribotrans</span></span>
+<span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/riboTransVis/man/construct_ribotrans.html">construct_ribotrans</a></span><span class="op">(</span>genome_file <span class="op">=</span> <span class="st">"../../index-data/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa"</span>,</span>
+<span>                           gtf_file <span class="op">=</span> <span class="st">"../../index-data/Saccharomyces_cerevisiae.R64-1-1.112.gtf"</span>,</span>
+<span>                           mapping_type <span class="op">=</span> <span class="st">"genome"</span>,</span>
+<span>                           assignment_mode <span class="op">=</span> <span class="st">"end3"</span>,</span>
+<span>                           extend <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                           extend_upstream <span class="op">=</span> <span class="fl">50</span>,</span>
+<span>                           extend_downstream <span class="op">=</span> <span class="fl">50</span>,</span>
+<span>                           Ribo_bam_file <span class="op">=</span> <span class="va">ribobams</span>,</span>
+<span>                           Ribo_sample_name <span class="op">=</span> <span class="va">sp</span>,</span>
+<span>                           Ribo_sample_group <span class="op">=</span> <span class="va">gp</span>,</span>
+<span>                           choose_longest_trans <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># generate summary data for QC or other analysis</span></span>
+<span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/riboTransVis/man/generate_summary.html">generate_summary</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">obj</span>, exp_type <span class="op">=</span> <span class="st">"ribo"</span>, nThreads <span class="op">=</span> <span class="fl">40</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="ribo-seq-quality-control" class="level2" data-number="13.7"><h2 data-number="13.7" class="anchored" data-anchor-id="ribo-seq-quality-control">
+<span class="header-section-number">13.7</span> <strong>Ribo-seq Quality Control</strong>
+</h2>
+<section id="length-distribution" class="level3" data-number="13.7.1"><h3 data-number="13.7.1" class="anchored" data-anchor-id="length-distribution">
+<span class="header-section-number">13.7.1</span> Length distribution</h3>
+<p>Plotting the RPF Fragment Length Distribution:</p>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># qc</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/riboTransVis/man/length_plot.html">length_plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/label_number.html">label_number</a></span><span class="op">(</span>accuracy <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">sample</span>, nrow <span class="op">=</span> <span class="fl">2</span>,scales <span class="op">=</span> <span class="st">"free"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="image/rad6length.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>Setting the option&nbsp;<code>merge_rep = TRUE</code>&nbsp;can be used to combine biological replicates for each condition:</p>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/riboTransVis/man/length_plot.html">length_plot</a></span><span class="op">(</span><span class="va">obj</span>,merge_rep <span class="op">=</span> <span class="cn">T</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/label_number.html">label_number</a></span><span class="op">(</span>accuracy <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">sample</span>, nrow <span class="op">=</span> <span class="fl">1</span>,scales <span class="op">=</span> <span class="st">"free"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="image/rad6lenmer.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>Adding frame infomation:</p>
+<div class="cell">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/riboTransVis/man/length_plot.html">length_plot</a></span><span class="op">(</span><span class="va">obj</span>,type <span class="op">=</span> <span class="st">"frame_length"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">sample</span>, nrow <span class="op">=</span> <span class="fl">2</span>,scales <span class="op">=</span> <span class="st">"free"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_grey.html">scale_fill_grey</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="image/rad6lenframe.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section><section id="frame-proportion" class="level3" data-number="13.7.2"><h3 data-number="13.7.2" class="anchored" data-anchor-id="frame-proportion">
+<span class="header-section-number">13.7.2</span> Frame <strong>proportion</strong>
+</h3>
+<p>we can visualize the overall proportion of reads aligning to frame 0, 1, and 2 using the <code><a href="https://rdrr.io/pkg/riboTransVis/man/frame_plot.html">frame_plot()</a></code> function:</p>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/riboTransVis/man/frame_plot.html">frame_plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">sample</span>, nrow <span class="op">=</span> <span class="fl">2</span>,scales <span class="op">=</span> <span class="st">"free"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="image/rad6frame.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section><section id="feature-distribution" class="level3" data-number="13.7.3"><h3 data-number="13.7.3" class="anchored" data-anchor-id="feature-distribution">
+<span class="header-section-number">13.7.3</span> Feature distribution</h3>
+<p>To analyze the distribution of ribosome-protected fragments (RPFs) across different transcript features—including the 5′ untranslated region (5′ UTR), coding sequence (CDS), and 3′ untranslated region (3′ UTR)—you can use the <code><a href="https://rdrr.io/pkg/riboTransVis/man/feature_plot.html">feature_plot()</a></code> function provided by the riboTransVis package as shown below:</p>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/riboTransVis/man/feature_plot.html">feature_plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">sample</span>, nrow <span class="op">=</span> <span class="fl">2</span>,scales <span class="op">=</span> <span class="st">"free"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="image/rad6feature.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section><section id="distribution-around-start-and-stop-codons" class="level3" data-number="13.7.4"><h3 data-number="13.7.4" class="anchored" data-anchor-id="distribution-around-start-and-stop-codons">
+<span class="header-section-number">13.7.4</span> Distribution around start and stop codons</h3>
+<p>Distribution relative to the start codon:</p>
+<div class="cell">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/riboTransVis/man/relative_dist_plot.html">relative_dist_plot</a></span><span class="op">(</span><span class="va">obj</span>, merge_rep <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="image/rad6st.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>Distribution relative to the stop codon:</p>
+<div class="cell">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/riboTransVis/man/relative_dist_plot.html">relative_dist_plot</a></span><span class="op">(</span><span class="va">obj</span>,</span>
+<span>                   type <span class="op">=</span> <span class="st">"rel2stop"</span>,</span>
+<span>                   merge_rep <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="image/rad6sp.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section><section id="offset-check" class="level3" data-number="13.7.5"><h3 data-number="13.7.5" class="anchored" data-anchor-id="offset-check">
+<span class="header-section-number">13.7.5</span> Offset check</h3>
+<p>Ribo-seq reads were aligned by their 3′ ends. For Ribo-seq data, the reads were shifted 15 nt from their 3′ end to align the P-site to the beginning of each gene:</p>
+<div class="cell">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/riboTransVis/man/relative_offset_plot.html">relative_offset_plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="image/rad6offset.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section><section id="save-ribotrans-object" class="level3" data-number="13.7.6"><h3 data-number="13.7.6" class="anchored" data-anchor-id="save-ribotrans-object">
+<span class="header-section-number">13.7.6</span> Save ribotrans object</h3>
+<p>Use the <strong>save</strong> function to store our riboTrans object for future analysis. This saves the riboTrans object into an <strong>.rda</strong> file named “obj.rda”, so it can be loaded and reused in future R sessions without reprocessing.</p>
+<div class="cell">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">obj</span>,file <span class="op">=</span> <span class="st">"obj.rda"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section><section id="offset-correction" class="level2" data-number="13.8"><h2 data-number="13.8" class="anchored" data-anchor-id="offset-correction">
+<span class="header-section-number">13.8</span> Offset correction</h2>
+<p>According to the Methods section of the publication, only fragments with lengths between 25–34 nucleotides were retained for analysis. The authors applied a shift of 18 nucleotides from the 3′ end of each fragment to position the E-site correctly. Based on this approach, we shift the 3′ end of the reads by 18 nucleotides for alignment:</p>
+<div class="cell">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/junjunlab/riboTransVis">riboTransVis</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://patchwork.data-imaginist.com">patchwork</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Load the saved riboTrans object</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"obj.rda"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Define the offset table for each sample and read length</span></span>
+<span><span class="va">offset</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>sample <span class="op">=</span> <span class="st">"WT_rep1"</span>,</span>
+<span>                  qwidth <span class="op">=</span> <span class="fl">25</span><span class="op">:</span><span class="fl">34</span>,</span>
+<span>                  rel_pos <span class="op">=</span> <span class="op">-</span><span class="fl">13</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>sample <span class="op">=</span> <span class="st">"WT_rep2"</span>,</span>
+<span>                  qwidth <span class="op">=</span> <span class="fl">25</span><span class="op">:</span><span class="fl">34</span>,</span>
+<span>                  rel_pos <span class="op">=</span> <span class="op">-</span><span class="fl">13</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>sample <span class="op">=</span> <span class="st">"WT_peroxide_rep1"</span>,</span>
+<span>                  qwidth <span class="op">=</span> <span class="fl">25</span><span class="op">:</span><span class="fl">34</span>,</span>
+<span>                  rel_pos <span class="op">=</span> <span class="fl">18</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>sample <span class="op">=</span> <span class="st">"WT_peroxide_rep2"</span>,</span>
+<span>                  qwidth <span class="op">=</span> <span class="fl">25</span><span class="op">:</span><span class="fl">34</span>,</span>
+<span>                  rel_pos <span class="op">=</span> <span class="fl">18</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>sample <span class="op">=</span> <span class="st">"rad6_rep1"</span>,</span>
+<span>                  qwidth <span class="op">=</span> <span class="fl">25</span><span class="op">:</span><span class="fl">34</span>,</span>
+<span>                  rel_pos <span class="op">=</span> <span class="fl">18</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>sample <span class="op">=</span> <span class="st">"rad6_rep2"</span>,</span>
+<span>                  qwidth <span class="op">=</span> <span class="fl">25</span><span class="op">:</span><span class="fl">34</span>,</span>
+<span>                  rel_pos <span class="op">=</span> <span class="fl">18</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>sample <span class="op">=</span> <span class="st">"rad6_peroxide_rep1"</span>,</span>
+<span>                  qwidth <span class="op">=</span> <span class="fl">25</span><span class="op">:</span><span class="fl">34</span>,</span>
+<span>                  rel_pos <span class="op">=</span> <span class="fl">18</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>sample <span class="op">=</span> <span class="st">"rad6_peroxide_rep2"</span>,</span>
+<span>                  qwidth <span class="op">=</span> <span class="fl">25</span><span class="op">:</span><span class="fl">34</span>,</span>
+<span>                  rel_pos <span class="op">=</span> <span class="fl">18</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Assign the offset to the riboTrans object</span></span>
+<span><span class="va">obj</span><span class="op">@</span><span class="va">reads_offset_info</span> <span class="op">&lt;-</span> <span class="va">offset</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="tri-peptide-analysis" class="level2" data-number="13.9"><h2 data-number="13.9" class="anchored" data-anchor-id="tri-peptide-analysis">
+<span class="header-section-number">13.9</span> Tri-peptide analysis</h2>
+<p>In the study, a tri-peptide (three-amino-acid motif) analysis was conducted based on the Ribo-seq data. It was observed that oxidative stress induces strong ribosome stalling at XIP motifs. However, this stalling effect disappears in RAD6 knockout cells, even under oxidative stress conditions.</p>
+<section id="extract-cds-sequence" class="level3" data-number="13.9.1"><h3 data-number="13.9.1" class="anchored" data-anchor-id="extract-cds-sequence">
+<span class="header-section-number">13.9.1</span> Extract CDS sequence</h3>
+<p>As a first step, we extract the coding sequences (CDS) of protein-coding genes for further tri-peptide analysis:</p>
+<div class="cell">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/riboTransVis/man/get_transcript_sequence.html">get_transcript_sequence</a></span><span class="op">(</span>genome_file <span class="op">=</span> <span class="st">"../../index-data/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa"</span>,</span>
+<span>                        gtf_file <span class="op">=</span> <span class="st">"../../index-data/Saccharomyces_cerevisiae.R64-1-1.112.gtf"</span>,</span>
+<span>                        feature <span class="op">=</span> <span class="st">"CDS"</span>,</span>
+<span>                        output_file <span class="op">=</span> <span class="st">"sac_cds.fa"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>🧬&nbsp;<strong>Note</strong>: XIP represents a motif where “X” can be any amino acid, followed by isoleucine (I) at the P-site and proline (P) at the A-site of the ribosome — a major redox-responsive stalling signal identified in the paper.</p>
+</section><section id="tri-peptide-pause-score-calculation" class="level3" data-number="13.9.2"><h3 data-number="13.9.2" class="anchored" data-anchor-id="tri-peptide-pause-score-calculation">
+<span class="header-section-number">13.9.2</span> Tri-peptide pause score calculation</h3>
+<p>To investigate motif-specific translational pausing, we calculate the pause scores of tri-peptide sequences under different conditions and visualize the results:</p>
+<div class="cell">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">peptide_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/riboTransVis/man/multi_peptide_occupancy.html">multi_peptide_occupancy</a></span><span class="op">(</span></span>
+<span>  object <span class="op">=</span> <span class="va">obj</span>,</span>
+<span>  cds_fa <span class="op">=</span> <span class="st">"./sac_cds.fa"</span>,</span>
+<span>  do_offset_correct <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  peptide_length <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  peptide_occurrence <span class="op">=</span> <span class="fl">100</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Access the pause scores in wide format (peptides × samples)</span></span>
+<span><span class="va">pdf</span> <span class="op">&lt;-</span> <span class="va">peptide_df</span><span class="op">$</span><span class="va">wider_format</span></span>
+<span></span>
+<span><span class="co"># View column names</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">pdf</span><span class="op">)</span></span>
+<span><span class="co"># [1] "pep_seq"            "WT_peroxide_rep1"   "WT_peroxide_rep2"   "WT_rep1"            "WT_rep2"           </span></span>
+<span><span class="co"># [6] "rad6_peroxide_rep1" "rad6_peroxide_rep2" "rad6_rep1"          "rad6_rep2"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We next compare the tri-peptide pause scores between oxidized vs control samples using scatter plots:</p>
+<div class="cell">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Plot pause score changes in WT samples</span></span>
+<span><span class="va">wt1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/riboTransVis/man/peptide_scatter_plot.html">peptide_scatter_plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">pdf</span>, x <span class="op">=</span> <span class="st">"WT_rep1"</span>, y <span class="op">=</span> <span class="st">"WT_peroxide_rep1"</span><span class="op">)</span></span>
+<span><span class="va">wt2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/riboTransVis/man/peptide_scatter_plot.html">peptide_scatter_plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">pdf</span>, x <span class="op">=</span> <span class="st">"WT_rep2"</span>, y <span class="op">=</span> <span class="st">"WT_peroxide_rep2"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Plot pause score changes in Rad6-deletion samples</span></span>
+<span><span class="va">rad61</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/riboTransVis/man/peptide_scatter_plot.html">peptide_scatter_plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">pdf</span>, x <span class="op">=</span> <span class="st">"rad6_rep1"</span>, y <span class="op">=</span> <span class="st">"rad6_peroxide_rep1"</span><span class="op">)</span></span>
+<span><span class="va">rad62</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/riboTransVis/man/peptide_scatter_plot.html">peptide_scatter_plot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">pdf</span>, x <span class="op">=</span> <span class="st">"rad6_rep2"</span>, y <span class="op">=</span> <span class="st">"rad6_peroxide_rep2"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Combine plots for side-by-side comparison</span></span>
+<span><span class="op">(</span><span class="va">wt1</span> <span class="op">+</span> <span class="va">wt2</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="va">rad61</span> <span class="op">+</span> <span class="va">rad62</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="image/rad6trirep.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<section id="custom-plot" class="level4" data-number="13.9.2.1"><h4 data-number="13.9.2.1" class="anchored" data-anchor-id="custom-plot">
+<span class="header-section-number">13.9.2.1</span> Custom plot</h4>
+<p>We can customize our tri-peptide pause score plots using <code>ggplot2</code> syntax for enhanced visualization and highlighting of specific motifs. Here’s an example:</p>
+<div class="cell">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load required package</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># define plot function</span></span>
+<span><span class="va">peptide_scatter_plot2</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span> <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                                 <span class="va">x</span> <span class="op">=</span> <span class="cn">NULL</span>,<span class="va">y</span> <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                                 <span class="va">color</span> <span class="op">=</span> <span class="st">"#003366"</span>,</span>
+<span>                                 <span class="va">label_size</span> <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>                                 <span class="va">hjust</span> <span class="op">=</span> <span class="fl">1.2</span>,<span class="va">vjust</span> <span class="op">=</span> <span class="fl">1.2</span>,</span>
+<span>                                 <span class="va">motif</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span><span class="op">{</span></span>
+<span>  </span>
+<span>  <span class="co"># get ratio</span></span>
+<span>  <span class="va">label_df</span> <span class="op">&lt;-</span> <span class="va">data</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"pep_seq"</span>,<span class="va">x</span>,<span class="va">y</span><span class="op">)</span><span class="op">]</span></span>
+<span>  <span class="va">label_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">label_df</span>, <span class="va">pep_seq</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">motif</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html">requireNamespace</a></span><span class="op">(</span><span class="st">"grDevices"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">xlims</span> <span class="op">&lt;-</span> <span class="fu">grDevices</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/grDevices/extendrange.html">extendrange</a></span><span class="op">(</span><span class="va">data</span><span class="op">[</span>,<span class="fl">2</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span><span class="op">]</span>,f <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/warning.html">warning</a></span><span class="op">(</span><span class="st">"Package 'grDevices' is needed for this function to work."</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span>  </span>
+<span>  </span>
+<span>  <span class="co"># plot</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span>,fill <span class="op">=</span> <span class="va">color</span>,shape <span class="op">=</span> <span class="fl">21</span>,color <span class="op">=</span> <span class="st">"grey50"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">label_df</span>,</span>
+<span>              <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>, label <span class="op">=</span> <span class="va">pep_seq</span><span class="op">)</span>,</span>
+<span>              hjust <span class="op">=</span> <span class="va">hjust</span>, vjust <span class="op">=</span> <span class="va">vjust</span>, size <span class="op">=</span> <span class="va">label_size</span>, check_overlap <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_abline</a></span><span class="op">(</span>slope <span class="op">=</span> <span class="fl">1</span>,intercept <span class="op">=</span> <span class="fl">0</span>,lty <span class="op">=</span> <span class="st">"dashed"</span>, color <span class="op">=</span> <span class="st">"grey40"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>panel.grid <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>          axis.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html">coord_equal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">xlims</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">ylim</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">xlims</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span></span>
+<span><span class="co"># Define motifs of interest</span></span>
+<span><span class="va">motif</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"KIP"</span>, <span class="st">"MIP"</span>, <span class="st">"QIP"</span>, <span class="st">"KIH"</span>, <span class="st">"EIH"</span>, <span class="st">"RKK"</span>, <span class="st">"PPD"</span>, <span class="st">"PPE"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Generate scatter plots highlighting specific motifs in each comparison</span></span>
+<span><span class="va">wt1</span> <span class="op">&lt;-</span> <span class="fu">peptide_scatter_plot2</span><span class="op">(</span></span>
+<span>  data  <span class="op">=</span> <span class="va">pdf</span>,</span>
+<span>  x     <span class="op">=</span> <span class="st">"WT_rep1"</span>,</span>
+<span>  y     <span class="op">=</span> <span class="st">"WT_peroxide_rep1"</span>,</span>
+<span>  motif <span class="op">=</span> <span class="va">motif</span>,</span>
+<span>  color <span class="op">=</span> <span class="st">"#1DCD9F"</span>  <span class="co"># turquoise color for WT</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">wt2</span> <span class="op">&lt;-</span> <span class="fu">peptide_scatter_plot2</span><span class="op">(</span></span>
+<span>  data  <span class="op">=</span> <span class="va">pdf</span>,</span>
+<span>  x     <span class="op">=</span> <span class="st">"WT_rep2"</span>,</span>
+<span>  y     <span class="op">=</span> <span class="st">"WT_peroxide_rep2"</span>,</span>
+<span>  motif <span class="op">=</span> <span class="va">motif</span>,</span>
+<span>  color <span class="op">=</span> <span class="st">"#1DCD9F"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">rad61</span> <span class="op">&lt;-</span> <span class="fu">peptide_scatter_plot2</span><span class="op">(</span></span>
+<span>  data  <span class="op">=</span> <span class="va">pdf</span>,</span>
+<span>  x     <span class="op">=</span> <span class="st">"rad6_rep1"</span>,</span>
+<span>  y     <span class="op">=</span> <span class="st">"rad6_peroxide_rep1"</span>,</span>
+<span>  motif <span class="op">=</span> <span class="va">motif</span>,</span>
+<span>  color <span class="op">=</span> <span class="st">"#FEBA17"</span>  <span class="co"># amber color for rad6Δ</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">rad62</span> <span class="op">&lt;-</span> <span class="fu">peptide_scatter_plot2</span><span class="op">(</span></span>
+<span>  data  <span class="op">=</span> <span class="va">pdf</span>,</span>
+<span>  x     <span class="op">=</span> <span class="st">"rad6_rep2"</span>,</span>
+<span>  y     <span class="op">=</span> <span class="st">"rad6_peroxide_rep2"</span>,</span>
+<span>  motif <span class="op">=</span> <span class="va">motif</span>,</span>
+<span>  color <span class="op">=</span> <span class="st">"#FEBA17"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Arrange plots using patchwork</span></span>
+<span><span class="op">(</span><span class="va">wt1</span> <span class="op">+</span> <span class="va">wt2</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="va">rad61</span> <span class="op">+</span> <span class="va">rad62</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="image/rad6tricustom.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section><section id="combine-biological-replicates" class="level4" data-number="13.9.2.2"><h4 data-number="13.9.2.2" class="anchored" data-anchor-id="combine-biological-replicates">
+<span class="header-section-number">13.9.2.2</span> Combine <strong>biological</strong> replicates</h4>
+<p>To reduce variability and improve statistical power, we merge multiple biological replicates using the parameter <code>merge_rep = TRUE</code> in the multi_peptide_occupancy function:</p>
+<div class="cell">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Merge replicates</span></span>
+<span><span class="va">peptide_df2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/riboTransVis/man/multi_peptide_occupancy.html">multi_peptide_occupancy</a></span><span class="op">(</span></span>
+<span>  object <span class="op">=</span> <span class="va">obj</span>,</span>
+<span>  cds_fa <span class="op">=</span> <span class="st">"./sac_cds.fa"</span>,</span>
+<span>  do_offset_correct <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  peptide_length <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  merge_rep <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Retrieve data in wide format</span></span>
+<span><span class="va">pdf2</span> <span class="op">&lt;-</span> <span class="va">peptide_df2</span><span class="op">$</span><span class="va">wider_format</span></span>
+<span></span>
+<span><span class="co"># Check column names</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">pdf2</span><span class="op">)</span></span>
+<span><span class="co"># [1] "pep_seq"       "WT"            "WT_peroxide"   "rad6"          "rad6_peroxide"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We then visualize motif-specific pause score changes between conditions using customized scatter plots:</p>
+<div class="cell">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Generate scatter plot comparing WT with and without oxidative stress</span></span>
+<span><span class="va">wt</span> <span class="op">&lt;-</span> <span class="fu">peptide_scatter_plot2</span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">pdf2</span>,</span>
+<span>  x <span class="op">=</span> <span class="st">"WT"</span>,</span>
+<span>  y <span class="op">=</span> <span class="st">"WT_peroxide"</span>,</span>
+<span>  motif <span class="op">=</span> <span class="va">motif</span>,</span>
+<span>  color <span class="op">=</span> <span class="st">"#1DCD9F"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Generate scatter plot comparing rad6Δ with and without oxidative stress</span></span>
+<span><span class="va">rad6</span> <span class="op">&lt;-</span> <span class="fu">peptide_scatter_plot2</span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">pdf2</span>,</span>
+<span>  x <span class="op">=</span> <span class="st">"rad6"</span>,</span>
+<span>  y <span class="op">=</span> <span class="st">"rad6_peroxide"</span>,</span>
+<span>  motif <span class="op">=</span> <span class="va">motif</span>,</span>
+<span>  color <span class="op">=</span> <span class="st">"#FEBA17"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Combine plots for side-by-side comparison</span></span>
+<span><span class="va">wt</span> <span class="op">+</span> <span class="va">rad6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section></section><section id="gene-ribosome-occupancy" class="level2" data-number="13.10"><h2 data-number="13.10" class="anchored" data-anchor-id="gene-ribosome-occupancy">
+<span class="header-section-number">13.10</span> Gene ribosome occupancy</h2>
+<p>This study demonstrated that the SKI2 and PCF11 genes exhibit pronounced ribosome pausing following oxidative stress, specifically at the LIP and KIP tri-peptide motifs. Interestingly, this stress-induced stalling is lost in RAD6-deficient (rad6Δ) cells.</p>
+<p>To visualize ribosome occupancy for these two genes, we can generate ribosome profiling (Ribo-seq) track plots that include biological replicates.</p>
+<section id="with-biological-replicates" class="level3" data-number="13.10.1"><h3 data-number="13.10.1" class="anchored" data-anchor-id="with-biological-replicates">
+<span class="header-section-number">13.10.1</span> With biological replicates</h3>
+<p>The following code generates ribosome occupancy tracks for SKI2 and PCF11, retaining biological replicate information:</p>
+<div class="cell">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Generate gene track plots with biological replicates</span></span>
+<span><span class="va">plist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"SKI2"</span>, <span class="st">"PCF11"</span><span class="op">)</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/riboTransVis/man/get_occupancy.html">get_occupancy</a></span><span class="op">(</span></span>
+<span>    object <span class="op">=</span> <span class="va">obj</span>, </span>
+<span>    gene_name <span class="op">=</span> <span class="va">x</span>, </span>
+<span>    coordinate_to_trans <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>    do_reads_offset <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>    merge_rep <span class="op">=</span> <span class="cn">FALSE</span>  <span class="co"># Retain individual replicates</span></span>
+<span>  <span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co"># Create ribosome occupancy plot</span></span>
+<span>  <span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/riboTransVis/man/trans_plot.html">trans_plot</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">obj</span>, type <span class="op">=</span> <span class="st">"ribo"</span><span class="op">)</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Combine plots side by side</span></span>
+<span><span class="fu">cowplot</span><span class="fu">::</span><span class="fu"><a href="https://wilkelab.org/cowplot/reference/plot_grid.html">plot_grid</a></span><span class="op">(</span>plotlist <span class="op">=</span> <span class="va">plist</span>, nrow <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="image/rad6track.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section><section id="biological-replicates-combination" class="level3" data-number="13.10.2"><h3 data-number="13.10.2" class="anchored" data-anchor-id="biological-replicates-combination">
+<span class="header-section-number">13.10.2</span> Biological replicates combination</h3>
+<p>To improve signal clarity and reduce variability, we combine biological replicates when visualizing ribosome occupancy for the SKI2 and PCF11 genes:</p>
+<div class="cell">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Plot ribosome occupancy tracks for SKI2 and PCF11 with merged biological replicates</span></span>
+<span><span class="va">plist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"SKI2"</span>, <span class="st">"PCF11"</span><span class="op">)</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/riboTransVis/man/get_occupancy.html">get_occupancy</a></span><span class="op">(</span></span>
+<span>    object <span class="op">=</span> <span class="va">obj</span>,</span>
+<span>    gene_name <span class="op">=</span> <span class="va">x</span>,</span>
+<span>    coordinate_to_trans <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>    do_reads_offset <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>    merge_rep <span class="op">=</span> <span class="cn">TRUE</span>  <span class="co"># Merge biological replicates</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span>  <span class="co"># Generate ribosome footprint plot</span></span>
+<span>  <span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/riboTransVis/man/trans_plot.html">trans_plot</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">obj</span>, type <span class="op">=</span> <span class="st">"ribo"</span><span class="op">)</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Display plots side by side</span></span>
+<span><span class="fu">cowplot</span><span class="fu">::</span><span class="fu"><a href="https://wilkelab.org/cowplot/reference/plot_grid.html">plot_grid</a></span><span class="op">(</span>plotlist <span class="op">=</span> <span class="va">plist</span>, nrow <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="image/rad6trackmer.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section></section><section id="motif-centered-analysis" class="level2" data-number="13.11"><h2 data-number="13.11" class="anchored" data-anchor-id="motif-centered-analysis">
+<span class="header-section-number">13.11</span> Motif-centered analysis</h2>
+<p>The authors identified an increased ribosome occupancy at XIP motifs based on global tri-peptide pause score analysis. To further characterize this observation, they examined ribosome occupancy profiles upstream and downstream of these motifs. Here, we reproduce this analysis using biological replicates.</p>
+<section id="with-biological-replicates-1" class="level3" data-number="13.11.1"><h3 data-number="13.11.1" class="anchored" data-anchor-id="with-biological-replicates-1">
+<span class="header-section-number">13.11.1</span> With biological replicates</h3>
+<p>In the XIP motif, “X” represents any amino acid. Therefore, we first generate all possible amino acid combinations that match the pattern “XIP”, and then compute and visualize the ribosome occupancy around these motif sites:</p>
+<div class="cell">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Define all 20 amino acids by one-letter code</span></span>
+<span><span class="va">aa_one_letter</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"R"</span>, <span class="st">"N"</span>, <span class="st">"D"</span>, <span class="st">"C"</span>, <span class="st">"Q"</span>, <span class="st">"E"</span>, <span class="st">"G"</span>, <span class="st">"H"</span>, <span class="st">"I"</span>, </span>
+<span>                   <span class="st">"L"</span>, <span class="st">"K"</span>, <span class="st">"M"</span>, <span class="st">"F"</span>, <span class="st">"P"</span>, <span class="st">"S"</span>, <span class="st">"T"</span>, <span class="st">"W"</span>, <span class="st">"Y"</span>, <span class="st">"V"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Extract relative ribosome occupancy around XIP-like motifs (±30 nt window)</span></span>
+<span><span class="va">relmotif</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/riboTransVis/man/relative_motif_occupancy.html">relative_motif_occupancy</a></span><span class="op">(</span></span>
+<span>  object <span class="op">=</span> <span class="va">obj</span>, </span>
+<span>  cds_fa <span class="op">=</span> <span class="st">"sac_cds.fa"</span>,</span>
+<span>  do_offset_correct <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  motif_upstream <span class="op">=</span> <span class="fl">30</span>,</span>
+<span>  motif_downstream <span class="op">=</span> <span class="fl">30</span>,</span>
+<span>  motif_pattern <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">aa_one_letter</span>, <span class="st">"IP"</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Preview the first few rows</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">relmotif</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Group and summarize occupancy values per distance and sample</span></span>
+<span><span class="va">relmotif</span> <span class="op">&lt;-</span> <span class="va">relmotif</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>motif <span class="op">=</span> <span class="st">"XIP"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">sample</span>, <span class="va">motif</span>, <span class="va">dist</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mn <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">avg_val</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Plot ribosome occupancy profiles across samples</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">relmotif</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_path</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">dist</span>, y <span class="op">=</span> <span class="va">mn</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">sample</span>, scales <span class="op">=</span> <span class="st">"fixed"</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>panel.grid <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>        strip.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span>,</span>
+<span>        axis.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Distance of 3'end to motif center"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Average ribosome occupancy"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="image/rad6rel2xip.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section><section id="biological-replicates-combination-1" class="level3" data-number="13.11.2"><h3 data-number="13.11.2" class="anchored" data-anchor-id="biological-replicates-combination-1">
+<span class="header-section-number">13.11.2</span> Biological replicates combination</h3>
+<p>The R code used to perform motif-centered ribosome occupancy analysis on merged replicate data, followed by a line plot of average occupancy profiles:</p>
+<div class="cell">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Compute ribosome occupancy around combined XIP motifs with merged replicates</span></span>
+<span><span class="va">relmotif2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/riboTransVis/man/relative_motif_occupancy.html">relative_motif_occupancy</a></span><span class="op">(</span></span>
+<span>  object <span class="op">=</span> <span class="va">obj</span>, </span>
+<span>  cds_fa <span class="op">=</span> <span class="st">"sac_cds.fa"</span>,</span>
+<span>  do_offset_correct <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  merge_rep <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  motif_upstream <span class="op">=</span> <span class="fl">30</span>,</span>
+<span>  motif_downstream <span class="op">=</span> <span class="fl">30</span>,</span>
+<span>  motif_pattern <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">aa_one_letter</span>, <span class="st">"IP"</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Summarize and tag motif</span></span>
+<span><span class="va">relmotif2</span> <span class="op">&lt;-</span> <span class="va">relmotif2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>motif <span class="op">=</span> <span class="st">"XIP"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">sample</span>, <span class="va">motif</span>, <span class="va">dist</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mn <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">avg_val</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Plot ribosome occupancy profiles</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">relmotif2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_path</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">dist</span>, y <span class="op">=</span> <span class="va">mn</span>, color <span class="op">=</span> <span class="va">sample</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">sample</span>, scales <span class="op">=</span> <span class="st">"fixed"</span>, nrow <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    panel.grid <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    strip.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span>,</span>
+<span>    axis.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Distance of 3'end to motif"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Average ribosome occupancy"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="image/rad6rel2xipmer.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>Further analysis of the remaining samples can be performed at the users’ discretion.</p>
+
+
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/github\.com\/junjunlab\/riboTransVis");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./More-examples.html" class="pagination-link" aria-label="More examples">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">More examples</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./DENR-promotes-translation-reinitiation.html" class="pagination-link" aria-label="DENR promotes translation reinitiation">
+        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">DENR promotes translation reinitiation</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+<p>riboTransVis documentation was written by Jun Zhang.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/junjunlab/riboTransVis/edit/main/Ubiquitin-conjugase-Rad6.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/junjunlab/riboTransVis/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+</body></html>

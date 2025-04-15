@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Jun Zhang">
+<title>Object construct – RiboTransVis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Extract-reads-info.html" rel="next">
+<link href="./Extract-sequence.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-f1075ac1703e165f0c9b3df650605ffb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><script defer="" data-domain="r4ds.hadley.nz" src="https://plausible.io/js/plausible.js"></script>
+</head>
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Object-construct.html">Object construct</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">RiboTransVis</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/junjunlab/riboTransVis" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome!</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./Preprocessing-into.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preprocessing introduction</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Preprocessing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preprocessing</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Extract-sequence.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Extract sequence</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Object-construct.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Object construct</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./Extract-reads-info.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extract reads</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Ribo-QC.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Ribo-QC.html</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li><a href="#constructing-a-ribotrans-object" id="toc-constructing-a-ribotrans-object" class="nav-link active" data-scroll-target="#constructing-a-ribotrans-object"><strong>Constructing a Ribotrans Object</strong></a></li>
+  <li><a href="#note-extension-of-annotation-is-not-required-for-human-or-mouse-genomes" id="toc-note-extension-of-annotation-is-not-required-for-human-or-mouse-genomes" class="nav-link" data-scroll-target="#note-extension-of-annotation-is-not-required-for-human-or-mouse-genomes"><strong>Note: Extension of annotation is not required for human or mouse genomes</strong></a></li>
+  <li><a href="#assignment-mode-choose" id="toc-assignment-mode-choose" class="nav-link" data-scroll-target="#assignment-mode-choose">Assignment mode choose</a></li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/junjunlab/riboTransVis/edit/main/Object-construct.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/junjunlab/riboTransVis/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">Object construct</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><p>The <strong>RiboTransVis</strong> package utilizes an <strong>object-oriented programming</strong> paradigm for the analysis of Ribo-seq data. At the core of this framework is the <strong>ribotrans</strong> object, which encapsulates all essential information required for downstream analysis. Most functions in the package are designed to operate on this object. Therefore, the first step in any Ribo-seq analysis workflow using RiboTransVis is to construct a well-defined ribotrans object. This object is typically created from a set of inputs including the transcriptome FASTA file, a GTF annotation file, and aligned Ribo-seq data in BAM format.</p>
+<hr>
+<section id="constructing-a-ribotrans-object" class="level3"><h3 class="anchored" data-anchor-id="constructing-a-ribotrans-object"><strong>Constructing a Ribotrans Object</strong></h3>
+<p>In this section, we demonstrate how to construct a RiboTrans object using Ribo-seq data obtained from <strong>wild-type (WT)</strong> and <strong>eIF5A knockout (sgeIF5A)</strong> yeast samples. This object serves as the core input for downstream translational profiling and visualization using RiboTransVis.</p>
+<p>To create the RiboTrans object, you will need the following:</p>
+<ul>
+<li><p>🧬 A reference genome sequence file in FASTA format</p></li>
+<li><p>📜 A corresponding gene annotation file in GTF format</p></li>
+<li><p>🧪 Sample names</p></li>
+<li><p>📂 Aligned BAM files for each Ribo-seq sample</p></li>
+</ul>
+<p>We specify that the BAM files are <strong>genome-aligned</strong> (not transcriptome-aligned) by setting <strong>mapping_type = “genome”</strong>. For assigning ribosome footprints to transcript features (e.g., CDS), we use the 5′-end rule by setting <strong>assignment_mode = “end5”</strong>.</p>
+<p>In addition, we enable transcriptional region extension by setting <strong>extend = TRUE</strong>. This instructs RiboTrans to expand the annotation ranges defined in the GTF file, which can help recover reads that fall slightly upstream or downstream of annotated features. You can manually control the size of this extension via the extend_upstream and extend_downstream parameters (recommended: 50 nt).</p>
+<p>Another important parameter is <strong>choose_longest_trans</strong>, which determines whether to reduce transcript redundancy by selecting a representative isoform for each gene. When set to TRUE, RiboTrans will select a canonical transcript per gene based on the following criteria:</p>
+<ol type="1">
+<li><p><em>The transcript with the longest CDS (coding sequence) is preferred.</em></p></li>
+<li><p><em>If two or more transcripts share the same CDS length, the transcript with the longest overall exon span is selected as representative.</em></p></li>
+</ol>
+<p>When this parameter is not set (or set to FALSE), RiboTrans analyzes all annotated isoforms for each gene, which can increase the resolution of analysis but will substantially prolong processing time and downstream computational complexity.</p>
+<p>Below is an example of the recommended code for constructing a ribotrans object with two replicates for WT and two for eIF5A-knockout samples:</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"wt-rep1"</span>,<span class="st">"wt-rep2"</span>,<span class="st">"sgeIF5A-rep1"</span>,<span class="st">"sgeIF5A-rep2"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">ribobams</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"WT.1.sorted.bam"</span>,<span class="st">"WT.2.sorted.bam"</span>,<span class="st">"eIF5Ad.1.sorted.bam"</span>,<span class="st">"eIF5Ad.2.sorted.bam"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">obj0</span> <span class="op">&lt;-</span> <span class="fu">construct_ribotrans</span><span class="op">(</span>genome_file <span class="op">=</span> <span class="st">"../../index-data/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa"</span>,</span>
+<span>                            gtf_file <span class="op">=</span> <span class="st">"../../index-data/Saccharomyces_cerevisiae.R64-1-1.112.gtf"</span>,</span>
+<span>                            mapping_type <span class="op">=</span> <span class="st">"genome"</span>,</span>
+<span>                            assignment_mode <span class="op">=</span> <span class="st">"end5"</span>,</span>
+<span>                            extend <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                            extend_upstream <span class="op">=</span> <span class="fl">50</span>,</span>
+<span>                            extend_downstream <span class="op">=</span> <span class="fl">50</span>,</span>
+<span>                            Ribo_bam_file <span class="op">=</span> <span class="va">ribobams</span>,</span>
+<span>                            Ribo_sample_name <span class="op">=</span> <span class="va">gp</span>,</span>
+<span>                            choose_longest_trans <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>RiboTrans not only stores the input sample information but also automatically extracts and retains relevant transcript annotation data for downstream analysis. Below is a preview of the recently created Ribotrans object, including both sample metadata and the transcript features parsed from the annotation file:</p>
+<p><img src="image/obj.png" class="img-fluid"></p>
+<p>When creating the object, we specified the extend parameter to expand both upstream and downstream regions of the CDS by 50 nucleotides. You can observe this setting reflected in the “features” slot of the RiboTrans object, where the lengths of <strong>utr5</strong> and <strong>utr3</strong> are both <strong>50</strong>. You may also notice some genes with a CDS length of 0 — these correspond to non-coding genes, which do not contain annotated coding sequences, and thus their CDS length is set to 0 accordingly:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>obj0</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>An object of class <span class="st">"ribotrans"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Slot <span class="st">"bam_file"</span><span class="sc">:</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                  bam type       sample sample_group</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>     WT.<span class="fl">1.</span>sorted.bam ribo      wt<span class="sc">-</span>rep1      wt<span class="sc">-</span>rep1</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>     WT.<span class="fl">2.</span>sorted.bam ribo      wt<span class="sc">-</span>rep2      wt<span class="sc">-</span>rep2</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> eIF5Ad.<span class="fl">1.</span>sorted.bam ribo sgeIF5A<span class="sc">-</span>rep1 sgeIF5A<span class="sc">-</span>rep1</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> eIF5Ad.<span class="fl">2.</span>sorted.bam ribo sgeIF5A<span class="sc">-</span>rep2 sgeIF5A<span class="sc">-</span>rep2</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>Slot <span class="st">"library"</span><span class="sc">:</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>                  bam mappped_reads type       sample sample_group</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>     WT.<span class="fl">1.</span>sorted.bam      <span class="dv">44198992</span> ribo      wt<span class="sc">-</span>rep1      wt<span class="sc">-</span>rep1</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>     WT.<span class="fl">2.</span>sorted.bam      <span class="dv">23149956</span> ribo      wt<span class="sc">-</span>rep2      wt<span class="sc">-</span>rep2</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> eIF5Ad.<span class="fl">1.</span>sorted.bam      <span class="dv">35041935</span> ribo sgeIF5A<span class="sc">-</span>rep1 sgeIF5A<span class="sc">-</span>rep1</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> eIF5Ad.<span class="fl">2.</span>sorted.bam      <span class="dv">26762955</span> ribo sgeIF5A<span class="sc">-</span>rep2 sgeIF5A<span class="sc">-</span>rep2</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>Slot <span class="st">"gtf_data"</span><span class="sc">:</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>GRanges object with <span class="dv">41879</span> ranges and <span class="dv">16</span> metadata columns<span class="sc">:</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>          seqnames      ranges strand <span class="sc">|</span>   source        type     score     phase     gene_id   gene_name gene_source</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>             <span class="sc">&lt;</span>Rle<span class="sc">&gt;</span>   <span class="er">&lt;</span>IRanges<span class="sc">&gt;</span>  <span class="er">&lt;</span>Rle<span class="sc">&gt;</span> <span class="er">|</span> <span class="er">&lt;</span>factor<span class="sc">&gt;</span>    <span class="er">&lt;</span>factor<span class="sc">&gt;</span> <span class="er">&lt;</span>numeric<span class="sc">&gt;</span> <span class="er">&lt;</span>integer<span class="sc">&gt;</span> <span class="er">&lt;</span>character<span class="sc">&gt;</span> <span class="er">&lt;</span>character<span class="sc">&gt;</span> <span class="er">&lt;</span>character<span class="sc">&gt;</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>      [<span class="dv">1</span>]       IV   <span class="dv">8683-9756</span>      <span class="sc">-</span> <span class="er">|</span>      sgd gene               <span class="cn">NA</span>      <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>     YDL246C        SOR2         sgd</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>      [<span class="dv">2</span>]       IV   <span class="dv">8683-9756</span>      <span class="sc">-</span> <span class="er">|</span>      sgd transcript         <span class="cn">NA</span>      <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>     YDL246C        SOR2         sgd</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>      [<span class="dv">3</span>]       IV   <span class="dv">8683-9756</span>      <span class="sc">-</span> <span class="er">|</span>      sgd exon               <span class="cn">NA</span>      <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>     YDL246C        SOR2         sgd</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>      [<span class="dv">4</span>]       IV   <span class="dv">8686-9756</span>      <span class="sc">-</span> <span class="er">|</span>      sgd CDS                <span class="cn">NA</span>         <span class="dv">0</span>     YDL246C        SOR2         sgd</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>      [<span class="dv">5</span>]       IV   <span class="dv">9754-9756</span>      <span class="sc">-</span> <span class="er">|</span>      sgd start_codon        <span class="cn">NA</span>         <span class="dv">0</span>     YDL246C        SOR2         sgd</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>      ...      ...         ...    ... .      ...         ...       ...       ...         ...         ...         ...</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">41875</span>]     Mito <span class="dv">70162-70237</span>      <span class="sc">+</span> <span class="er">|</span>      sgd  exon              <span class="cn">NA</span>      <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>    <span class="fu">tI</span>(GAU)Q        <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>         sgd</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">41876</span>]     Mito <span class="dv">58009-62447</span>      <span class="sc">+</span> <span class="er">|</span>      sgd  gene              <span class="cn">NA</span>      <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>       Q0158    <span class="dv">21</span>S_RRNA         sgd</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">41877</span>]     Mito <span class="dv">58009-62447</span>      <span class="sc">+</span> <span class="er">|</span>      sgd  transcript        <span class="cn">NA</span>      <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>       Q0158    <span class="dv">21</span>S_RRNA         sgd</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">41878</span>]     Mito <span class="dv">58009-60724</span>      <span class="sc">+</span> <span class="er">|</span>      sgd  exon              <span class="cn">NA</span>      <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>       Q0158    <span class="dv">21</span>S_RRNA         sgd</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">41879</span>]     Mito <span class="dv">61868-62447</span>      <span class="sc">+</span> <span class="er">|</span>      sgd  exon              <span class="cn">NA</span>      <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>       Q0158    <span class="dv">21</span>S_RRNA         sgd</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>            gene_biotype transcript_id transcript_name transcript_source transcript_biotype               tag</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>             <span class="sc">&lt;</span>character<span class="sc">&gt;</span>   <span class="er">&lt;</span>character<span class="sc">&gt;</span>     <span class="er">&lt;</span>character<span class="sc">&gt;</span>       <span class="er">&lt;</span>character<span class="sc">&gt;</span>        <span class="er">&lt;</span>character<span class="sc">&gt;</span>       <span class="er">&lt;</span>character<span class="sc">&gt;</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>      [<span class="dv">1</span>] protein_coding          <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>            <span class="er">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>              <span class="er">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>               <span class="er">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>              <span class="er">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>      [<span class="dv">2</span>] protein_coding  YDL246C_mRNA            SOR2               sgd     protein_coding Ensembl_canonical</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>      [<span class="dv">3</span>] protein_coding  YDL246C_mRNA            SOR2               sgd     protein_coding Ensembl_canonical</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>      [<span class="dv">4</span>] protein_coding  YDL246C_mRNA            SOR2               sgd     protein_coding Ensembl_canonical</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>      [<span class="dv">5</span>] protein_coding  YDL246C_mRNA            SOR2               sgd     protein_coding Ensembl_canonical</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>      ...            ...           ...             ...               ...                ...               ...</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">41875</span>]           tRNA <span class="fu">tI</span>(GAU)Q_tRNA            <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>               sgd               tRNA Ensembl_canonical</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">41876</span>]           rRNA          <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>            <span class="er">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>              <span class="er">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>               <span class="er">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>              <span class="er">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">41877</span>]           rRNA    Q0158_rRNA            <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>               sgd               rRNA Ensembl_canonical</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">41878</span>]           rRNA    Q0158_rRNA            <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>               sgd               rRNA Ensembl_canonical</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">41879</span>]           rRNA    Q0158_rRNA            <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>               sgd               rRNA Ensembl_canonical</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>          exon_number          exon_id  protein_id</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>          <span class="sc">&lt;</span>character<span class="sc">&gt;</span>      <span class="er">&lt;</span>character<span class="sc">&gt;</span> <span class="er">&lt;</span>character<span class="sc">&gt;</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>      [<span class="dv">1</span>]        <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>             <span class="er">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>        <span class="er">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>      [<span class="dv">2</span>]        <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>             <span class="er">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>        <span class="er">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>      [<span class="dv">3</span>]           <span class="dv">1</span>  YDL246C_mRNA<span class="sc">-</span>E1        <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>      [<span class="dv">4</span>]           <span class="dv">1</span>             <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>     YDL246C</span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>      [<span class="dv">5</span>]           <span class="dv">1</span>             <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>        <span class="er">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>      ...         ...              ...         ...</span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">41875</span>]           <span class="dv">1</span> <span class="fu">tI</span>(GAU)Q_tRNA<span class="sc">-</span>E1        <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">41876</span>]        <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>             <span class="er">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>        <span class="er">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">41877</span>]        <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>             <span class="er">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>        <span class="er">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">41878</span>]           <span class="dv">1</span>    Q0158_rRNA<span class="sc">-</span>E1        <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">41879</span>]           <span class="dv">2</span>    Q0158_rRNA<span class="sc">-</span>E2        <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>  <span class="sc">-------</span></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>  seqinfo<span class="sc">:</span> <span class="dv">17</span> sequences from an unspecified genome; no seqlengths</span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>Slot <span class="st">"mapping_type"</span><span class="sc">:</span></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"genome"</span></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>Slot <span class="st">"assignment_mode"</span><span class="sc">:</span></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"end5"</span></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>Slot <span class="st">"features"</span><span class="sc">:</span></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a><span class="co"># A tibble: 7,127 × 10</span></span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="co"># Groups:   gene [7,127]</span></span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>   transcript_id  idnew                          utr5   cds  utr3 exonlen translen mstart mstop gene          </span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>   <span class="sc">&lt;</span>chr<span class="sc">&gt;</span>          <span class="er">&lt;</span>chr<span class="sc">&gt;</span>                         <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>   <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>    <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>  <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>chr<span class="sc">&gt;</span>         </span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a> <span class="dv">1</span> <span class="fu">tY</span>(GUA)Q_tRNA  <span class="fu">tY</span>(GUA)Q_tRNA<span class="sc">|</span><span class="fu">tY</span>(GUA)Q_tRNA      <span class="dv">50</span>     <span class="dv">0</span>    <span class="dv">50</span>     <span class="dv">184</span>      <span class="dv">184</span>      <span class="dv">0</span>     <span class="dv">0</span> <span class="fu">tY</span>(GUA)Q_tRNA </span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a> <span class="dv">2</span> <span class="fu">tX</span>(XXX)L_tRNA  <span class="fu">tX</span>(XXX)L_tRNA<span class="sc">|</span><span class="fu">tX</span>(XXX)L_tRNA      <span class="dv">50</span>     <span class="dv">0</span>    <span class="dv">50</span>     <span class="dv">180</span>      <span class="dv">180</span>      <span class="dv">0</span>     <span class="dv">0</span> <span class="fu">tX</span>(XXX)L_tRNA </span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a> <span class="dv">3</span> <span class="fu">tX</span>(XXX)D_tRNA  <span class="fu">tX</span>(XXX)D_tRNA<span class="sc">|</span><span class="fu">tX</span>(XXX)D_tRNA      <span class="dv">50</span>     <span class="dv">0</span>    <span class="dv">50</span>     <span class="dv">200</span>      <span class="dv">200</span>      <span class="dv">0</span>     <span class="dv">0</span> <span class="fu">tX</span>(XXX)D_tRNA </span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a> <span class="dv">4</span> <span class="fu">tW</span>(UCA)Q_tRNA  <span class="fu">tW</span>(UCA)Q_tRNA<span class="sc">|</span><span class="fu">tW</span>(UCA)Q_tRNA      <span class="dv">50</span>     <span class="dv">0</span>    <span class="dv">50</span>     <span class="dv">174</span>      <span class="dv">174</span>      <span class="dv">0</span>     <span class="dv">0</span> <span class="fu">tW</span>(UCA)Q_tRNA </span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a> <span class="dv">5</span> <span class="fu">tW</span>(CCA)P_tRNA  <span class="fu">tW</span>(CCA)P_tRNA<span class="sc">|</span><span class="fu">tW</span>(CCA)P_tRNA      <span class="dv">50</span>     <span class="dv">0</span>    <span class="dv">50</span>     <span class="dv">172</span>      <span class="dv">172</span>      <span class="dv">0</span>     <span class="dv">0</span> <span class="fu">tW</span>(CCA)P_tRNA </span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a> <span class="dv">6</span> <span class="fu">tW</span>(CCA)M_tRNA  <span class="fu">tW</span>(CCA)M_tRNA<span class="sc">|</span><span class="fu">tW</span>(CCA)M_tRNA      <span class="dv">50</span>     <span class="dv">0</span>    <span class="dv">50</span>     <span class="dv">172</span>      <span class="dv">172</span>      <span class="dv">0</span>     <span class="dv">0</span> <span class="fu">tW</span>(CCA)M_tRNA </span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a> <span class="dv">7</span> <span class="fu">tW</span>(CCA)K_tRNA  <span class="fu">tW</span>(CCA)K_tRNA<span class="sc">|</span><span class="fu">tW</span>(CCA)K_tRNA      <span class="dv">50</span>     <span class="dv">0</span>    <span class="dv">50</span>     <span class="dv">172</span>      <span class="dv">172</span>      <span class="dv">0</span>     <span class="dv">0</span> <span class="fu">tW</span>(CCA)K_tRNA </span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a> <span class="dv">8</span> <span class="fu">tW</span>(CCA)J_tRNA  <span class="fu">tW</span>(CCA)J_tRNA<span class="sc">|</span><span class="fu">tW</span>(CCA)J_tRNA      <span class="dv">50</span>     <span class="dv">0</span>    <span class="dv">50</span>     <span class="dv">172</span>      <span class="dv">172</span>      <span class="dv">0</span>     <span class="dv">0</span> <span class="fu">tW</span>(CCA)J_tRNA </span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a> <span class="dv">9</span> <span class="fu">tW</span>(CCA)G2_tRNA <span class="fu">tW</span>(CCA)G2_tRNA<span class="sc">|</span><span class="fu">tW</span>(CCA)G2_tRNA    <span class="dv">50</span>     <span class="dv">0</span>    <span class="dv">50</span>     <span class="dv">172</span>      <span class="dv">172</span>      <span class="dv">0</span>     <span class="dv">0</span> <span class="fu">tW</span>(CCA)G2_tRNA</span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="fu">tW</span>(CCA)G1_tRNA <span class="fu">tW</span>(CCA)G1_tRNA<span class="sc">|</span><span class="fu">tW</span>(CCA)G1_tRNA    <span class="dv">50</span>     <span class="dv">0</span>    <span class="dv">50</span>     <span class="dv">172</span>      <span class="dv">172</span>      <span class="dv">0</span>     <span class="dv">0</span> <span class="fu">tW</span>(CCA)G1_tRNA</span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a><span class="co"># ℹ 7,117 more rows</span></span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a><span class="co"># ℹ Use `print(n = ...)` to see more rows</span></span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>Slot <span class="st">"genome_trans_features"</span><span class="sc">:</span></span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a><span class="co"># A tibble: 7,507 × 9</span></span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a><span class="co"># Groups:   gene_name, transcript_id [7,127]</span></span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>   seqnames  start    end width tx_len strand gene_name transcript_id f_len</span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>   <span class="sc">&lt;</span>fct<span class="sc">&gt;</span>     <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>  <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>  <span class="er">&lt;</span>dbl<span class="sc">&gt;</span> <span class="er">&lt;</span>fct<span class="sc">&gt;</span>  <span class="er">&lt;</span>chr<span class="sc">&gt;</span>     <span class="er">&lt;</span>chr<span class="sc">&gt;</span>         <span class="er">&lt;</span>dbl<span class="sc">&gt;</span></span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a> <span class="dv">1</span> Mito       <span class="dv">6496</span>   <span class="dv">8244</span>  <span class="dv">1749</span>   <span class="dv">1749</span> <span class="sc">+</span>      <span class="dv">15</span>S_RRNA  Q0020_rRNA     <span class="dv">1749</span></span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a> <span class="dv">2</span> Mito      <span class="dv">57959</span>  <span class="dv">60724</span>  <span class="dv">2766</span>   <span class="dv">2766</span> <span class="sc">+</span>      <span class="dv">21</span>S_RRNA  Q0158_rRNA     <span class="dv">3396</span></span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a> <span class="dv">3</span> Mito      <span class="dv">61868</span>  <span class="dv">62497</span>   <span class="dv">630</span>   <span class="dv">3396</span> <span class="sc">+</span>      <span class="dv">21</span>S_RRNA  Q0158_rRNA     <span class="dv">3396</span></span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a> <span class="dv">4</span> II       <span class="dv">415933</span> <span class="dv">416956</span>  <span class="dv">1024</span>   <span class="dv">1024</span> <span class="sc">+</span>      AAC3      YBR085W_mRNA   <span class="dv">1024</span></span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a> <span class="dv">5</span> X        <span class="dv">727355</span> <span class="dv">728321</span>   <span class="dv">967</span>    <span class="dv">967</span> <span class="sc">+</span>      AAD10     YJR155W_mRNA    <span class="dv">967</span></span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a> <span class="dv">6</span> III      <span class="dv">313840</span> <span class="dv">315031</span>  <span class="dv">1192</span>   <span class="dv">1192</span> <span class="sc">+</span>      AAD3      YCR107W_mRNA   <span class="dv">1192</span></span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a> <span class="dv">7</span> XIV      <span class="dv">359546</span> <span class="dv">360689</span>  <span class="dv">1144</span>   <span class="dv">1144</span> <span class="sc">+</span>      AAH1      YNL141W_mRNA   <span class="dv">1144</span></span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a> <span class="dv">8</span> XI       <span class="dv">237486</span> <span class="dv">238941</span>  <span class="dv">1456</span>   <span class="dv">1456</span> <span class="sc">+</span>      AAT1      YKL106W_mRNA   <span class="dv">1456</span></span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a> <span class="dv">9</span> XI       <span class="dv">226520</span> <span class="dv">228815</span>  <span class="dv">2296</span>   <span class="dv">2296</span> <span class="sc">+</span>      ABF1      YKL112W_mRNA   <span class="dv">2296</span></span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> XIII     <span class="dv">411519</span> <span class="dv">412170</span>   <span class="dv">652</span>    <span class="dv">652</span> <span class="sc">+</span>      ABF2      YMR072W_mRNA    <span class="dv">652</span></span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a><span class="co"># ℹ 7,497 more rows</span></span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a><span class="co"># ℹ Use `print(n = ...)` to see more rows</span></span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>Slot <span class="st">"summary_info"</span><span class="sc">:</span></span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>data frame with <span class="dv">0</span> columns and <span class="dv">0</span> rows</span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>Slot <span class="st">"reads_offset_info"</span><span class="sc">:</span></span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a>data frame with <span class="dv">0</span> columns and <span class="dv">0</span> rows</span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>Slot <span class="st">"gene_name"</span><span class="sc">:</span></span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a><span class="fu">character</span>(<span class="dv">0</span>)</span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a>Slot <span class="st">"ribo_occupancy"</span><span class="sc">:</span></span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a>data frame with <span class="dv">0</span> columns and <span class="dv">0</span> rows</span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>Slot <span class="st">"ribo.smoothed"</span><span class="sc">:</span></span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a><span class="fu">character</span>(<span class="dv">0</span>)</span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>Slot <span class="st">"RNA_coverage"</span><span class="sc">:</span></span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a>data frame with <span class="dv">0</span> columns and <span class="dv">0</span> rows</span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a>Slot <span class="st">"RNA.smoothed"</span><span class="sc">:</span></span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a><span class="fu">character</span>(<span class="dv">0</span>)</span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a>Slot <span class="st">"scaled_occupancy"</span><span class="sc">:</span></span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a>data frame with <span class="dv">0</span> columns and <span class="dv">0</span> rows</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="note-extension-of-annotation-is-not-required-for-human-or-mouse-genomes" class="level3"><h3 class="anchored" data-anchor-id="note-extension-of-annotation-is-not-required-for-human-or-mouse-genomes"><strong>Note: Extension of annotation is not required for human or mouse genomes</strong></h3>
+<p>For species such as human (Homo sapiens) or mouse (Mus musculus), most genes already contain well-annotated untranslated regions (UTRs), including 5′UTRs and 3′UTRs, in the reference GTF annotation. Therefore, it is generally unnecessary to manually extend the CDS regions upstream or downstream, as this information is already captured in the transcript models.</p>
+<p>When working with these species, you can safely omit the parameters extend = TRUE, extend_upstream, and extend_downstream when constructing the ribotrans object. This will ensure that the annotation is used as-is and will simplify interpretation of coverage profiles in the UTR and CDS regions.</p>
+<p>Below is an example R code block for human samples:</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu">construct_ribotrans</span><span class="op">(</span>gtf_file <span class="op">=</span> <span class="st">"./Homo_sapiens.GRCh38.110.gtf"</span>,</span>
+<span>                           mapping_type <span class="op">=</span> <span class="st">"genome"</span>,</span>
+<span>                           assignment_mode <span class="op">=</span> <span class="st">"end3"</span>,</span>
+<span>                           Ribo_bam_file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"./bam-data/PC9-scr-1Ribo.bam"</span>,</span>
+<span>                                             <span class="st">"./bam-data/PC9-scr-2Ribo.bam"</span>,</span>
+<span>                                             <span class="st">"./bam-data/PC9-5A-1Ribo.bam"</span>,</span>
+<span>                                             <span class="st">"./bam-data/PC9-5A-2Ribo.bam"</span><span class="op">)</span>,</span>
+<span>                           Ribo_sample_name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"scramble-rep1"</span>,<span class="st">"scramble-rep2"</span>,<span class="st">"shEIF5A-rep1"</span>,<span class="st">"shEIF5A-rep2"</span><span class="op">)</span>,</span>
+<span>                           choose_longest_trans <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="assignment-mode-choose" class="level3"><h3 class="anchored" data-anchor-id="assignment-mode-choose">Assignment mode choose</h3>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>In ribosome profiling (Ribo-seq) data analysis, the <code>assignment_mode</code> parameter is critical for determining which end of each read is used when assigning reads to genomic or transcriptomic features.</p>
+</div>
+</div>
+</div>
+<section id="paired-end-sequencing-data" class="level4"><h4 class="anchored" data-anchor-id="paired-end-sequencing-data">Paired-end Sequencing Data</h4>
+<p>Note that when setting <code>assignment_mode = "end3"</code>, it often actually corresponds to the 5′ end of the read — particularly when aligning <strong>R1 fastq</strong> files to the <strong>genome</strong>.</p>
+<p>This behavior is due to strand orientation:</p>
+<ul>
+<li>Reads with SAM flag = 0 (usually from R1) align to genes on the <strong>negative (–) strand</strong>.</li>
+<li>Reads with SAM flag = 16 align to genes on the <strong>positive (+) strand</strong>.</li>
+</ul>
+<p>As a result, the logical 5′ end of the transcript appears on the opposite strand in the alignment output, which can make <code>"end3"</code> correspond to the actual 5′ end of the reads.</p>
+<p>On the other hand, if <strong>R2 fastq</strong> files are used for alignment, the configuration is reversed: setting <code>assignment_mode = "end5"</code> directly corresponds to the true 5′ end of the reads.</p>
+</section><section id="single-end-sequencing-data" class="level4"><h4 class="anchored" data-anchor-id="single-end-sequencing-data">Single-end Sequencing Data</h4>
+<p>For single-end reads, the <code>assignment_mode</code> behaves in a more straightforward manner:</p>
+<ul>
+<li>
+<code>assignment_mode = "end5"</code>: counts using the 5′ end of the reads.</li>
+<li>
+<code>assignment_mode = "end3"</code>: counts using the 3′ end of the reads.</li>
+</ul></section><section id="inspecting-strand-orientation-with-igv" class="level4"><h4 class="anchored" data-anchor-id="inspecting-strand-orientation-with-igv">Inspecting Strand Orientation with IGV</h4>
+<p>If unsure about which <code>assignment_mode</code> you should use, we strongly recommend loading your <strong>BAM file</strong> into <strong>IGV (Integrative Genomics Viewer)</strong> to visually inspect the orientation and strand of your aligned reads.</p>
+</section><section id="transcriptome-aligned-bam-files" class="level4"><h4 class="anchored" data-anchor-id="transcriptome-aligned-bam-files">Transcriptome-aligned BAM Files</h4>
+<p>When working with alignments to the <strong>transcriptome</strong> (as opposed to the genome), the assignment mode reflects the actual orientation of the reads:</p>
+<ul>
+<li>
+<code>assignment_mode = "end5"</code>: corresponds to the 5′ end.</li>
+<li>
+<code>assignment_mode = "end3"</code>: corresponds to the 3′ end.</li>
+</ul>
+<p>There is no strand inversion in this case.</p>
+<hr></section><section id="summary" class="level4"><h4 class="anchored" data-anchor-id="summary">Summary</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 22%">
+<col style="width: 22%">
+<col style="width: 25%">
+</colgroup>
+<thead><tr class="header">
+<th>Alignment Reference</th>
+<th>Data Type</th>
+<th>assignment_mode</th>
+<th>Refers To</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Genome</td>
+<td>Paired-end (R1)</td>
+<td><code>"end3"</code></td>
+<td>Actual <strong>5′ end</strong>
+</td>
+</tr>
+<tr class="even">
+<td>Genome</td>
+<td>Paired-end (R2)</td>
+<td><code>"end5"</code></td>
+<td>Actual <strong>5′ end</strong>
+</td>
+</tr>
+<tr class="odd">
+<td>Genome</td>
+<td>Single-end</td>
+<td><code>"end5"</code></td>
+<td><strong>5′ end</strong></td>
+</tr>
+<tr class="even">
+<td>Genome</td>
+<td>Single-end</td>
+<td><code>"end3"</code></td>
+<td><strong>3′ end</strong></td>
+</tr>
+<tr class="odd">
+<td>Transcriptome</td>
+<td>Single-end</td>
+<td><code>"end5"</code></td>
+<td><strong>5′ end</strong></td>
+</tr>
+<tr class="even">
+<td>Transcriptome</td>
+<td>Single-end</td>
+<td><code>"end3"</code></td>
+<td><strong>3′ end</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Always verify strand orientation to ensure accurate read counting.</p>
+
+
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/github\.com\/junjunlab\/riboTransVis");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./Extract-sequence.html" class="pagination-link" aria-label="Extract sequence">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Extract sequence</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./Extract-reads-info.html" class="pagination-link" aria-label="Extract reads">
+        <span class="nav-page-text">Extract reads</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+<p>riboTransVis documentation was written by Jun Zhang.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/junjunlab/riboTransVis/edit/main/Object-construct.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/junjunlab/riboTransVis/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+</body></html>
