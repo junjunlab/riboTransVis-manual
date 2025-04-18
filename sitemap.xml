@@ -22,7 +22,7 @@
   </url>
   <url>
     <loc>https://github.com/junjunlab/riboTransVis/Object-construct.html</loc>
-    <lastmod>2025-04-03T02:21:26.052Z</lastmod>
+    <lastmod>2025-04-15T10:37:01.947Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/junjunlab/riboTransVis/Ribo-QC.html</loc>
@@ -42,7 +42,7 @@
   </url>
   <url>
     <loc>https://github.com/junjunlab/riboTransVis/Meta-heatmap-plot.html</loc>
-    <lastmod>2025-04-03T06:41:28.461Z</lastmod>
+    <lastmod>2025-04-15T10:35:13.382Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/junjunlab/riboTransVis/Feature-plot.html</loc>
@@ -54,7 +54,7 @@
   </url>
   <url>
     <loc>https://github.com/junjunlab/riboTransVis/Offset-check.html</loc>
-    <lastmod>2025-04-03T07:15:37.540Z</lastmod>
+    <lastmod>2025-04-15T10:33:53.503Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/junjunlab/riboTransVis/Metagene-plot.html</loc>
@@ -70,15 +70,15 @@
   </url>
   <url>
     <loc>https://github.com/junjunlab/riboTransVis/Offset-correction.html</loc>
-    <lastmod>2025-04-03T12:11:42.642Z</lastmod>
+    <lastmod>2025-04-15T10:37:56.192Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/junjunlab/riboTransVis/Codon-occupancy.html</loc>
-    <lastmod>2025-04-14T14:52:36.875Z</lastmod>
+    <lastmod>2025-04-16T13:24:56.976Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/junjunlab/riboTransVis/Multipeptide-occupancy.html</loc>
-    <lastmod>2025-04-12T07:57:22.583Z</lastmod>
+    <lastmod>2025-04-16T12:47:55.644Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/junjunlab/riboTransVis/Motif-centered.html</loc>
@@ -114,10 +114,18 @@
   </url>
   <url>
     <loc>https://github.com/junjunlab/riboTransVis/Gene-expression-analysis.html</loc>
-    <lastmod>2025-04-11T09:15:03.202Z</lastmod>
+    <lastmod>2025-04-17T07:46:14.372Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/junjunlab/riboTransVis/Peptide-motif-plot.html</loc>
     <lastmod>2025-04-14T06:18:55.320Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/junjunlab/riboTransVis/Enzyme-digestion-site.html</loc>
+    <lastmod>2025-04-16T13:35:22.383Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/junjunlab/riboTransVis/Motif-occupancy.html</loc>
+    <lastmod>2025-04-17T02:11:10.733Z</lastmod>
   </url>
 </urlset>
