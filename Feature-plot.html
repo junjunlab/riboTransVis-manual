@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.6.42">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Jun Zhang">
-<title>6&nbsp; Feature distribution – RiboTransVis</title>
+<title>7&nbsp; Feature distribution – RiboTransVis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -62,7 +62,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./Meta-frame-plot.html" rel="next">
-<link href="./Frame-plot.html" rel="prev">
+<link href="./Periodicy-check.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -106,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Extract-reads-info.html">Extract reads</a></li><li class="breadcrumb-item"><a href="./Feature-plot.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Feature distribution</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Quality-assessment.html">Quality assessment</a></li><li class="breadcrumb-item"><a href="./Feature-plot.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Feature distribution</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -178,8 +178,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./Extract-reads-info.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Extract reads</span></a>
+            <a href="./Quality-assessment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quality assessment</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -205,26 +205,133 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Periodicy-check.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Periodicity check</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Feature-plot.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Feature distribution</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Feature distribution</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Meta-frame-plot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Meta frame plot</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Meta frame plot</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Meta-heatmap-plot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Meta heatmap plot</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Meta heatmap plot</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Offset-check.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title"><strong>Offset Position Plot: Inferring Read Length–Specific P-site Positions</strong></span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Offset check</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Whole-metagene-plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Whole metegene plot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Metagene-plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Metagene plot</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Offset-correction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Offset correction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Enzyme-digestion-site.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Enzyme digestion site</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Polarity-calculation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Polarity score</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Codon-occupancy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Codon occupancy</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Motif-occupancy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Motif occupancy</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Multipeptide-occupancy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Multiple peptides occupancy</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Peptide-motif-plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Peptide motif plot</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Motif-centered.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Motif centered analysis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Track-plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Track plot</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Gene-expression-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Global gene expression analysis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Pathway-enrichment-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pathway enrichment analysis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./More-examples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">More examples</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Ubiquitin-conjugase-Rad6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Ubiquitin conjugase Rad6</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./DENR-promotes-translation-reinitiation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">DENR promotes translation reinitiation</span></span></a>
   </div>
 </li>
       </ul>
@@ -237,14 +344,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li><a href="#ribo-seq-read-distribution-across-transcript-regions" id="toc-ribo-seq-read-distribution-across-transcript-regions" class="nav-link active" data-scroll-target="#ribo-seq-read-distribution-across-transcript-regions"><span class="header-section-number">6.1</span> <strong>Ribo-seq Read Distribution Across Transcript Regions</strong></a></li>
-  <li><a href="#feature-plot" id="toc-feature-plot" class="nav-link" data-scroll-target="#feature-plot"><span class="header-section-number">6.2</span> Feature plot</a></li>
+<li><a href="#read-distribution-across-transcript-regions" id="toc-read-distribution-across-transcript-regions" class="nav-link active" data-scroll-target="#read-distribution-across-transcript-regions"><span class="header-section-number">7.1</span> Read distribution across transcript regions</a></li>
+  <li><a href="#feature-plot" id="toc-feature-plot" class="nav-link" data-scroll-target="#feature-plot"><span class="header-section-number">7.2</span> Feature plot</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/junjunlab/riboTransVis/edit/main/Feature-plot.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/junjunlab/riboTransVis/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Extract-reads-info.html">Extract reads</a></li><li class="breadcrumb-item"><a href="./Feature-plot.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Feature distribution</span></a></li></ol></nav><div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Quality-assessment.html">Quality assessment</a></li><li class="breadcrumb-item"><a href="./Feature-plot.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Feature distribution</span></a></li></ol></nav><div class="quarto-title">
 <h1 class="title">
-<span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Feature distribution</span>
+<span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Feature distribution</span>
 </h1>
 </div>
 
@@ -259,9 +366,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><section id="ribo-seq-read-distribution-across-transcript-regions" class="level2" data-number="6.1"><h2 data-number="6.1" class="anchored" data-anchor-id="ribo-seq-read-distribution-across-transcript-regions">
-<span class="header-section-number">6.1</span> <strong>Ribo-seq Read Distribution Across Transcript Regions</strong>
-</h2>
+</header><section id="read-distribution-across-transcript-regions" class="level2" data-number="7.1"><h2 data-number="7.1" class="anchored" data-anchor-id="read-distribution-across-transcript-regions">
+<span class="header-section-number">7.1</span> Read distribution across transcript regions</h2>
 <p>Ribosome-protected fragments (RPFs) are predominantly derived from coding sequence (CDS) regions, as ribosomes actively translate these parts of the mRNA. Consequently, high-quality Ribo-seq data should show a strong enrichment of reads mapping to CDS regions, with relatively fewer reads aligning to untranslated regions (5′UTR and 3′UTR).</p>
 <p>Analyzing the proportion of reads mapping to CDS versus 5′UTR and 3′UTR provides an important metric for assessing Ribo-seq data quality.</p>
 <ul>
@@ -269,8 +375,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Excessive 5′UTR or 3′UTR mapping</strong> may suggest contamination from non-translating RNA fragments or suboptimal library preparation.</p></li>
 </ul>
 <p>A typical high-quality Ribo-seq dataset has &gt;70–80% of reads mapping within annotated CDS regions under standard conditions.</p>
-</section><section id="feature-plot" class="level2" data-number="6.2"><h2 data-number="6.2" class="anchored" data-anchor-id="feature-plot">
-<span class="header-section-number">6.2</span> Feature plot</h2>
+</section><section id="feature-plot" class="level2" data-number="7.2"><h2 data-number="7.2" class="anchored" data-anchor-id="feature-plot">
+<span class="header-section-number">7.2</span> Feature plot</h2>
 <p>The <code>feature_plot()</code> function can be used to analyze and visualize the distribution of aligned reads across different transcript features, including the coding sequence (CDS), 5′ untranslated region (5′UTR), and 3′ untranslated region (3′UTR):</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">feature_plot</span><span class="op">(</span><span class="va">obj0</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -700,13 +806,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./Frame-plot.html" class="pagination-link" aria-label="In frame ratio">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">In frame ratio</span></span>
+      <a href="./Periodicy-check.html" class="pagination-link" aria-label="Periodicity check">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Periodicity check</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./Meta-frame-plot.html" class="pagination-link" aria-label="Meta frame plot">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Meta frame plot</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Meta frame plot</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

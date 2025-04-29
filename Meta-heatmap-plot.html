@@ -273,6 +273,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Motif-occupancy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Motif occupancy</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Multipeptide-occupancy.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Multiple peptides occupancy</span></a>
   </div>
@@ -339,15 +345,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
 <li>
-<a href="#heatmap-of-read-distribution-relative-to-startstop-codons" id="toc-heatmap-of-read-distribution-relative-to-startstop-codons" class="nav-link active" data-scroll-target="#heatmap-of-read-distribution-relative-to-startstop-codons"><span class="header-section-number">9.1</span> <strong>Heatmap of Read Distribution Relative to Start/Stop Codons</strong></a>
+<a href="#heatmap-of-read-distribution-relative-to-startstop-codons" id="toc-heatmap-of-read-distribution-relative-to-startstop-codons" class="nav-link active" data-scroll-target="#heatmap-of-read-distribution-relative-to-startstop-codons"><span class="header-section-number">9.1</span> Heatmap of read distribution relative to start/stop Codons</a>
   <ul class="collapse">
-<li><a href="#translational-landscape-around-startstop-sites" id="toc-translational-landscape-around-startstop-sites" class="nav-link" data-scroll-target="#translational-landscape-around-startstop-sites"><span class="header-section-number">9.1.1</span> <strong>Translational Landscape Around Start/Stop Sites</strong></a></li>
-  <li><a href="#what-does-the-heatmap-show" id="toc-what-does-the-heatmap-show" class="nav-link" data-scroll-target="#what-does-the-heatmap-show"><span class="header-section-number">9.1.2</span> <strong>What Does the Heatmap Show?</strong></a></li>
-  <li><a href="#function-usage" id="toc-function-usage" class="nav-link" data-scroll-target="#function-usage"><span class="header-section-number">9.1.3</span> <strong>Function Usage</strong></a></li>
-  <li><a href="#to-generate-heatmap-centered-on-start-codon" id="toc-to-generate-heatmap-centered-on-start-codon" class="nav-link" data-scroll-target="#to-generate-heatmap-centered-on-start-codon"><span class="header-section-number">9.1.4</span> <strong>📌 To generate heatmap centered on start codon:</strong></a></li>
-  <li><a href="#log_scale-true-enhancing-visualization-of-low-abundance-reads" id="toc-log_scale-true-enhancing-visualization-of-low-abundance-reads" class="nav-link" data-scroll-target="#log_scale-true-enhancing-visualization-of-low-abundance-reads"><span class="header-section-number">9.1.5</span> <strong>log_scale = TRUE: Enhancing Visualization of Low-Abundance Reads</strong></a></li>
-  <li><a href="#interpreting-the-heatmap" id="toc-interpreting-the-heatmap" class="nav-link" data-scroll-target="#interpreting-the-heatmap"><span class="header-section-number">9.1.6</span> <strong>✅ Interpreting the Heatmap</strong></a></li>
-  <li><a href="#to-generate-heatmap-centered-on-stop-codon" id="toc-to-generate-heatmap-centered-on-stop-codon" class="nav-link" data-scroll-target="#to-generate-heatmap-centered-on-stop-codon"><span class="header-section-number">9.1.7</span> <strong>📌 To generate heatmap centered on stop codon:</strong></a></li>
+<li><a href="#translational-landscape-around-startstop-sites" id="toc-translational-landscape-around-startstop-sites" class="nav-link" data-scroll-target="#translational-landscape-around-startstop-sites"><span class="header-section-number">9.1.1</span> Translational landscape around start/stop Sites</a></li>
+  <li><a href="#what-does-the-heatmap-show" id="toc-what-does-the-heatmap-show" class="nav-link" data-scroll-target="#what-does-the-heatmap-show"><span class="header-section-number">9.1.2</span> What Does the Heatmap Show?</a></li>
+  <li><a href="#function-usage" id="toc-function-usage" class="nav-link" data-scroll-target="#function-usage"><span class="header-section-number">9.1.3</span> Function usage</a></li>
+  <li><a href="#to-generate-heatmap-centered-on-start-codon" id="toc-to-generate-heatmap-centered-on-start-codon" class="nav-link" data-scroll-target="#to-generate-heatmap-centered-on-start-codon"><span class="header-section-number">9.1.4</span> To generate heatmap centered on start codon:</a></li>
+  <li><a href="#enhancing-visualization-of-low-abundance-reads" id="toc-enhancing-visualization-of-low-abundance-reads" class="nav-link" data-scroll-target="#enhancing-visualization-of-low-abundance-reads"><span class="header-section-number">9.1.5</span> Enhancing visualization of low-abundance reads</a></li>
+  <li><a href="#interpreting-the-heatmap" id="toc-interpreting-the-heatmap" class="nav-link" data-scroll-target="#interpreting-the-heatmap"><span class="header-section-number">9.1.6</span> Interpreting the heatmap</a></li>
+  <li><a href="#to-generate-heatmap-centered-on-stop-codon" id="toc-to-generate-heatmap-centered-on-stop-codon" class="nav-link" data-scroll-target="#to-generate-heatmap-centered-on-stop-codon"><span class="header-section-number">9.1.7</span> To generate heatmap centered on stop codon:</a></li>
   </ul>
 </li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/junjunlab/riboTransVis/edit/main/Meta-heatmap-plot.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/junjunlab/riboTransVis/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -371,15 +377,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 </header><section id="heatmap-of-read-distribution-relative-to-startstop-codons" class="level2" data-number="9.1"><h2 data-number="9.1" class="anchored" data-anchor-id="heatmap-of-read-distribution-relative-to-startstop-codons">
-<span class="header-section-number">9.1</span> <strong>Heatmap of Read Distribution Relative to Start/Stop Codons</strong>
-</h2>
+<span class="header-section-number">9.1</span> Heatmap of read distribution relative to start/stop Codons</h2>
 <section id="translational-landscape-around-startstop-sites" class="level3" data-number="9.1.1"><h3 data-number="9.1.1" class="anchored" data-anchor-id="translational-landscape-around-startstop-sites">
-<span class="header-section-number">9.1.1</span> <strong>Translational Landscape Around Start/Stop Sites</strong>
-</h3>
+<span class="header-section-number">9.1.1</span> Translational landscape around start/stop Sites</h3>
 <p>In Ribo-seq analysis, visualizing how ribosome footprints (RPFs) are distributed around translation start and stop codons provides valuable insights into translation initiation and termination dynamics. One common approach is to summarize read density by both position and fragment length (read width), and display it as a heatmap centered on CDS boundaries.</p>
 </section><section id="what-does-the-heatmap-show" class="level3" data-number="9.1.2"><h3 data-number="9.1.2" class="anchored" data-anchor-id="what-does-the-heatmap-show">
-<span class="header-section-number">9.1.2</span> <strong>What Does the Heatmap Show?</strong>
-</h3>
+<span class="header-section-number">9.1.2</span> What Does the Heatmap Show?</h3>
 <p>The <code>relative_heatmap_plot()</code> function generates a two-dimensional heatmap showing the abundance of RPFs aligned relative to either:</p>
 <ul>
 <li><p>The start codon (type = “rel2start”), or</p></li>
@@ -393,11 +396,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>This enables quick inspection of read length distributions and framing periodicity near initiation and termination sites across all samples.</p>
 </section><section id="function-usage" class="level3" data-number="9.1.3"><h3 data-number="9.1.3" class="anchored" data-anchor-id="function-usage">
-<span class="header-section-number">9.1.3</span> <strong>Function Usage</strong>
-</h3>
+<span class="header-section-number">9.1.3</span> Function usage</h3>
 </section><section id="to-generate-heatmap-centered-on-start-codon" class="level3" data-number="9.1.4"><h3 data-number="9.1.4" class="anchored" data-anchor-id="to-generate-heatmap-centered-on-start-codon">
-<span class="header-section-number">9.1.4</span> <strong>📌 To generate heatmap centered on start codon:</strong>
-</h3>
+<span class="header-section-number">9.1.4</span> To generate heatmap centered on start codon:</h3>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">relative_heatmap_plot</span><span class="op">(</span><span class="va">obj0</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -405,9 +406,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figure class="figure"><p><img src="image/relht.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
-</section><section id="log_scale-true-enhancing-visualization-of-low-abundance-reads" class="level3" data-number="9.1.5"><h3 data-number="9.1.5" class="anchored" data-anchor-id="log_scale-true-enhancing-visualization-of-low-abundance-reads">
-<span class="header-section-number">9.1.5</span> <strong>log_scale = TRUE: Enhancing Visualization of Low-Abundance Reads</strong>
-</h3>
+</section><section id="enhancing-visualization-of-low-abundance-reads" class="level3" data-number="9.1.5"><h3 data-number="9.1.5" class="anchored" data-anchor-id="enhancing-visualization-of-low-abundance-reads">
+<span class="header-section-number">9.1.5</span> Enhancing visualization of low-abundance reads</h3>
 <p>The log_scale argument allows you to apply a log2 transformation to the read counts in the heatmap:</p>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">relative_heatmap_plot</span><span class="op">(</span><span class="va">obj0</span>,log_scale <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -417,8 +417,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </section><section id="interpreting-the-heatmap" class="level3" data-number="9.1.6"><h3 data-number="9.1.6" class="anchored" data-anchor-id="interpreting-the-heatmap">
-<span class="header-section-number">9.1.6</span> <strong>✅ Interpreting the Heatmap</strong>
-</h3>
+<span class="header-section-number">9.1.6</span> Interpreting the heatmap</h3>
 <ul>
 <li><p>A strong signal centered at positions ~+12 nt indicates high-quality P-site calibration (distance is measured from codon to footprint center/P-site).</p></li>
 <li><p>Enrichment for canonical read lengths (e.g., 28–30 nt in eukaryotes) indicates expected ribosomal protection.</p></li>
@@ -429,8 +428,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Note: This heatmap is a powerful diagnostic tool for detecting irregularities in read size distribution, impaired library prep, or incorrect P-site offset settings.</p>
 </blockquote>
 </section><section id="to-generate-heatmap-centered-on-stop-codon" class="level3" data-number="9.1.7"><h3 data-number="9.1.7" class="anchored" data-anchor-id="to-generate-heatmap-centered-on-stop-codon">
-<span class="header-section-number">9.1.7</span> <strong>📌 To generate heatmap centered on stop codon:</strong>
-</h3>
+<span class="header-section-number">9.1.7</span> To generate heatmap centered on stop codon:</h3>
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">relative_heatmap_plot</span><span class="op">(</span><span class="va">obj0</span>,</span>
 <span>                      type <span class="op">=</span> <span class="st">"rel2stop"</span>,</span>

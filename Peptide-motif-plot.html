@@ -280,6 +280,12 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Enzyme-digestion-site.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Enzyme digestion site</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Polarity-calculation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Polarity score</span></a>
   </div>
@@ -288,6 +294,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="./Codon-occupancy.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Codon occupancy</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Motif-occupancy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Motif occupancy</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -358,10 +370,10 @@ window.Quarto = {
    
   <ul>
 <li><a href="#intro" id="toc-intro" class="nav-link active" data-scroll-target="#intro">Intro</a></li>
-  <li><a href="#extract-overrepresented-motifs" id="toc-extract-overrepresented-motifs" class="nav-link" data-scroll-target="#extract-overrepresented-motifs">Extract <strong>Overrepresented</strong> motifs</a></li>
+  <li><a href="#extract-overrepresented-motifs" id="toc-extract-overrepresented-motifs" class="nav-link" data-scroll-target="#extract-overrepresented-motifs">Extract Overrepresented motifs</a></li>
   <li><a href="#motif-logo-visualization" id="toc-motif-logo-visualization" class="nav-link" data-scroll-target="#motif-logo-visualization">Motif logo visualization</a></li>
   <li>
-<a href="#statistical-significance-visualization" id="toc-statistical-significance-visualization" class="nav-link" data-scroll-target="#statistical-significance-visualization"><strong>Statistical significance visualization</strong></a>
+<a href="#statistical-significance-visualization" id="toc-statistical-significance-visualization" class="nav-link" data-scroll-target="#statistical-significance-visualization">Statistical significance visualization</a>
   <ul class="collapse">
 <li><a href="#get-background-k-mers" id="toc-get-background-k-mers" class="nav-link" data-scroll-target="#get-background-k-mers">Get background k-mers</a></li>
   <li><a href="#enrichment-plot" id="toc-enrichment-plot" class="nav-link" data-scroll-target="#enrichment-plot">Enrichment plot</a></li>
@@ -403,7 +415,7 @@ window.Quarto = {
 <p><a href="http://kplogo.wi.mit.edu/manual.html"><strong>kpLogo</strong></a> is an another powerful computational tool designed to visualize position-specific <strong>k-mer enrichment patterns</strong> in biological sequences such as DNA, RNA, or protein sequences. It builds upon the concept of traditional sequence logos by enabling the detection and display of statistically significant k-mers — not just single residues — at individual motif positions.</p>
 <p>Unlike conventional logo tools that scale individual residue heights based on frequency or information content, kpLogo tests all possible k-length substrings (k-mers) at each sequence position and ranks them according to p-values derived from appropriate statistical tests (e.g., binomial, rank-sum, etc.). This results in highly informative visualizations that reveal both overrepresented and underrepresented k-mers across sequence positions.</p>
 <p>In summary, decoding time at the EPA sites is a nuanced reflection of codon usage, tRNA availability, peptide chemistry, and regulatory sequence elements. Motif visualization strategies such as pLogo help unravel the sequence determinants influencing ribosome kinetics in a biologically meaningful and statistically interpretable way.</p>
-</section><section id="extract-overrepresented-motifs" class="level2"><h2 class="anchored" data-anchor-id="extract-overrepresented-motifs">Extract <strong>Overrepresented</strong> motifs</h2>
+</section><section id="extract-overrepresented-motifs" class="level2"><h2 class="anchored" data-anchor-id="extract-overrepresented-motifs">Extract Overrepresented motifs</h2>
 <p>Previously, we observed that in the absence of eIF5A, many tripeptide motifs showed increased abundance. Visualizing these motifs as sequence logos can help us identify which amino acids tend to be enriched at the ribosomal E, P, and A sites, potentially reflecting altered decoding or elongation dynamics.</p>
 <p>We used the <code>logo_plot()</code> function to visualize enriched tripeptide motifs. Based on the article’s methodology, we selected the top <strong>29 upregulated motifs</strong> (based on fold change) in each replicate as the foreground sequences. Motifs with <strong>less than 1.5-fold change</strong> were used as the background set:</p>
 <div class="cell">
@@ -503,7 +515,7 @@ If the ratio is less than 1 (log₂ &lt; 0), the residue is <strong>underreprese
 <figure class="figure"><p><img src="image/kmer.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
-</section><section id="statistical-significance-visualization" class="level2"><h2 class="anchored" data-anchor-id="statistical-significance-visualization"><strong>Statistical significance visualization</strong></h2>
+</section><section id="statistical-significance-visualization" class="level2"><h2 class="anchored" data-anchor-id="statistical-significance-visualization">Statistical significance visualization</h2>
 <p><strong>Probability logo</strong> is first proposed and implemented in&nbsp;<a href="https://plogo.uconn.edu/">pLogo</a>&nbsp;for unweighted sequences, especially protein sequences.&nbsp;In probability logos, residues are scaled relative to the <strong>statistical significance (-log10(<em>P</em>&nbsp;value))</strong> of each residue at each position. <strong>Enriched residues stack on the top, whereas depleted residues stack on the bottom. Significant positions have coordinates colored in red.</strong></p>
 <p>The official pLogo tool is only available online and imposes size limitations on uploaded background sequences. To address this limitation and enable greater flexibility, <strong>we implemented an R-based version of the pLogo algorithm based on its original principles</strong>.</p>
 <p>Our custom function, <code>plogo_plot</code>, allows users to perform motif enrichment analysis using their own foreground and background sequences and to generate corresponding motif visualizations.</p>

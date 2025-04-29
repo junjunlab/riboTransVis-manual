@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Jun Zhang">
+<title>3&nbsp; Selective ribosome profiling – RiboTransVis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Object-construct.html" rel="next">
+<link href="./Extract-sequence.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-f1075ac1703e165f0c9b3df650605ffb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><script defer="" data-domain="r4ds.hadley.nz" src="https://plausible.io/js/plausible.js"></script>
+</head>
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Preprocessing-intro.html">Preprocessing introduction</a></li><li class="breadcrumb-item"><a href="./Selective-ribosome-profiling.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Selective ribosome profiling</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">RiboTransVis</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/junjunlab/riboTransVis" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome!</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./Preprocessing-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preprocessing introduction</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Preprocessing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preprocessing</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Extract-sequence.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Extract sequence</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Selective-ribosome-profiling.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Selective ribosome profiling</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./Object-construct.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Object construction</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Ribotrans-Object.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Ribotrans object</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Serp-Object.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Serp object</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./Quality-assessment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quality assessment</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Ribo-QC.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Ribo-seq QC check</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Length-plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Length distribution</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Frame-plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">In frame ratio</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Periodicy-check.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Periodicity check</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Feature-plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Feature distribution</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Meta-frame-plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Meta frame plot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Meta-heatmap-plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Meta heatmap plot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Offset-check.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Offset check</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Whole-metagene-plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Whole metegene plot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Metagene-plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Metagene plot</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Offset-correction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Offset correction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Enzyme-digestion-site.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Enzyme digestion site</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Polarity-calculation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Polarity score</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Codon-occupancy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Codon occupancy</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Motif-occupancy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Motif occupancy</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Multipeptide-occupancy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Multiple peptides occupancy</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Peptide-motif-plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Peptide motif plot</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Motif-centered.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Motif centered analysis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Track-plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Track plot</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Enrichment-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Enrichment analysis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Gene-expression-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Global gene expression analysis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Pathway-enrichment-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pathway enrichment analysis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./More-examples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">More examples</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Ubiquitin-conjugase-Rad6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Ubiquitin conjugase Rad6</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./DENR-promotes-translation-reinitiation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">DENR promotes translation reinitiation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Profiling-Ssb-Nascent-Chain.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Profiling Ssb-Nascent Chain Interactions</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li><a href="#inro" id="toc-inro" class="nav-link active" data-scroll-target="#inro"><span class="header-section-number">3.1</span> Inro</a></li>
+  <li><a href="#data-download" id="toc-data-download" class="nav-link" data-scroll-target="#data-download"><span class="header-section-number">3.2</span> Data download</a></li>
+  <li><a href="#removal-of-adapter-contamination" id="toc-removal-of-adapter-contamination" class="nav-link" data-scroll-target="#removal-of-adapter-contamination"><span class="header-section-number">3.3</span> Removal of Adapter Contamination</a></li>
+  <li><a href="#removal-of-rrna-contamination" id="toc-removal-of-rrna-contamination" class="nav-link" data-scroll-target="#removal-of-rrna-contamination"><span class="header-section-number">3.4</span> Removal of rRNA Contamination</a></li>
+  <li><a href="#alignment-to-the-reference-genome" id="toc-alignment-to-the-reference-genome" class="nav-link" data-scroll-target="#alignment-to-the-reference-genome"><span class="header-section-number">3.5</span> Alignment to the Reference Genome</a></li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/junjunlab/riboTransVis/edit/main/Selective-ribosome-profiling.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/junjunlab/riboTransVis/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Preprocessing-intro.html">Preprocessing introduction</a></li><li class="breadcrumb-item"><a href="./Selective-ribosome-profiling.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Selective ribosome profiling</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title">
+<span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Selective ribosome profiling</span>
+</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><section id="inro" class="level2" data-number="3.1"><h2 data-number="3.1" class="anchored" data-anchor-id="inro">
+<span class="header-section-number">3.1</span> Inro</h2>
+<p>In this section, we reanalyze selective ribosome profiling data from the study titled <strong>“Profiling Ssb–Nascent Chain Interactions Reveals Principles of Hsp70-Assisted Folding”</strong> , published in <strong>Cell</strong> in <strong>2017</strong>. This dataset provides an excellent example of how selective ribosome profiling can be used to dissect ribosome-associated interactions—in this case, focusing on the Hsp70 chaperone Ssb and its role in co-translational protein folding.</p>
+<p>This study investigates how the ribosome-associated Hsp70 chaperone Ssb (found in yeast) engages with nascent polypeptides during translation, uncovering key principles of co-translational protein folding. The researchers employed a high-resolution approach—Selective Ribosome Profiling (SeRP)—to globally map Ssb-substrate interactions with near codon-level resolution in vivo.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="image/cellserp.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="688"></p>
+</figure>
+</div>
+</section><section id="data-download" class="level2" data-number="3.2"><h2 data-number="3.2" class="anchored" data-anchor-id="data-download">
+<span class="header-section-number">3.2</span> Data download</h2>
+<p>The uploaded data is at GEO database <strong>GSE93830</strong>:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="image/serpgeo.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="650"></p>
+</figure>
+</div>
+<p>We retrieve the Aspera download links for each individual sample from&nbsp;<a href="https://sra-explorer.info/">SRA Explorer</a>, and then use the Aspera command-line client (<code>ascp</code>) under a Linux environment to quickly and reliably download the corresponding FASTQ files:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env bash</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">009</span><span class="sc">/</span>SRR5188589<span class="sc">/</span>SRR5188589.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188589.fastq.gz ssb2_Ssb1_interactome_low_salt_rep1.fastq.gz</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">004</span><span class="sc">/</span>SRR5188624<span class="sc">/</span>SRR5188624.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188624.fastq.gz RAC_Ssb2_interactome_rep2.fastq.gz</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">004</span><span class="sc">/</span>SRR5188594<span class="sc">/</span>SRR5188594.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188594.fastq.gz ssb1_Ssb2<span class="sc">-</span>GFP_translatome_rep1.fastq.gz</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">002</span><span class="sc">/</span>SRR5188592<span class="sc">/</span>SRR5188592.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188592.fastq.gz ssb1_Ssb2_interactome_low_salt_rep1.fastq.gz</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">008</span><span class="sc">/</span>SRR5188628<span class="sc">/</span>SRR5188628.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188628.fastq.gz ssb1_ssb2_translatome_rep2.fastq.gz</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">005</span><span class="sc">/</span>SRR5188625<span class="sc">/</span>SRR5188625.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188625.fastq.gz WT_translatome_rep1.fastq.gz</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">006</span><span class="sc">/</span>SRR5188616<span class="sc">/</span>SRR5188616.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188616.fastq.gz WT_Ssb2_interactome_rep2.fastq.gz</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">007</span><span class="sc">/</span>SRR5188617<span class="sc">/</span>SRR5188617.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188617.fastq.gz NAC_Ssb1<span class="sc">-</span>GFP_translatome_rep2.fastq.gz</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">000</span><span class="sc">/</span>SRR5188600<span class="sc">/</span>SRR5188600.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188600.fastq.gz ssb1_Ssb2<span class="sc">-</span>GFP_translatome_rep2.fastq.gz</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">008</span><span class="sc">/</span>SRR5188598<span class="sc">/</span>SRR5188598.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188598.fastq.gz ssb1_Ssb2_interactome_low_salt_rep2.fastq.gz</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">001</span><span class="sc">/</span>SRR5188591<span class="sc">/</span>SRR5188591.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188591.fastq.gz ssb2_Ssb1<span class="sc">-</span>GFP_translatome_rep1.fastq.gz</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">002</span><span class="sc">/</span>SRR5188602<span class="sc">/</span>SRR5188602.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188602.fastq.gz WT_Ssb2<span class="sc">-</span>GFP_translatome_rep1.fastq.gz</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">007</span><span class="sc">/</span>SRR5188627<span class="sc">/</span>SRR5188627.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188627.fastq.gz ssb1_ssb2_translatome_rep1.fastq.gz</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">007</span><span class="sc">/</span>SRR5188597<span class="sc">/</span>SRR5188597.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188597.fastq.gz ssb2_Ssb1<span class="sc">-</span>GFP_translatome_rep2.fastq.gz</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">007</span><span class="sc">/</span>SRR5188607<span class="sc">/</span>SRR5188607.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188607.fastq.gz NAC_Ssb1_interactome_rep1.fastq.gz</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">001</span><span class="sc">/</span>SRR5188621<span class="sc">/</span>SRR5188621.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188621.fastq.gz RAC_Ssb1<span class="sc">-</span>GFP_translatome_rep2.fastq.gz</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">004</span><span class="sc">/</span>SRR5188614<span class="sc">/</span>SRR5188614.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188614.fastq.gz WT_Ssb2<span class="sc">-</span>GFP_translatome_rep2.fastq.gz</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">003</span><span class="sc">/</span>SRR5188613<span class="sc">/</span>SRR5188613.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188613.fastq.gz WT_Ssb1<span class="sc">-</span>GFP_translatome_rep2.fastq.gz</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">003</span><span class="sc">/</span>SRR5188603<span class="sc">/</span>SRR5188603.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188603.fastq.gz WT_Ssb1_interactome_rep1.fastq.gz</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">005</span><span class="sc">/</span>SRR5188595<span class="sc">/</span>SRR5188595.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188595.fastq.gz ssb2_Ssb1_interactome_low_salt_rep2.fastq.gz</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">001</span><span class="sc">/</span>SRR5188611<span class="sc">/</span>SRR5188611.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188611.fastq.gz RAC_Ssb1_interactome_rep1.fastq.gz</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">008</span><span class="sc">/</span>SRR5188608<span class="sc">/</span>SRR5188608.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188608.fastq.gz NAC_Ssb2_interactome_rep1.fastq.gz</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">006</span><span class="sc">/</span>SRR5188626<span class="sc">/</span>SRR5188626.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188626.fastq.gz WT_translatome_rep2.fastq.gz</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">008</span><span class="sc">/</span>SRR5188618<span class="sc">/</span>SRR5188618.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188618.fastq.gz NAC_Ssb2<span class="sc">-</span>GFP_translatome_rep2.fastq.gz</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">001</span><span class="sc">/</span>SRR5188601<span class="sc">/</span>SRR5188601.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188601.fastq.gz WT_Ssb1<span class="sc">-</span>GFP_translatome_rep1.fastq.gz</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">006</span><span class="sc">/</span>SRR5188596<span class="sc">/</span>SRR5188596.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188596.fastq.gz ssb2_Ssb1_interactome_high_salt_rep2.fastq.gz</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">000</span><span class="sc">/</span>SRR5188610<span class="sc">/</span>SRR5188610.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188610.fastq.gz RAC_Ssb2<span class="sc">-</span>GFP_translatome_rep1.fastq.gz</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">003</span><span class="sc">/</span>SRR5188593<span class="sc">/</span>SRR5188593.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188593.fastq.gz ssb1_Ssb2_interactome_high_salt_rep1.fastq.gz</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">005</span><span class="sc">/</span>SRR5188615<span class="sc">/</span>SRR5188615.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188615.fastq.gz WT_Ssb1_interactome_rep2.fastq.gz</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">000</span><span class="sc">/</span>SRR5188620<span class="sc">/</span>SRR5188620.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188620.fastq.gz NAC_Ssb2_interactome_rep2.fastq.gz</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">009</span><span class="sc">/</span>SRR5188609<span class="sc">/</span>SRR5188609.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188609.fastq.gz RAC_Ssb1<span class="sc">-</span>GFP_translatome_rep1.fastq.gz</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">009</span><span class="sc">/</span>SRR5188599<span class="sc">/</span>SRR5188599.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188599.fastq.gz ssb1_Ssb2_interactome_high_salt_rep2.fastq.gz</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">002</span><span class="sc">/</span>SRR5188622<span class="sc">/</span>SRR5188622.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188622.fastq.gz RAC_Ssb2<span class="sc">-</span>GFP_translatome_rep2.fastq.gz</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">002</span><span class="sc">/</span>SRR5188612<span class="sc">/</span>SRR5188612.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188612.fastq.gz RAC_Ssb2_interactome_rep1.fastq.gz</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">009</span><span class="sc">/</span>SRR5188619<span class="sc">/</span>SRR5188619.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188619.fastq.gz NAC_Ssb1_interactome_rep2.fastq.gz</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">004</span><span class="sc">/</span>SRR5188604<span class="sc">/</span>SRR5188604.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188604.fastq.gz WT_Ssb2_interactome_rep1.fastq.gz</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">003</span><span class="sc">/</span>SRR5188623<span class="sc">/</span>SRR5188623.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188623.fastq.gz RAC_Ssb1_interactome_rep2.fastq.gz</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">006</span><span class="sc">/</span>SRR5188606<span class="sc">/</span>SRR5188606.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188606.fastq.gz NAC_Ssb2<span class="sc">-</span>GFP_translatome_rep1.fastq.gz</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">005</span><span class="sc">/</span>SRR5188605<span class="sc">/</span>SRR5188605.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188605.fastq.gz NAC_Ssb1<span class="sc">-</span>GFP_translatome_rep1.fastq.gz</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR518<span class="sc">/</span><span class="dv">000</span><span class="sc">/</span>SRR5188590<span class="sc">/</span>SRR5188590.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR5188590.fastq.gz ssb2_Ssb1_interactome_high_salt_rep1.fastq.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="removal-of-adapter-contamination" class="level2" data-number="3.3"><h2 data-number="3.3" class="anchored" data-anchor-id="removal-of-adapter-contamination">
+<span class="header-section-number">3.3</span> Removal of Adapter Contamination</h2>
+<p>Following the methods described in the original publication, we removed adapter sequences from the raw sequencing data using Cutadapt. The command below was applied to all libraries to trim 3’ adapter contamination:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="cf">in</span> NAC_Ssb1<span class="sc">-</span>GFP_translatome_rep NAC_Ssb1_interactome_rep NAC_Ssb2<span class="sc">-</span>GFP_translatome_rep NAC_Ssb2_interactome_rep \</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>         RAC_Ssb1<span class="sc">-</span>GFP_translatome_rep RAC_Ssb1_interactome_rep RAC_Ssb2<span class="sc">-</span>GFP_translatome_rep RAC_Ssb2_interactome_rep \</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>         ssb1_Ssb2<span class="sc">-</span>GFP_translatome_rep ssb1_Ssb2_interactome_high_salt_rep ssb1_Ssb2_interactome_low_salt_rep \</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>         ssb1_ssb2_translatome_rep ssb2_Ssb1<span class="sc">-</span>GFP_translatome_rep ssb2_Ssb1_interactome_high_salt_rep \</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>         ssb2_Ssb1_interactome_low_salt_rep WT_Ssb1<span class="sc">-</span>GFP_translatome_rep WT_Ssb1_interactome_rep \</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>         WT_Ssb2<span class="sc">-</span>GFP_translatome_rep WT_Ssb2_interactome_rep WT_translatome_rep</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>do</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="cf">in</span> <span class="dv">1</span> <span class="dv">2</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    do</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        cutadapt <span class="sc">-</span>j <span class="dv">25</span> <span class="sc">-</span>a CTGTAGGCACCATCAATTCGTATGCCGTCTT \</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>                 <span class="sc">-</span>m <span class="dv">20</span> <span class="sc">-</span>M <span class="dv">45</span> <span class="sc">--</span>discard<span class="sc">-</span>untrimmed \</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>                 <span class="sc">-</span>o .<span class="sc">/</span><span class="er">$</span>{i}<span class="sc">$</span>{j}_trim.fq.gz \</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>                 ..<span class="sc">/</span><span class="fl">1.</span>raw<span class="sc">-</span>data<span class="sc">/</span><span class="er">$</span>{i}<span class="sc">$</span>{j}.fastq.gz</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    done</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>done</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="removal-of-rrna-contamination" class="level2" data-number="3.4"><h2 data-number="3.4" class="anchored" data-anchor-id="removal-of-rrna-contamination">
+<span class="header-section-number">3.4</span> Removal of rRNA Contamination</h2>
+<p>To eliminate reads originating from ribosomal RNA (rRNA), we aligned the trimmed reads to a reference rRNA database using Bowtie2. Reads that aligned to rRNA were discarded, and only unmapped reads, representing non-rRNA fragments, were retained for downstream analysis:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rRNA removal using Bowtie2</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="cf">in</span> NAC_Ssb1<span class="sc">-</span>GFP_translatome_rep NAC_Ssb1_interactome_rep NAC_Ssb2<span class="sc">-</span>GFP_translatome_rep NAC_Ssb2_interactome_rep \</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>         RAC_Ssb1<span class="sc">-</span>GFP_translatome_rep RAC_Ssb1_interactome_rep RAC_Ssb2<span class="sc">-</span>GFP_translatome_rep RAC_Ssb2_interactome_rep \</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>         ssb1_Ssb2<span class="sc">-</span>GFP_translatome_rep ssb1_Ssb2_interactome_high_salt_rep ssb1_Ssb2_interactome_low_salt_rep \</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>         ssb1_ssb2_translatome_rep ssb2_Ssb1<span class="sc">-</span>GFP_translatome_rep ssb2_Ssb1_interactome_high_salt_rep \</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>         ssb2_Ssb1_interactome_low_salt_rep WT_Ssb1<span class="sc">-</span>GFP_translatome_rep WT_Ssb1_interactome_rep \</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>         WT_Ssb2<span class="sc">-</span>GFP_translatome_rep WT_Ssb2_interactome_rep WT_translatome_rep</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>do</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="cf">in</span> <span class="dv">1</span> <span class="dv">2</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    do         </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        bowtie2 <span class="sc">-</span>p <span class="dv">25</span> <span class="sc">-</span>x ..<span class="sc">/</span>..<span class="sc">/</span>index<span class="sc">-</span>data<span class="sc">/</span>sac<span class="sc">-</span>rRNA<span class="sc">-</span>index<span class="sc">/</span>Saccharomyces<span class="sc">-</span>cerevisiae<span class="sc">-</span>rRNA \</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>                <span class="sc">--</span>un<span class="sc">-</span>gz <span class="sc">$</span>{i}<span class="sc">$</span>{j}.rmrRNA.fq.gz \</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>                <span class="sc">-</span>U ..<span class="sc">/</span><span class="fl">2.</span>trim<span class="sc">-</span>data<span class="sc">/</span><span class="er">$</span>{i}<span class="sc">$</span>{j}_trim.fq.gz \</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>                <span class="sc">-</span>S .<span class="sc">/</span>null</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    done</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>done</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="alignment-to-the-reference-genome" class="level2" data-number="3.5"><h2 data-number="3.5" class="anchored" data-anchor-id="alignment-to-the-reference-genome">
+<span class="header-section-number">3.5</span> Alignment to the Reference Genome</h2>
+<p>To align non-rRNA reads to the reference genome, we first constructed a Bowtie index using the&nbsp;<em>Saccharomyces cerevisiae</em>&nbsp;genome (version R64-1-1):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Build Bowtie index</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>mkdir sac<span class="sc">-</span>bowtie<span class="sc">-</span>index</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>bowtie<span class="sc">-</span>build Saccharomyces_cerevisiae.R64<span class="dv">-1</span><span class="fl">-1.</span>dna.toplevel.fa sac<span class="sc">-</span>bowtie<span class="sc">-</span>index<span class="sc">/</span>sac</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We then aligned all rRNA-depleted libraries to the reference genome using Bowtie. The alignment was followed by sorting with&nbsp;<code>samtools</code>&nbsp;and removal of intermediate SAM files to conserve disk space:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="cf">in</span> WT_Ssb1<span class="sc">-</span>GFP_translatome_rep  WT_Ssb1_interactome_rep WT_Ssb2<span class="sc">-</span>GFP_translatome_rep WT_Ssb2_interactome_rep \</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>         WT_translatome_rep NAC_Ssb1<span class="sc">-</span>GFP_translatome_rep NAC_Ssb1_interactome_rep NAC_Ssb2<span class="sc">-</span>GFP_translatome_rep \</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>         NAC_Ssb2_interactome_rep RAC_Ssb1<span class="sc">-</span>GFP_translatome_rep RAC_Ssb1_interactome_rep \</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>         RAC_Ssb2<span class="sc">-</span>GFP_translatome_rep RAC_Ssb2_interactome_rep ssb1_Ssb2<span class="sc">-</span>GFP_translatome_rep \</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>         ssb1_Ssb2_interactome_high_salt_rep ssb1_Ssb2_interactome_low_salt_rep ssb1_ssb2_translatome_rep \</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>         ssb2_Ssb1<span class="sc">-</span>GFP_translatome_rep ssb2_Ssb1_interactome_high_salt_rep ssb2_Ssb1_interactome_low_salt_rep</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>do</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="cf">in</span> <span class="dv">1</span> <span class="dv">2</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    do</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Align to genome using Bowtie (original version)</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        bowtie <span class="sc">-</span>p <span class="dv">25</span> ..<span class="sc">/</span>..<span class="sc">/</span>index<span class="sc">-</span>data<span class="sc">/</span>sac<span class="sc">-</span>bowtie<span class="sc">-</span>index<span class="sc">/</span>sac \</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>               <span class="sc">-</span>v <span class="dv">2</span> <span class="sc">-</span>m <span class="dv">5</span> <span class="sc">--</span>best <span class="sc">--</span>strata \</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>               <span class="sc">&lt;</span>(zcat ..<span class="sc">/</span><span class="fl">3.</span>rmrRNA<span class="sc">-</span>data<span class="sc">/</span><span class="er">$</span>{i}<span class="sc">$</span>{j}.rmrRNA.fq.gz) \</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>               <span class="sc">-</span>S .<span class="sc">/</span><span class="er">$</span>{i}<span class="sc">$</span>{j}.sam</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Convert SAM to sorted BAM</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        samtools sort <span class="sc">-</span><span class="er">@</span> <span class="dv">25</span> <span class="sc">-</span>o <span class="sc">$</span>{i}<span class="sc">$</span>{j}.bam .<span class="sc">/</span><span class="er">$</span>{i}<span class="sc">$</span>{j}.sam</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>        rm .<span class="sc">/</span><span class="er">$</span>{i}<span class="sc">$</span>{j}.sam  <span class="co"># Remove intermediate files</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    done</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>done</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Key options explained:</strong></p>
+<ul>
+<li><p><code>-v 2</code>: Allows up to 2 mismatches per read.</p></li>
+<li><p><code>-m 5</code>: Discards reads that map to more than 5 locations (to avoid ambiguous mappings).</p></li>
+<li><p><code>--best --strata</code>: Ensures the best alignment from the best strata is reported.</p></li>
+<li><p><code>-p 25</code>: Uses 25 threads for parallel processing.</p></li>
+<li><p><code>samtools sort</code>: Sorts alignments by genomic coordinates for downstream processing.</p></li>
+</ul>
+
+
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/github\.com\/junjunlab\/riboTransVis");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./Extract-sequence.html" class="pagination-link" aria-label="Extract sequence">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Extract sequence</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./Object-construct.html" class="pagination-link" aria-label="Object construction">
+        <span class="nav-page-text">Object construction</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+<p>riboTransVis documentation was written by Jun Zhang.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/junjunlab/riboTransVis/edit/main/Selective-ribosome-profiling.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/junjunlab/riboTransVis/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+</body></html>

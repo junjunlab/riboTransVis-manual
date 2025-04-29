@@ -255,6 +255,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Enzyme-digestion-site.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Enzyme digestion site</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Polarity-calculation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Polarity score</span></a>
   </div>
@@ -267,8 +273,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Motif-occupancy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Motif occupancy</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Multipeptide-occupancy.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Multiple peptides occupancy</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Peptide-motif-plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Peptide motif plot</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -281,6 +299,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="./Track-plot.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Track plot</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Gene-expression-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Global gene expression analysis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Pathway-enrichment-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pathway enrichment analysis</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -298,6 +328,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Ubiquitin conjugase Rad6</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./DENR-promotes-translation-reinitiation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">DENR promotes translation reinitiation</span></span></a>
+  </div>
+</li>
       </ul>
 </li>
     </ul>
@@ -309,11 +345,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
 <li>
-<a href="#reading-frame-and-quality-assessment-in-ribo-seq" id="toc-reading-frame-and-quality-assessment-in-ribo-seq" class="nav-link active" data-scroll-target="#reading-frame-and-quality-assessment-in-ribo-seq"><span class="header-section-number">5.1</span> <strong>Reading Frame and Quality Assessment in Ribo-seq</strong></a>
+<a href="#reading-frame-and-quality-assessment-in-ribo-seq" id="toc-reading-frame-and-quality-assessment-in-ribo-seq" class="nav-link active" data-scroll-target="#reading-frame-and-quality-assessment-in-ribo-seq"><span class="header-section-number">5.1</span> Reading Frame and Quality Assessment in Ribo-seq</a>
   <ul class="collapse">
-<li><a href="#what-is-reading-frame-in-ribo-seq" id="toc-what-is-reading-frame-in-ribo-seq" class="nav-link" data-scroll-target="#what-is-reading-frame-in-ribo-seq"><span class="header-section-number">5.1.1</span> <strong>What is “Reading Frame” in Ribo-seq?</strong></a></li>
-  <li><a href="#in-frame-ratio-a-key-quality-metric" id="toc-in-frame-ratio-a-key-quality-metric" class="nav-link" data-scroll-target="#in-frame-ratio-a-key-quality-metric"><span class="header-section-number">5.1.2</span> <strong>📊 In-frame ratio: A key quality metric</strong></a></li>
-  <li><a href="#to-check-frame-periodicity" id="toc-to-check-frame-periodicity" class="nav-link" data-scroll-target="#to-check-frame-periodicity"><span class="header-section-number">5.1.3</span> <strong>To check frame periodicity:</strong></a></li>
+<li><a href="#what-is-reading-frame-in-ribo-seq" id="toc-what-is-reading-frame-in-ribo-seq" class="nav-link" data-scroll-target="#what-is-reading-frame-in-ribo-seq"><span class="header-section-number">5.1.1</span> What is “Reading Frame” in Ribo-seq?</a></li>
+  <li><a href="#in-frame-ratio-a-key-quality-metric" id="toc-in-frame-ratio-a-key-quality-metric" class="nav-link" data-scroll-target="#in-frame-ratio-a-key-quality-metric"><span class="header-section-number">5.1.2</span> In-frame ratio: A key quality metric</a></li>
+  <li><a href="#to-check-frame-periodicity" id="toc-to-check-frame-periodicity" class="nav-link" data-scroll-target="#to-check-frame-periodicity"><span class="header-section-number">5.1.3</span> To check frame periodicity:</a></li>
   </ul>
 </li>
   <li><a href="#periodicity-plot" id="toc-periodicity-plot" class="nav-link" data-scroll-target="#periodicity-plot"><span class="header-section-number">5.2</span> Periodicity plot</a></li>
@@ -338,20 +374,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 </header><section id="reading-frame-and-quality-assessment-in-ribo-seq" class="level2" data-number="5.1"><h2 data-number="5.1" class="anchored" data-anchor-id="reading-frame-and-quality-assessment-in-ribo-seq">
-<span class="header-section-number">5.1</span> <strong>Reading Frame and Quality Assessment in Ribo-seq</strong>
-</h2>
+<span class="header-section-number">5.1</span> Reading Frame and Quality Assessment in Ribo-seq</h2>
 <p>Ribosome profiling (Ribo-seq) is a powerful technique to study translation in vivo by sequencing the protected mRNA fragments (RPFs, Ribosome-Protected Fragments) associated with translating ribosomes. One hallmark of high-quality Ribo-seq data is the strong 3-nucleotide (nt) periodicity observed in coding sequences (CDS), reflecting the triplet codon structure recognized by translating ribosomes.</p>
 <section id="what-is-reading-frame-in-ribo-seq" class="level3" data-number="5.1.1"><h3 data-number="5.1.1" class="anchored" data-anchor-id="what-is-reading-frame-in-ribo-seq">
-<span class="header-section-number">5.1.1</span> <strong>What is “Reading Frame” in Ribo-seq?</strong>
-</h3>
+<span class="header-section-number">5.1.1</span> What is “Reading Frame” in Ribo-seq?</h3>
 <p>In Ribo-seq data analysis, each RPF can be assigned to a reading frame based on its P-site position relative to the annotated coding region:</p>
 <ul>
 <li><p><strong>Frame 0</strong>: Aligned with the annotated coding frame (i.e., P-site at the first nucleotide of a codon)</p></li>
 <li><p><strong>Frame 1</strong>: Offset by +1 nt from frame 0</p></li>
 <li><p><strong>Frame 2</strong>: Offset by +2 nt from frame 0</p></li>
 </ul></section><section id="in-frame-ratio-a-key-quality-metric" class="level3" data-number="5.1.2"><h3 data-number="5.1.2" class="anchored" data-anchor-id="in-frame-ratio-a-key-quality-metric">
-<span class="header-section-number">5.1.2</span> <strong>📊 In-frame ratio: A key quality metric</strong>
-</h3>
+<span class="header-section-number">5.1.2</span> In-frame ratio: A key quality metric</h3>
 <p>A well-annotated and high-quality Ribo-seq experiment typically shows a clear enrichment of reads in <strong>frame 0</strong> within annotated CDS regions. This behavior is quantified by the <strong>in-frame ratio</strong>, which measures the proportion of reads that fall into frame 0 among all reads mapping to coding regions.</p>
 <p>A strong in-frame signal indicates:</p>
 <ul>
@@ -363,8 +396,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Tip: In-frame ratio is best evaluated on well-expressed coding sequences to avoid sampling noise from low-coverage genes.</p>
 </blockquote>
 </section><section id="to-check-frame-periodicity" class="level3" data-number="5.1.3"><h3 data-number="5.1.3" class="anchored" data-anchor-id="to-check-frame-periodicity">
-<span class="header-section-number">5.1.3</span> <strong>To check frame periodicity:</strong>
-</h3>
+<span class="header-section-number">5.1.3</span> To check frame periodicity:</h3>
 <p>You can use visualization tools (e.g., metagene analysis, frame_length plots) or frame-specific coverage summaries to assess periodicity. Some Ribo-seq analysis packages provide automatic frame bias summaries for quick evaluation.</p>
 </section></section><section id="periodicity-plot" class="level2" data-number="5.2"><h2 data-number="5.2" class="anchored" data-anchor-id="periodicity-plot">
 <span class="header-section-number">5.2</span> Periodicity plot</h2>

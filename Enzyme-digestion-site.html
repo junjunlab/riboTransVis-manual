@@ -345,7 +345,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
 <li><a href="#intro" id="toc-intro" class="nav-link active" data-scroll-target="#intro">Intro</a></li>
-  <li><a href="#cleavage-site-motif-analysis" id="toc-cleavage-site-motif-analysis" class="nav-link" data-scroll-target="#cleavage-site-motif-analysis"><strong>Cleavage site motif analysis</strong></a></li>
+  <li><a href="#cleavage-site-motif-analysis" id="toc-cleavage-site-motif-analysis" class="nav-link" data-scroll-target="#cleavage-site-motif-analysis">Cleavage site motif analysis</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/junjunlab/riboTransVis/edit/main/Enzyme-digestion-site.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/junjunlab/riboTransVis/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -367,7 +367,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header><section id="intro" class="level2"><h2 class="anchored" data-anchor-id="intro">Intro</h2>
 <p>In ribosome profiling (Ribo-seq), enzyme digestion is a critical step that generates the footprints (typically 26–34 nt) for ribosome-bound mRNA fragments. Different nucleases (e.g., <strong>RNase I</strong>, <strong>micrococcal nuclease</strong>, or <strong>RelE</strong>) may have distinct cleavage preferences, producing digestion products that carry sequence biases near the cleavage (digestion) site. Analyzing these sequence preferences helps understand the enzymatic sequence specificity, the bias introduced during library preparation, and enables optimization of experimental protocols.</p>
 <p>To investigate the preferences of different nucleases at digestion sites, one commonly extracts sequences flanking either the 5′ or 3′ end of Ribo-seq reads, depending on the experiment design and the library preparation strategy. These site-flanking sequences can be analyzed via motif visualization tools to identify enriched or depleted nucleotides around digest ends.</p>
-</section><section id="cleavage-site-motif-analysis" class="level2"><h2 class="anchored" data-anchor-id="cleavage-site-motif-analysis"><strong>Cleavage site motif analysis</strong></h2>
+</section><section id="cleavage-site-motif-analysis" class="level2"><h2 class="anchored" data-anchor-id="cleavage-site-motif-analysis">Cleavage site motif analysis</h2>
 <p>First, we need to prepare the transcript sequences for all genes:</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">get_transcript_sequence</span><span class="op">(</span>genome_file <span class="op">=</span> <span class="st">"../../index-data/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa"</span>,</span>

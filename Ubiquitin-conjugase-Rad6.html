@@ -255,6 +255,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Enzyme-digestion-site.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Enzyme digestion site</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Polarity-calculation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Polarity score</span></a>
   </div>
@@ -267,8 +273,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Motif-occupancy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Motif occupancy</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Multipeptide-occupancy.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Multiple peptides occupancy</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Peptide-motif-plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Peptide motif plot</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -281,6 +299,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="./Track-plot.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Track plot</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Gene-expression-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Global gene expression analysis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Pathway-enrichment-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pathway enrichment analysis</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -315,22 +345,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
 <li><a href="#intro" id="toc-intro" class="nav-link active" data-scroll-target="#intro"><span class="header-section-number">13.1</span> Intro</a></li>
-  <li><a href="#data-download" id="toc-data-download" class="nav-link" data-scroll-target="#data-download"><span class="header-section-number">13.2</span> <strong>Data Download</strong></a></li>
-  <li><a href="#adapter-trimming" id="toc-adapter-trimming" class="nav-link" data-scroll-target="#adapter-trimming"><span class="header-section-number">13.3</span> <strong>Adapter Trimming</strong></a></li>
-  <li><a href="#removal-of-rrna-contamination" id="toc-removal-of-rrna-contamination" class="nav-link" data-scroll-target="#removal-of-rrna-contamination"><span class="header-section-number">13.4</span> <strong>Removal of rRNA Contamination</strong></a></li>
+  <li><a href="#data-download" id="toc-data-download" class="nav-link" data-scroll-target="#data-download"><span class="header-section-number">13.2</span> Data Download</a></li>
+  <li><a href="#adapter-trimming" id="toc-adapter-trimming" class="nav-link" data-scroll-target="#adapter-trimming"><span class="header-section-number">13.3</span> Adapter Trimming</a></li>
+  <li><a href="#removal-of-rrna-contamination" id="toc-removal-of-rrna-contamination" class="nav-link" data-scroll-target="#removal-of-rrna-contamination"><span class="header-section-number">13.4</span> Removal of rRNA Contamination</a></li>
   <li>
-<a href="#genome-alignment" id="toc-genome-alignment" class="nav-link" data-scroll-target="#genome-alignment"><span class="header-section-number">13.5</span> <strong>Genome Alignment</strong></a>
+<a href="#genome-alignment" id="toc-genome-alignment" class="nav-link" data-scroll-target="#genome-alignment"><span class="header-section-number">13.5</span> Genome Alignment</a>
   <ul class="collapse">
-<li><a href="#step-1-build-star-genome-index" id="toc-step-1-build-star-genome-index" class="nav-link" data-scroll-target="#step-1-build-star-genome-index"><span class="header-section-number">13.5.1</span> <strong>Step 1: Build STAR Genome Index</strong></a></li>
-  <li><a href="#step-2-align-reads-to-the-genome" id="toc-step-2-align-reads-to-the-genome" class="nav-link" data-scroll-target="#step-2-align-reads-to-the-genome"><span class="header-section-number">13.5.2</span> <strong>Step 2: Align Reads to the Genome</strong></a></li>
+<li><a href="#step-1-build-star-genome-index" id="toc-step-1-build-star-genome-index" class="nav-link" data-scroll-target="#step-1-build-star-genome-index"><span class="header-section-number">13.5.1</span> Step 1: Build STAR Genome Index</a></li>
+  <li><a href="#step-2-align-reads-to-the-genome" id="toc-step-2-align-reads-to-the-genome" class="nav-link" data-scroll-target="#step-2-align-reads-to-the-genome"><span class="header-section-number">13.5.2</span> Step 2: Align reads to the genome</a></li>
   </ul>
 </li>
-  <li><a href="#constructing-a-ribotrans-object" id="toc-constructing-a-ribotrans-object" class="nav-link" data-scroll-target="#constructing-a-ribotrans-object"><span class="header-section-number">13.6</span> <strong>Constructing a ribotrans Object</strong></a></li>
+  <li><a href="#constructing-a-ribotrans-object" id="toc-constructing-a-ribotrans-object" class="nav-link" data-scroll-target="#constructing-a-ribotrans-object"><span class="header-section-number">13.6</span> Constructing a ribotrans Object</a></li>
   <li>
-<a href="#ribo-seq-quality-control" id="toc-ribo-seq-quality-control" class="nav-link" data-scroll-target="#ribo-seq-quality-control"><span class="header-section-number">13.7</span> <strong>Ribo-seq Quality Control</strong></a>
+<a href="#ribo-seq-quality-control" id="toc-ribo-seq-quality-control" class="nav-link" data-scroll-target="#ribo-seq-quality-control"><span class="header-section-number">13.7</span> Ribo-seq Quality Control</a>
   <ul class="collapse">
 <li><a href="#length-distribution" id="toc-length-distribution" class="nav-link" data-scroll-target="#length-distribution"><span class="header-section-number">13.7.1</span> Length distribution</a></li>
-  <li><a href="#frame-proportion" id="toc-frame-proportion" class="nav-link" data-scroll-target="#frame-proportion"><span class="header-section-number">13.7.2</span> Frame <strong>proportion</strong></a></li>
+  <li><a href="#frame-proportion" id="toc-frame-proportion" class="nav-link" data-scroll-target="#frame-proportion"><span class="header-section-number">13.7.2</span> Frame proportion</a></li>
   <li><a href="#feature-distribution" id="toc-feature-distribution" class="nav-link" data-scroll-target="#feature-distribution"><span class="header-section-number">13.7.3</span> Feature distribution</a></li>
   <li><a href="#distribution-around-start-and-stop-codons" id="toc-distribution-around-start-and-stop-codons" class="nav-link" data-scroll-target="#distribution-around-start-and-stop-codons"><span class="header-section-number">13.7.4</span> Distribution around start and stop codons</a></li>
   <li><a href="#offset-check" id="toc-offset-check" class="nav-link" data-scroll-target="#offset-check"><span class="header-section-number">13.7.5</span> Offset check</a></li>
@@ -390,8 +420,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Importantly, Rad6 modifies ribosomes via K63-linked polyubiquitin chains, a process independent of the ribosome-associated quality control (RQC) pathway. In rad6Δ cells, redox-induced pausing signatures are lost, global translation is less inhibited, and there is abnormal activation of antioxidant response genes. The study also reveals that Rad6 contributes to activation of the integrated stress response (ISR) via eIF2α phosphorylation and modulates the translation of the transcription factor GCN4.</p>
 <p>These findings highlight an alternative translation control pathway—termed redox control of translation by ubiquitin (RTU)—where Rad6-mediated ubiquitination regulates translation elongation during oxidative stress, thereby shaping the cellular stress response.</p>
 </section><section id="data-download" class="level2" data-number="13.2"><h2 data-number="13.2" class="anchored" data-anchor-id="data-download">
-<span class="header-section-number">13.2</span> <strong>Data Download</strong>
-</h2>
+<span class="header-section-number">13.2</span> Data Download</h2>
 <p>The GEO accession number for the dataset associated with the study is <strong>GSE226082</strong>. To access the sequencing data, you can search for this number in the GEO (Gene Expression Omnibus) database. Additionally, the corresponding SRA (Sequence Read Archive) project number is <strong>PRJNA938481</strong>. Using this SRA ID, you can retrieve the FASTQ raw sequencing data from the <strong>SRA Explorer platform</strong>.</p>
 <p>To speed up the download, we recommend using the Aspera high-speed file transfer protocol. On the SRA Explorer website, you can locate the Aspera download links for the FASTQ data files corresponding to each sample in the study:</p>
 <div class="quarto-figure quarto-figure-center">
@@ -426,8 +455,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>ascp <span class="sc">-</span>QT <span class="sc">-</span>l <span class="dv">300</span>m <span class="sc">-</span>P33001 <span class="sc">-</span>i <span class="sc">$</span>HOME<span class="sc">/</span>.aspera<span class="sc">/</span>connect<span class="sc">/</span>etc<span class="sc">/</span>asperaweb_id_dsa.openssh era<span class="sc">-</span>fasp<span class="sc">@</span>fasp.sra.ebi.ac.uk<span class="sc">:</span>vol1<span class="sc">/</span>fastq<span class="sc">/</span>SRR236<span class="sc">/</span><span class="dv">000</span><span class="sc">/</span>SRR23617100<span class="sc">/</span>SRR23617100.fastq.gz . <span class="sc">&amp;&amp;</span> mv SRR23617100.fastq.gz SUB280_rad6_peroxide_Fd.fastq.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="adapter-trimming" class="level2" data-number="13.3"><h2 data-number="13.3" class="anchored" data-anchor-id="adapter-trimming">
-<span class="header-section-number">13.3</span> <strong>Adapter Trimming</strong>
-</h2>
+<span class="header-section-number">13.3</span> Adapter Trimming</h2>
 <p>After running FastQC on the raw FASTQ files, we observed the presence of adapter contamination in the sequencing reads. According to the Methods section of the original publication, adapter trimming was performed using <strong>Cutadapt</strong>.</p>
 <p>We applied Cutadapt to remove unwanted bases from both ends of the reads. In particular, <strong>we trimmed 2 nucleotides from the 5′ end (using -u 2) and 5 nucleotides from the 3′ end (using -u -5)</strong>.</p>
 <p>Here is the bash script we used to batch-process multiple FASTQ files:</p>
@@ -439,8 +467,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>done</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="removal-of-rrna-contamination" class="level2" data-number="13.4"><h2 data-number="13.4" class="anchored" data-anchor-id="removal-of-rrna-contamination">
-<span class="header-section-number">13.4</span> <strong>Removal of rRNA Contamination</strong>
-</h2>
+<span class="header-section-number">13.4</span> Removal of rRNA Contamination</h2>
 <p>After adapter trimming, the cleaned sequencing reads still contain a proportion of ribosomal RNA (rRNA) contaminants, which can interfere with downstream translational profiling. To eliminate these reads, we aligned the trimmed reads against a reference index of Saccharomyces cerevisiae rRNA sequences using <strong>Bowtie2</strong>.</p>
 <p>Following the original study’s pipeline, reads that did not map to rRNA were retained for downstream analyses. The alignment was performed with the following shell script:</p>
 <div class="cell">
@@ -454,12 +481,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>done</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="genome-alignment" class="level2" data-number="13.5"><h2 data-number="13.5" class="anchored" data-anchor-id="genome-alignment">
-<span class="header-section-number">13.5</span> <strong>Genome Alignment</strong>
-</h2>
+<span class="header-section-number">13.5</span> Genome Alignment</h2>
 <p>After removing rRNA contaminants, the remaining clean reads were aligned to the reference genome of Saccharomyces cerevisiae using the STAR aligner, which is well-suited for spliced alignment of both RNA-seq and ribosome profiling reads. Prior to read alignment, a STAR genome index must be generated.</p>
 <section id="step-1-build-star-genome-index" class="level3" data-number="13.5.1"><h3 data-number="13.5.1" class="anchored" data-anchor-id="step-1-build-star-genome-index">
-<span class="header-section-number">13.5.1</span> <strong>Step 1: Build STAR Genome Index</strong>
-</h3>
+<span class="header-section-number">13.5.1</span> Step 1: Build STAR Genome Index</h3>
 <p>Before mapping reads to the genome, we need to generate an indexed genome with a corresponding annotation file (GTF). Below is the command used to build the STAR index:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>STAR <span class="sc">--</span>runThreadN <span class="dv">15</span> \</span>
@@ -479,8 +504,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>Once built, this index can be reused for alignment across all samples.</p>
 </section></section><section id="step-2-align-reads-to-the-genome" class="level3" data-number="13.5.2"><h3 data-number="13.5.2" class="anchored" data-anchor-id="step-2-align-reads-to-the-genome">
-<span class="header-section-number">13.5.2</span> <strong>Step 2: Align Reads to the Genome</strong>
-</h3>
+<span class="header-section-number">13.5.2</span> Step 2: Align reads to the genome</h3>
 <p>With the index in place, we mapped the rRNA-depleted FASTQ files to the genome using the following shell script:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Align reads to the yeast genome using STAR</span></span>
@@ -507,8 +531,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>done</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section><section id="constructing-a-ribotrans-object" class="level2" data-number="13.6"><h2 data-number="13.6" class="anchored" data-anchor-id="constructing-a-ribotrans-object">
-<span class="header-section-number">13.6</span> <strong>Constructing a ribotrans Object</strong>
-</h2>
+<span class="header-section-number">13.6</span> Constructing a ribotrans Object</h2>
 <p>After obtaining the aligned BAM files, we proceeded to downstream analysis using the riboTransVis package. The first step involves creating a <strong>ribotrans</strong> object by selecting a subset of ribosome profiling (Ribo-seq) samples representative of different genetic backgrounds and experimental conditions. Once constructed, we performed a quality control (QC) analysis by extracting read information from all alignments.</p>
 <p>In accordance with the original publication, ribosome footprints were assigned using the <strong>3′ end</strong> of reads (<code>assignment_mode = "end3"</code>):</p>
 <div class="cell">
@@ -551,8 +574,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/riboTransVis/man/generate_summary.html">generate_summary</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">obj</span>, exp_type <span class="op">=</span> <span class="st">"ribo"</span>, nThreads <span class="op">=</span> <span class="fl">40</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="ribo-seq-quality-control" class="level2" data-number="13.7"><h2 data-number="13.7" class="anchored" data-anchor-id="ribo-seq-quality-control">
-<span class="header-section-number">13.7</span> <strong>Ribo-seq Quality Control</strong>
-</h2>
+<span class="header-section-number">13.7</span> Ribo-seq Quality Control</h2>
 <section id="length-distribution" class="level3" data-number="13.7.1"><h3 data-number="13.7.1" class="anchored" data-anchor-id="length-distribution">
 <span class="header-section-number">13.7.1</span> Length distribution</h3>
 <p>Plotting the RPF Fragment Length Distribution:</p>
@@ -589,8 +611,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </section><section id="frame-proportion" class="level3" data-number="13.7.2"><h3 data-number="13.7.2" class="anchored" data-anchor-id="frame-proportion">
-<span class="header-section-number">13.7.2</span> Frame <strong>proportion</strong>
-</h3>
+<span class="header-section-number">13.7.2</span> Frame proportion</h3>
 <p>we can visualize the overall proportion of reads aligning to frame 0, 1, and 2 using the <code><a href="https://rdrr.io/pkg/riboTransVis/man/frame_plot.html">frame_plot()</a></code> function:</p>
 <div class="cell">
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/riboTransVis/man/frame_plot.html">frame_plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span> <span class="op">+</span></span>
@@ -661,10 +682,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="va">offset</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>sample <span class="op">=</span> <span class="st">"WT_rep1"</span>,</span>
 <span>                  qwidth <span class="op">=</span> <span class="fl">25</span><span class="op">:</span><span class="fl">34</span>,</span>
-<span>                  rel_pos <span class="op">=</span> <span class="op">-</span><span class="fl">13</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>                  rel_pos <span class="op">=</span> <span class="fl">18</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>sample <span class="op">=</span> <span class="st">"WT_rep2"</span>,</span>
 <span>                  qwidth <span class="op">=</span> <span class="fl">25</span><span class="op">:</span><span class="fl">34</span>,</span>
-<span>                  rel_pos <span class="op">=</span> <span class="op">-</span><span class="fl">13</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>                  rel_pos <span class="op">=</span> <span class="fl">18</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>sample <span class="op">=</span> <span class="st">"WT_peroxide_rep1"</span>,</span>
 <span>                  qwidth <span class="op">=</span> <span class="fl">25</span><span class="op">:</span><span class="fl">34</span>,</span>
 <span>                  rel_pos <span class="op">=</span> <span class="fl">18</span><span class="op">)</span><span class="op">)</span>,</span>
@@ -825,7 +846,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </section><section id="combine-biological-replicates" class="level4" data-number="13.9.2.2"><h4 data-number="13.9.2.2" class="anchored" data-anchor-id="combine-biological-replicates">
-<span class="header-section-number">13.9.2.2</span> Combine <strong>biological</strong> replicates</h4>
+<span class="header-section-number">13.9.2.2</span> Combine biological replicates</h4>
 <p>To reduce variability and improve statistical power, we merge multiple biological replicates using the parameter <code>merge_rep = TRUE</code> in the multi_peptide_occupancy function:</p>
 <div class="cell">
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Merge replicates</span></span>

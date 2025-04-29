@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.6.42">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Jun Zhang">
-<title>2&nbsp; Extract sequence – RiboTransVis</title>
+<title>2&nbsp; Sequence Extraction – RiboTransVis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -61,7 +61,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Object-construct.html" rel="next">
+<link href="./Selective-ribosome-profiling.html" rel="next">
 <link href="./Preprocessing.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -106,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Preprocessing-into.html">Preprocessing introduction</a></li><li class="breadcrumb-item"><a href="./Extract-sequence.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Extract sequence</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Preprocessing-intro.html">Preprocessing introduction</a></li><li class="breadcrumb-item"><a href="./Extract-sequence.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Sequence Extraction</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -149,7 +149,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./Preprocessing-into.html" class="sidebar-item-text sidebar-link">
+            <a href="./Preprocessing-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preprocessing introduction</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -165,21 +165,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Extract-sequence.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Extract sequence</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Sequence Extraction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Selective-ribosome-profiling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Selective ribosome profiling</span></span></a>
   </div>
 </li>
       </ul>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./Object-construct.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Object construct</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./Quality-assessment.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Quality assessment</span></a>
+            <a href="./Object-construct.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Object construction</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -187,62 +187,85 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Ribotrans-Object.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Ribotrans object</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Serp-Object.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Serp object</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./Quality-assessment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quality assessment</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Ribo-QC.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Ribo-seq QC check</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Ribo-seq QC check</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Length-plot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Length distribution</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Length distribution</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Frame-plot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">In frame ratio</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">In frame ratio</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Periodicy-check.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Periodicity check</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Periodicity check</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Feature-plot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Feature distribution</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Feature distribution</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Meta-frame-plot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Meta frame plot</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Meta frame plot</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Meta-heatmap-plot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Meta heatmap plot</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Meta heatmap plot</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Offset-check.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Offset check</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Offset check</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Whole-metagene-plot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Whole metegene plot</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Whole metegene plot</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Metagene-plot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Metagene plot</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Metagene plot</span></span></a>
   </div>
 </li>
       </ul>
@@ -255,6 +278,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Enzyme-digestion-site.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Enzyme digestion site</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Polarity-calculation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Polarity score</span></a>
   </div>
@@ -263,6 +292,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="./Codon-occupancy.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Codon occupancy</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Motif-occupancy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Motif occupancy</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -291,6 +326,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Enrichment-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Enrichment analysis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Gene-expression-analysis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Global gene expression analysis</span></a>
   </div>
@@ -305,21 +346,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="./More-examples.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">More examples</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Ubiquitin-conjugase-Rad6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Ubiquitin conjugase Rad6</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Ubiquitin conjugase Rad6</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./DENR-promotes-translation-reinitiation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">DENR promotes translation reinitiation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">DENR promotes translation reinitiation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Profiling-Ssb-Nascent-Chain.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Profiling Ssb-Nascent Chain Interactions</span></span></a>
   </div>
 </li>
       </ul>
@@ -332,16 +379,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li><a href="#preparing-transcript-sequences" id="toc-preparing-transcript-sequences" class="nav-link active" data-scroll-target="#preparing-transcript-sequences"><span class="header-section-number">2.1</span> Preparing Transcript Sequences</a></li>
-  <li><a href="#renaming-transcript-sequences-from-ensembl" id="toc-renaming-transcript-sequences-from-ensembl" class="nav-link" data-scroll-target="#renaming-transcript-sequences-from-ensembl"><span class="header-section-number">2.2</span> Renaming Transcript Sequences from Ensembl</a></li>
-  <li><a href="#extracting-the-transcriptome-file" id="toc-extracting-the-transcriptome-file" class="nav-link" data-scroll-target="#extracting-the-transcriptome-file"><span class="header-section-number">2.3</span> Extracting the Transcriptome File</a></li>
-  <li><a href="#extracting-cds-sequences" id="toc-extracting-cds-sequences" class="nav-link" data-scroll-target="#extracting-cds-sequences"><span class="header-section-number">2.4</span> Extracting CDS Sequences</a></li>
+<li><a href="#preparing-transcript-sequences" id="toc-preparing-transcript-sequences" class="nav-link active" data-scroll-target="#preparing-transcript-sequences"><span class="header-section-number">2.1</span> Preparing transcript sequences</a></li>
+  <li><a href="#renaming-transcript-sequences-from-ensembl" id="toc-renaming-transcript-sequences-from-ensembl" class="nav-link" data-scroll-target="#renaming-transcript-sequences-from-ensembl"><span class="header-section-number">2.2</span> Renaming transcript sequences from Ensembl</a></li>
+  <li><a href="#extracting-the-transcriptome-file" id="toc-extracting-the-transcriptome-file" class="nav-link" data-scroll-target="#extracting-the-transcriptome-file"><span class="header-section-number">2.3</span> Extracting the transcriptome File</a></li>
+  <li><a href="#extracting-cds-sequences" id="toc-extracting-cds-sequences" class="nav-link" data-scroll-target="#extracting-cds-sequences"><span class="header-section-number">2.4</span> Extracting CDS sequences</a></li>
+  <li><a href="#extracting-longest-transcript-sequences" id="toc-extracting-longest-transcript-sequences" class="nav-link" data-scroll-target="#extracting-longest-transcript-sequences"><span class="header-section-number">2.5</span> Extracting longest transcript sequences</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/junjunlab/riboTransVis/edit/main/Extract-sequence.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/junjunlab/riboTransVis/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Preprocessing-into.html">Preprocessing introduction</a></li><li class="breadcrumb-item"><a href="./Extract-sequence.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Extract sequence</span></a></li></ol></nav><div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Preprocessing-intro.html">Preprocessing introduction</a></li><li class="breadcrumb-item"><a href="./Extract-sequence.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Sequence Extraction</span></a></li></ol></nav><div class="quarto-title">
 <h1 class="title">
-<span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Extract sequence</span>
+<span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Sequence Extraction</span>
 </h1>
 </div>
 
@@ -357,10 +405,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 </header><section id="preparing-transcript-sequences" class="level2" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="preparing-transcript-sequences">
-<span class="header-section-number">2.1</span> Preparing Transcript Sequences</h2>
+<span class="header-section-number">2.1</span> Preparing transcript sequences</h2>
 <p>The riboTransVis package provides several functions to extract transcript and CDS sequences, facilitating seamless integration with downstream analyses within the package.</p>
 </section><section id="renaming-transcript-sequences-from-ensembl" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="renaming-transcript-sequences-from-ensembl">
-<span class="header-section-number">2.2</span> Renaming Transcript Sequences from Ensembl</h2>
+<span class="header-section-number">2.2</span> Renaming transcript sequences from Ensembl</h2>
 <p>If you are aligning reads to the <strong>transcriptome</strong> and working with <strong>transcriptome-aligned BAM</strong> files, riboTransVis requires transcript sequence names in a specific format: <strong>transcript_ID|gene_name</strong>.</p>
 <p>If you downloaded transcriptome sequence files from the Ensembl database, you can use the <strong>prepare_transcript_file()</strong> function to convert the sequence names to the required format. Below is an example using a transcriptome FASTA file of S. cerevisiae (yeast) downloaded from Ensembl:</p>
 <div class="cell">
@@ -397,7 +445,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The figure below shows a comparison of the transcriptome FASTA file before and after ID conversion:</p>
 <p><img src="image/trans.png" class="img-fluid"></p>
 </section><section id="extracting-the-transcriptome-file" class="level2" data-number="2.3"><h2 data-number="2.3" class="anchored" data-anchor-id="extracting-the-transcriptome-file">
-<span class="header-section-number">2.3</span> Extracting the Transcriptome File</h2>
+<span class="header-section-number">2.3</span> Extracting the transcriptome File</h2>
 <p>Alternatively, riboTransVis provides the <strong>get_transcript_sequence()</strong> function, which can be used to extract all transcript sequences based on the genome FASTA file and the corresponding GTF annotation file.</p>
 <p>Since most genes in yeast species <strong>lack annotated UTR regions</strong>, it is often beneficial to extend the transcript sequences upstream and downstream to facilitate Ribo-seq–related analyses. This can be done using the <strong>extend</strong> parameter. Typically, an extension of <strong>50</strong> nucleotides is sufficient.</p>
 <div class="cell">
@@ -410,13 +458,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>                        output_file <span class="op">=</span> <span class="st">"sac_trans.fa"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="extracting-cds-sequences" class="level2" data-number="2.4"><h2 data-number="2.4" class="anchored" data-anchor-id="extracting-cds-sequences">
-<span class="header-section-number">2.4</span> Extracting CDS Sequences</h2>
+<span class="header-section-number">2.4</span> Extracting CDS sequences</h2>
 <p>In certain analyses, coding sequence (CDS) information may be required. You can extract the CDS regions from all transcripts by setting <strong>feature = “CDS”</strong>:</p>
 <div class="cell">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/riboTransVis/man/get_transcript_sequence.html">get_transcript_sequence</a></span><span class="op">(</span>genome_file <span class="op">=</span> <span class="st">"../../index-data/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa"</span>,</span>
 <span>                        gtf_file <span class="op">=</span> <span class="st">"../../index-data/Saccharomyces_cerevisiae.R64-1-1.112.gtf"</span>,</span>
 <span>                        feature <span class="op">=</span> <span class="st">"CDS"</span>,</span>
 <span>                        output_file <span class="op">=</span> <span class="st">"sac_cds.fa"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="extracting-longest-transcript-sequences" class="level2" data-number="2.5"><h2 data-number="2.5" class="anchored" data-anchor-id="extracting-longest-transcript-sequences">
+<span class="header-section-number">2.5</span> Extracting longest transcript sequences</h2>
+<p>The <code>get_longest_transcript</code> function extracts the longest transcript sequence.<br>
+The selection criteria are as follows:</p>
+<p>1. Transcripts are first sorted by the length of their CDS (coding sequence), and the one with the longest CDS is selected.<br>
+2. If multiple transcripts have the same CDS length, then the one with the longest full transcript sequence is chosen.</p>
+<p>Here is an example:</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/riboTransVis/man/get_longest_transcript.html">get_longest_transcript</a></span><span class="op">(</span>genome_file <span class="op">=</span> <span class="st">"Homo_sapiens.GRCh38.dna.primary_assembly.fa"</span>,</span>
+<span>                             gtf_file <span class="op">=</span> <span class="st">"Homo_sapiens.GRCh38.94.gtf.gz"</span>,</span>
+<span>                             output_file <span class="op">=</span> <span class="st">"longest_trans.fa"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">ltfa</span> <span class="op">&lt;-</span> <span class="fu">Biostrings</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/Biostrings/man/XStringSet-io.html">readDNAStringSet</a></span><span class="op">(</span><span class="st">"longest_trans.fa"</span><span class="op">)</span></span>
+<span><span class="va">ltfa</span></span>
+<span><span class="co"># DNAStringSet object of length 57169:</span></span>
+<span><span class="co">#      width seq                                                                                         names               </span></span>
+<span><span class="co"># [1]   1657 GTTAACTTGCCGTCAGCCTTTTCTTTGACCTCTTCTTTCTGTTC...GCACAGCTAGAGATCCTTTATTAAAAGCACACTGTTGGTTTCTG ENST00000456328|D...</span></span>
+<span><span class="co"># [2]    712 GTGCACACGGCTCCCATGCGTTGTCTTCCGAGCGTCAGGCCGCC...AACTTGGACTTCCAAGCCTCCAGAACTGTGAGGGATAAATGTAT ENST00000473358|M...</span></span>
+<span><span class="co"># [3]    138 GGATGCCCAGCTAGTTTGAATTTTAGATAAACAACGAATAATTT...AACATTATTGGTTGTTTATCTGAGATTCAGAATTAAGCATTTTA ENST00000607096|M...</span></span>
+<span><span class="co"># [4]    840 GCGGTATCTAAATTTGTATTGATTGGACTTTCAAGCTCTTGGGA...CACCCCTGTCTAGGATCTACACATTAAGAAACAAAGACATGAAC ENST00000606857|O...</span></span>
+<span><span class="co"># [5]   1414 AGCTATCTGAATTTCTCCTTCTCCTAAAAATGCACATCCTATGA...AAAAAGTATATATTTCTATCTAATGTGTGTATCTAATTAACAGC ENST00000642116|O...</span></span>
+<span><span class="co"># ...    ... ...</span></span>
+<span><span class="co"># [57165]    603 AAATCTGCTCCCGGGGGTATTCTTGACTTAAACAAGGTTGCAAC...AAGAAAATCCTCAGCAAAGTGAAGAATTGCTTGAAGTAAGCAAC ENST00000620795|A...</span></span>
+<span><span class="co"># [57166]    603 AAATCTGCTCCCGGGGGTATTCTTGACTTAAACAAGGTTGCAAC...AAGAAAATCCTCAGCAAAGTGAAGAATTGCTTGAAGTAAGCAAC ENST00000615362|A...</span></span>
+<span><span class="co"># [57167]   2404 GGCGGCTGGACGAGGACGCTCCGAGCCCAGCTCTCGAGAGTTCA...CGCCACTGCACTCCAGCCTGGGTGACAGAGCGAGACTCCGTCTC ENST00000617983|A...</span></span>
+<span><span class="co"># [57168]   1213 CGCGAGGCGCGCCGCGATCGGGGACTGTCCTAAGACGGGCGGGG...CTCTGTGTGACCCAGAGAAATAAAGATGCCTCAGTGTGGCCCGC ENST00000613204|A...</span></span>
+<span><span class="co"># [57169]   2405 GGTCTCACTCTGTTGCTGTCTTCACGGAGAGCAGGAGCAGAGGC...CTGGGGAGGCCTGCCTGGTCAATAAACCACTGTTCCTGCAGCTG ENST00000621424|A...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The function also returns detailed information for each selected transcript:</p>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># check</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">lt</span><span class="op">)</span></span>
+<span><span class="co"># # A tibble: 6 × 10</span></span>
+<span><span class="co"># # Groups:   gene [6]</span></span>
+<span><span class="co">#   transcript_id   idnew                         utr5   cds  utr3 exonlen translen mstart mstop gene        </span></span>
+<span><span class="co">#   &lt;chr&gt;           &lt;chr&gt;                        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;int&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;       </span></span>
+<span><span class="co"># 1 ENST00000609567 ENST00000609567|hsa-mir-1253     0     0     0     105      105      0     0 hsa-mir-1253</span></span>
+<span><span class="co"># 2 ENST00000381638 ENST00000381638|ZZEF1          125  8883  2445   11456    11456    126  9008 ZZEF1       </span></span>
+<span><span class="co"># 3 ENST00000617638 ENST00000617638|ZYXP1            0     0     0     118      118      0     0 ZYXP1       </span></span>
+<span><span class="co"># 4 ENST00000322764 ENST00000322764|ZYX            345  1716   429    2493     2493    346  2061 ZYX         </span></span>
+<span><span class="co"># 5 ENST00000294353 ENST00000294353|ZYG11B         145  2232  5713    8093     8093    146  2377 ZYG11B      </span></span>
+<span><span class="co"># 6 ENST00000430329 ENST00000430329|ZYG11AP1         0     0     0     837      837      0     0 ZYG11AP1    </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
@@ -842,8 +933,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Object-construct.html" class="pagination-link" aria-label="Object construct">
-        <span class="nav-page-text">Object construct</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Selective-ribosome-profiling.html" class="pagination-link" aria-label="Selective ribosome profiling">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Selective ribosome profiling</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

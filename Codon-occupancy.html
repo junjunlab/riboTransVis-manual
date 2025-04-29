@@ -369,12 +369,12 @@ window.Quarto = {
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background"><strong>Background</strong></a></li>
-  <li><a href="#biological-significance" id="toc-biological-significance" class="nav-link" data-scroll-target="#biological-significance"><strong>Biological Significance</strong></a></li>
-  <li><a href="#how-it-works" id="toc-how-it-works" class="nav-link" data-scroll-target="#how-it-works"><strong>How It Works</strong></a></li>
-  <li><a href="#applications" id="toc-applications" class="nav-link" data-scroll-target="#applications"><strong>Applications</strong></a></li>
-  <li><a href="#codon-occupancy-barplot" id="toc-codon-occupancy-barplot" class="nav-link" data-scroll-target="#codon-occupancy-barplot"><strong>Codon occupancy barplot</strong></a></li>
-  <li><a href="#codon-occupancy-scatter-plot" id="toc-codon-occupancy-scatter-plot" class="nav-link" data-scroll-target="#codon-occupancy-scatter-plot"><strong>Codon occupancy scatter plot</strong></a></li>
+<li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background">Background</a></li>
+  <li><a href="#biological-significance" id="toc-biological-significance" class="nav-link" data-scroll-target="#biological-significance">Biological significance</a></li>
+  <li><a href="#how-it-works" id="toc-how-it-works" class="nav-link" data-scroll-target="#how-it-works">How It Works</a></li>
+  <li><a href="#applications" id="toc-applications" class="nav-link" data-scroll-target="#applications">Applications</a></li>
+  <li><a href="#codon-occupancy-barplot" id="toc-codon-occupancy-barplot" class="nav-link" data-scroll-target="#codon-occupancy-barplot">Codon occupancy barplot</a></li>
+  <li><a href="#codon-occupancy-scatter-plot" id="toc-codon-occupancy-scatter-plot" class="nav-link" data-scroll-target="#codon-occupancy-scatter-plot">Codon occupancy scatter plot</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/junjunlab/riboTransVis/edit/main/Codon-occupancy.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/junjunlab/riboTransVis/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -393,10 +393,10 @@ window.Quarto = {
   
 
 
-</header><section id="background" class="level2"><h2 class="anchored" data-anchor-id="background"><strong>Background</strong></h2>
+</header><section id="background" class="level2"><h2 class="anchored" data-anchor-id="background">Background</h2>
 <p>Ribosome profiling (Ribo-seq) captures snapshots of ribosome positions on mRNAs at near-codon resolution. One key metric derived from Ribo-seq data is <strong>codon occupancy</strong>—the measurement of how frequently ribosomes are found at specific codons within coding sequences (CDSs).</p>
 <p>Codon occupancy reflects the ribosome’s dwell time at individual codons and provides insight into the kinetics of translation elongation. Longer dwell times at particular codons may indicate ribosome stalling, slow tRNA decoding, or structural hindrance of the mRNA.</p>
-</section><section id="biological-significance" class="level2"><h2 class="anchored" data-anchor-id="biological-significance"><strong>Biological Significance</strong></h2>
+</section><section id="biological-significance" class="level2"><h2 class="anchored" data-anchor-id="biological-significance">Biological significance</h2>
 <p>Analyzing codon occupancy helps elucidate:</p>
 <ul>
 <li><p><strong>Translation elongation efficiency</strong>, potentially influenced by codon optimality and tRNA abundance</p></li>
@@ -405,7 +405,7 @@ window.Quarto = {
 <li><p><strong>Stress responses or genetic perturbations</strong>, which may alter elongation dynamics</p></li>
 </ul>
 <p>For example, comparing codon occupancy between wild-type and mutant conditions (e.g., a tRNA knockout) can reveal changes in translation efficiency at specific codons.</p>
-</section><section id="how-it-works" class="level2"><h2 class="anchored" data-anchor-id="how-it-works"><strong>How It Works</strong></h2>
+</section><section id="how-it-works" class="level2"><h2 class="anchored" data-anchor-id="how-it-works">How It Works</h2>
 <p>Codon occupancy is typically calculated using E/P/A-site–assigned Ribo-seq reads. For a given <span class="math inline">\(codon_x\)</span> occupancy is computed as:</p>
 <p><span class="math display">\[
 \text{Relative }Codon_x\text{ Occupancy} = \frac{\sum_{i=1}^{n} \text{Average reads at }codon_x}{n\text{(The number of codons)}} \tag{1}
@@ -419,11 +419,11 @@ window.Quarto = {
 \text{Average reads per codon} = \frac{\text{Total reads along CDS}}{\text{Total length of CDS}} \tag{3}
 \]</span></p>
 <p>This allows detection of codons that are overrepresented (slowly translated) or underrepresented (quickly passed) relative to expectation.</p>
-</section><section id="applications" class="level2"><h2 class="anchored" data-anchor-id="applications"><strong>Applications</strong></h2>
+</section><section id="applications" class="level2"><h2 class="anchored" data-anchor-id="applications">Applications</h2>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 32%">
-<col style="width: 67%">
+<col style="width: 33%">
+<col style="width: 66%">
 </colgroup>
 <thead><tr class="header">
 <th>Purpose</th>
@@ -447,7 +447,7 @@ window.Quarto = {
 <td>Understand how viruses, drugs, or translation factors affect elongation rates</td>
 </tr>
 </tbody>
-</table></section><section id="codon-occupancy-barplot" class="level2"><h2 class="anchored" data-anchor-id="codon-occupancy-barplot"><strong>Codon occupancy barplot</strong></h2>
+</table></section><section id="codon-occupancy-barplot" class="level2"><h2 class="anchored" data-anchor-id="codon-occupancy-barplot">Codon occupancy barplot</h2>
 <p>Codon occupancy analysis was performed by using <strong>RiboMiner</strong>, and observed a marked increase in occupancy for codons encoding the amino acids <strong>P, D, L, I, and M (Proline, Aspartic acid, Leucine, Isoleucine, and Methionine)</strong>, suggesting potential ribosome pausing or elongation slowdown at these sites:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="image/codonoccu.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
@@ -536,7 +536,7 @@ window.Quarto = {
 <figure class="figure"><p><img src="image/codonoccu4.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
-</section><section id="codon-occupancy-scatter-plot" class="level2"><h2 class="anchored" data-anchor-id="codon-occupancy-scatter-plot"><strong>Codon occupancy scatter plot</strong></h2>
+</section><section id="codon-occupancy-scatter-plot" class="level2"><h2 class="anchored" data-anchor-id="codon-occupancy-scatter-plot">Codon occupancy scatter plot</h2>
 <p>In addition to using bar plots to visualize codon occupancy, scatter plots can be employed to examine differences in codon usage between samples:</p>
 <div class="cell">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ccdf</span> <span class="op">&lt;-</span> <span class="fu">codon_occupancy_plot</span><span class="op">(</span>object <span class="op">=</span> <span class="va">obj0</span>,</span>

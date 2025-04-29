@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.6.42">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Jun Zhang">
-<title>11&nbsp; Metagene plot – RiboTransVis</title>
+<title>15&nbsp; Metagene plot – RiboTransVis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -106,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Quality-assessment.html">Quality assessment</a></li><li class="breadcrumb-item"><a href="./Metagene-plot.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Metagene plot</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Quality-assessment.html">Quality assessment</a></li><li class="breadcrumb-item"><a href="./Metagene-plot.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Metagene plot</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -149,7 +149,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./Preprocessing-into.html" class="sidebar-item-text sidebar-link">
+            <a href="./Preprocessing-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preprocessing introduction</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -165,21 +165,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Extract-sequence.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Extract sequence</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Sequence Extraction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Selective-ribosome-profiling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Selective ribosome profiling</span></span></a>
   </div>
 </li>
       </ul>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./Object-construct.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Object construct</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./Quality-assessment.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Quality assessment</span></a>
+            <a href="./Object-construct.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Object construction</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -187,56 +187,85 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Ribotrans-Object.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Ribotrans object</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Serp-Object.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Serp object</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./Quality-assessment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quality assessment</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Ribo-QC.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Ribo-seq QC check</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Ribo-seq QC check</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Length-plot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Length distribution</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Length distribution</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Frame-plot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">In frame ratio</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">In frame ratio</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Periodicy-check.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Periodicity check</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Feature-plot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Feature distribution</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Feature distribution</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Meta-frame-plot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Meta frame plot</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Meta frame plot</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Meta-heatmap-plot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Meta heatmap plot</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Meta heatmap plot</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Offset-check.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Offset check</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Offset check</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Whole-metagene-plot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Whole metegene plot</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Whole metegene plot</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Metagene-plot.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Metagene plot</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Metagene plot</span></span></a>
   </div>
 </li>
       </ul>
@@ -245,6 +274,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="./Offset-correction.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Offset correction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Enzyme-digestion-site.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Enzyme digestion site</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -261,14 +296,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Motif-occupancy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Motif occupancy</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Multipeptide-occupancy.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Multiple peptides occupancy</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Peptide-motif-plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Peptide motif plot</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Motif-centered.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Motif centered</span></a>
+ <span class="menu-text">Motif centered analysis</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -276,6 +323,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <a href="./Track-plot.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Track plot</span></a>
   </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Enrichment-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Enrichment analysis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Gene-expression-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Global gene expression analysis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Pathway-enrichment-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pathway enrichment analysis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./More-examples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">More examples</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Ubiquitin-conjugase-Rad6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Ubiquitin conjugase Rad6</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./DENR-promotes-translation-reinitiation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">DENR promotes translation reinitiation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Profiling-Ssb-Nascent-Chain.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Profiling Ssb-Nascent Chain Interactions</span></span></a>
+  </div>
+</li>
+      </ul>
 </li>
     </ul>
 </div>
@@ -286,21 +380,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
 <li>
-<a href="#average-ribosome-occupancy-around-start-or-stop-codons" id="toc-average-ribosome-occupancy-around-start-or-stop-codons" class="nav-link active" data-scroll-target="#average-ribosome-occupancy-around-start-or-stop-codons"><span class="header-section-number">11.1</span> <strong>Average Ribosome Occupancy Around Start or Stop Codons</strong></a>
+<a href="#average-ribosome-occupancy-around-start-or-stop-codons" id="toc-average-ribosome-occupancy-around-start-or-stop-codons" class="nav-link active" data-scroll-target="#average-ribosome-occupancy-around-start-or-stop-codons"><span class="header-section-number">15.1</span> Average ribosome occupancy around start or stop codons</a>
   <ul class="collapse">
-<li><a href="#visualizing-global-initiation-and-termination-trends" id="toc-visualizing-global-initiation-and-termination-trends" class="nav-link" data-scroll-target="#visualizing-global-initiation-and-termination-trends"><span class="header-section-number">11.1.1</span> <strong>Visualizing Global Initiation and Termination Trends</strong></a></li>
-  <li><a href="#what-does-metagene_plot-show" id="toc-what-does-metagene_plot-show" class="nav-link" data-scroll-target="#what-does-metagene_plot-show"><span class="header-section-number">11.1.2</span> <strong>What Does metagene_plot() Show?</strong></a></li>
-  <li><a href="#normalization-approaches" id="toc-normalization-approaches" class="nav-link" data-scroll-target="#normalization-approaches"><span class="header-section-number">11.1.3</span> <strong>Normalization Approaches</strong></a></li>
-  <li><a href="#additional-controls-filters" id="toc-additional-controls-filters" class="nav-link" data-scroll-target="#additional-controls-filters"><span class="header-section-number">11.1.4</span> <strong>Additional Controls &amp; Filters</strong></a></li>
-  <li><a href="#example-metagene-plot-centered-at-start-codon" id="toc-example-metagene-plot-centered-at-start-codon" class="nav-link" data-scroll-target="#example-metagene-plot-centered-at-start-codon"><span class="header-section-number">11.1.5</span> <strong>📌 Example : Metagene Plot Centered at Start Codon</strong></a></li>
+<li><a href="#visualizing-global-initiation-and-termination-trends" id="toc-visualizing-global-initiation-and-termination-trends" class="nav-link" data-scroll-target="#visualizing-global-initiation-and-termination-trends"><span class="header-section-number">15.1.1</span> Visualizing global initiation and termination trends</a></li>
+  <li><a href="#what-does-metagene_plot-show" id="toc-what-does-metagene_plot-show" class="nav-link" data-scroll-target="#what-does-metagene_plot-show"><span class="header-section-number">15.1.2</span> What does metagene_plot() show?</a></li>
+  <li><a href="#normalization-approaches" id="toc-normalization-approaches" class="nav-link" data-scroll-target="#normalization-approaches"><span class="header-section-number">15.1.3</span> Normalization approaches</a></li>
+  <li><a href="#additional-controls-filters" id="toc-additional-controls-filters" class="nav-link" data-scroll-target="#additional-controls-filters"><span class="header-section-number">15.1.4</span> Additional controls &amp; filters</a></li>
+  <li><a href="#example-metagene-plot-centered-at-start-codon" id="toc-example-metagene-plot-centered-at-start-codon" class="nav-link" data-scroll-target="#example-metagene-plot-centered-at-start-codon"><span class="header-section-number">15.1.5</span> Example : metagene plot centered at start codon</a></li>
   </ul>
 </li>
+  <li><a href="#method-to-aggregate-data-for-each-position" id="toc-method-to-aggregate-data-for-each-position" class="nav-link" data-scroll-target="#method-to-aggregate-data-for-each-position"><span class="header-section-number">15.2</span> Method to aggregate data for each position</a></li>
+  <li><a href="#enrichment-metagene-analysis" id="toc-enrichment-metagene-analysis" class="nav-link" data-scroll-target="#enrichment-metagene-analysis"><span class="header-section-number">15.3</span> Enrichment metagene analysis</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/junjunlab/riboTransVis/edit/main/Metagene-plot.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/junjunlab/riboTransVis/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Quality-assessment.html">Quality assessment</a></li><li class="breadcrumb-item"><a href="./Metagene-plot.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Metagene plot</span></a></li></ol></nav><div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Quality-assessment.html">Quality assessment</a></li><li class="breadcrumb-item"><a href="./Metagene-plot.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Metagene plot</span></a></li></ol></nav><div class="quarto-title">
 <h1 class="title">
-<span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Metagene plot</span>
+<span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Metagene plot</span>
 </h1>
 </div>
 
@@ -315,17 +411,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><section id="average-ribosome-occupancy-around-start-or-stop-codons" class="level2" data-number="11.1"><h2 data-number="11.1" class="anchored" data-anchor-id="average-ribosome-occupancy-around-start-or-stop-codons">
-<span class="header-section-number">11.1</span> <strong>Average Ribosome Occupancy Around Start or Stop Codons</strong>
-</h2>
-<section id="visualizing-global-initiation-and-termination-trends" class="level3" data-number="11.1.1"><h3 data-number="11.1.1" class="anchored" data-anchor-id="visualizing-global-initiation-and-termination-trends">
-<span class="header-section-number">11.1.1</span> <strong>Visualizing Global Initiation and Termination Trends</strong>
-</h3>
+</header><section id="average-ribosome-occupancy-around-start-or-stop-codons" class="level2" data-number="15.1"><h2 data-number="15.1" class="anchored" data-anchor-id="average-ribosome-occupancy-around-start-or-stop-codons">
+<span class="header-section-number">15.1</span> Average ribosome occupancy around start or stop codons</h2>
+<section id="visualizing-global-initiation-and-termination-trends" class="level3" data-number="15.1.1"><h3 data-number="15.1.1" class="anchored" data-anchor-id="visualizing-global-initiation-and-termination-trends">
+<span class="header-section-number">15.1.1</span> Visualizing global initiation and termination trends</h3>
 <p>In Ribo-seq analysis, the metagene plot is a widely used tool to visualize the average ribosome occupancy near translation start or stop codons across transcripts. By aggregating reads from a large set of coding sequences (CDSs), it reveals global patterns in translation initiation or termination.</p>
 <p>Ribosomes are expected to accumulate at the start codon during initiation, and in certain conditions, near the stop codon during termination or ribosome stalling. Examining these patterns provides insight into translational dynamics, data quality, and the fidelity of P-site assignment.</p>
-</section><section id="what-does-metagene_plot-show" class="level3" data-number="11.1.2"><h3 data-number="11.1.2" class="anchored" data-anchor-id="what-does-metagene_plot-show">
-<span class="header-section-number">11.1.2</span> <strong>What Does metagene_plot() Show?</strong>
-</h3>
+</section><section id="what-does-metagene_plot-show" class="level3" data-number="15.1.2"><h3 data-number="15.1.2" class="anchored" data-anchor-id="what-does-metagene_plot-show">
+<span class="header-section-number">15.1.2</span> What does metagene_plot() show?</h3>
 <p>The metagene_plot() function generates a smoothed line plot showing average ribosome occupancy (normalized read density) relative to either:</p>
 <ul>
 <li><p>The start codon (type = “rel2start”), or</p></li>
@@ -343,18 +436,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Ribosomal accumulation at initiation sites (initiation peaks)</p></li>
 <li><p>Periodicity along coding regions (indicative of translation elongation)</p></li>
 <li><p>Ribosome drop-off or stalling near stop codons</p></li>
-</ul></section><section id="normalization-approaches" class="level3" data-number="11.1.3"><h3 data-number="11.1.3" class="anchored" data-anchor-id="normalization-approaches">
-<span class="header-section-number">11.1.3</span> <strong>Normalization Approaches</strong>
-</h3>
+</ul></section><section id="normalization-approaches" class="level3" data-number="15.1.3"><h3 data-number="15.1.3" class="anchored" data-anchor-id="normalization-approaches">
+<span class="header-section-number">15.1.3</span> Normalization approaches</h3>
 <p>Normalization helps adjust for transcript length, library size, and gene-level expression. Two approaches are supported:</p>
 <ul>
 <li><p>average: raw read counts normalized by CDS length and transcript-specific mean coverage</p></li>
 <li><p>tpm: TPM-like normalization using reads per kilobase (RPK) divided by sample-level totals</p></li>
 </ul>
 <p>These methods ensure that highly expressed CDSs do not dominate the signal, allowing for unbiased meta-level averages.</p>
-</section><section id="additional-controls-filters" class="level3" data-number="11.1.4"><h3 data-number="11.1.4" class="anchored" data-anchor-id="additional-controls-filters">
-<span class="header-section-number">11.1.4</span> <strong>Additional Controls &amp; Filters</strong>
-</h3>
+</section><section id="additional-controls-filters" class="level3" data-number="15.1.4"><h3 data-number="15.1.4" class="anchored" data-anchor-id="additional-controls-filters">
+<span class="header-section-number">15.1.4</span> Additional controls &amp; filters</h3>
 <ul>
 <li><p>do_offset_correct: Apply a position shift to correct P-site offset (optional)</p></li>
 <li><p>read_length: Select only ribosome footprint fragment sizes of interest</p></li>
@@ -363,9 +454,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>min_counts: Require minimum read support per transcript</p></li>
 <li><p>facet_wrap: Customize the faceting layout (e.g.&nbsp;by sample or condition)</p></li>
 <li><p>merge_rep: Aggregate replicates of the same sample group for cleaner profiles</p></li>
-</ul></section><section id="example-metagene-plot-centered-at-start-codon" class="level3" data-number="11.1.5"><h3 data-number="11.1.5" class="anchored" data-anchor-id="example-metagene-plot-centered-at-start-codon">
-<span class="header-section-number">11.1.5</span> <strong>📌 Example : Metagene Plot Centered at Start Codon</strong>
-</h3>
+</ul></section><section id="example-metagene-plot-centered-at-start-codon" class="level3" data-number="15.1.5"><h3 data-number="15.1.5" class="anchored" data-anchor-id="example-metagene-plot-centered-at-start-codon">
+<span class="header-section-number">15.1.5</span> Example : metagene plot centered at start codon</h3>
 <p>A noticeable increase in ribosome occupancy around the start codon is observed upon eIF5A knockout compared to the wild-type (WT), suggesting enhanced ribosome accumulation at translation initiation sites:</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">metagene_plot</span><span class="op">(</span>object <span class="op">=</span> <span class="va">obj0</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -400,9 +490,126 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figure class="figure"><p><img src="image/metagenesp.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
+</section></section><section id="method-to-aggregate-data-for-each-position" class="level2" data-number="15.2"><h2 data-number="15.2" class="anchored" data-anchor-id="method-to-aggregate-data-for-each-position">
+<span class="header-section-number">15.2</span> Method to aggregate data for each position</h2>
+<p>The <code>metagene_plot</code> function supports three aggregation methods <strong>(“median”, “mean” and “sum”)</strong> to summarize ribosome‐density signals at each transcript position. Users can choose the method that best fits their analysis goals. The example data shown here are taken from the <strong>“Profiling-Ssb-Nascent-Chain”</strong> section—see that vignette for the complete data‐processing workflow:</p>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">metagene_plot</span><span class="op">(</span>object <span class="op">=</span> <span class="va">obj</span>,</span>
+<span>              mode <span class="op">=</span> <span class="st">"codon"</span>,</span>
+<span>              rel2st_dist <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">50</span>, <span class="fl">1500</span><span class="op">)</span>,</span>
+<span>              facet_wrap <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">sample</span>,nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>,</span>
+<span>              method <span class="op">=</span> <span class="st">"median"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="image/mt1.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>Set <strong>method = “mean”:</strong></p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">metagene_plot</span><span class="op">(</span>object <span class="op">=</span> <span class="va">obj</span>,</span>
+<span>              mode <span class="op">=</span> <span class="st">"codon"</span>,</span>
+<span>              rel2st_dist <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">50</span>, <span class="fl">1500</span><span class="op">)</span>,</span>
+<span>              facet_wrap <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">sample</span>,nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>,</span>
+<span>              method <span class="op">=</span> <span class="st">"mean"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="image/mt2.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>Set <strong>method = “sum”:</strong></p>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">metagene_plot</span><span class="op">(</span>object <span class="op">=</span> <span class="va">obj</span>,</span>
+<span>              mode <span class="op">=</span> <span class="st">"codon"</span>,</span>
+<span>              rel2st_dist <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">50</span>, <span class="fl">1500</span><span class="op">)</span>,</span>
+<span>              facet_wrap <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">sample</span>,nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>,</span>
+<span>              method <span class="op">=</span> <span class="st">"sum"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="image/mt3.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>Merge replicates:</p>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">metagene_plot</span><span class="op">(</span>object <span class="op">=</span> <span class="va">obj</span>,</span>
+<span>              mode <span class="op">=</span> <span class="st">"codon"</span>,</span>
+<span>              rel2st_dist <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">50</span>, <span class="fl">1500</span><span class="op">)</span>,</span>
+<span>              method <span class="op">=</span> <span class="st">"median"</span>,</span>
+<span>              merge_rep <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="image/mt4.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>Do 1000 bootstraps to add 95% confidence intervals:</p>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">metagene_plot</span><span class="op">(</span>object <span class="op">=</span> <span class="va">obj</span>,</span>
+<span>              mode <span class="op">=</span> <span class="st">"codon"</span>,</span>
+<span>              rel2st_dist <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">50</span>, <span class="fl">1500</span><span class="op">)</span>,</span>
+<span>              method <span class="op">=</span> <span class="st">"median"</span>,</span>
+<span>              facet_wrap <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">sample</span>,nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>,</span>
+<span>              do_bootstrap <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="image/mt5.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section><section id="enrichment-metagene-analysis" class="level2" data-number="15.3"><h2 data-number="15.3" class="anchored" data-anchor-id="enrichment-metagene-analysis">
+<span class="header-section-number">15.3</span> Enrichment metagene analysis</h2>
+<p>We create metagene plots by analyzing the ratio of ribosome density in IP samples compared to total samples at positions relative to start codons or stop codons across genes from selective ribosome profiling data. The&nbsp;<code>enrichment_metagene_plot</code>&nbsp;function maintains most parameters consistent with the&nbsp;<code>metagene_plot</code>&nbsp;function.</p>
+<p>Default plot:</p>
+<div class="cell">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">enrichment_metagene_plot</span><span class="op">(</span>object <span class="op">=</span> <span class="va">obj</span>,</span>
+<span>                         mode <span class="op">=</span> <span class="st">"codon"</span>,</span>
+<span>                         rel2st_dist <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">50</span>, <span class="fl">1500</span><span class="op">)</span>,</span>
+<span>                         facet_wrap <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">sample</span>,nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>,</span>
+<span>                         method <span class="op">=</span> <span class="st">"median"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="image/enm.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>Set <strong>method = “sum”</strong>:</p>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">enrichment_metagene_plot</span><span class="op">(</span>object <span class="op">=</span> <span class="va">obj</span>,</span>
+<span>                         mode <span class="op">=</span> <span class="st">"codon"</span>,</span>
+<span>                         rel2st_dist <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">50</span>, <span class="fl">1500</span><span class="op">)</span>,</span>
+<span>                         facet_wrap <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">sample</span>,nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>,</span>
+<span>                         method <span class="op">=</span> <span class="st">"sum"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="image/enm2.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>Merge replicates:</p>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">enrichment_metagene_plot</span><span class="op">(</span>object <span class="op">=</span> <span class="va">obj</span>,</span>
+<span>                         mode <span class="op">=</span> <span class="st">"codon"</span>,</span>
+<span>                         rel2st_dist <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">50</span>, <span class="fl">1500</span><span class="op">)</span>,</span>
+<span>                         method <span class="op">=</span> <span class="st">"median"</span>,</span>
+<span>                         merge_rep <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="image/enm3.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>Do bootstraps to add 95% confidence interval:</p>
+<div class="cell">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">enrichment_metagene_plot</span><span class="op">(</span>object <span class="op">=</span> <span class="va">obj</span>,</span>
+<span>                         mode <span class="op">=</span> <span class="st">"codon"</span>,</span>
+<span>                         rel2st_dist <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">50</span>, <span class="fl">1500</span><span class="op">)</span>,</span>
+<span>                         method <span class="op">=</span> <span class="st">"median"</span>,</span>
+<span>                         facet_wrap <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">sample</span>,nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>,</span>
+<span>                         do_bootstrap <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="image/enm4.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
 
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -820,7 +1027,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="./Whole-metagene-plot.html" class="pagination-link" aria-label="Whole metegene plot">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Whole metegene plot</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Whole metegene plot</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
