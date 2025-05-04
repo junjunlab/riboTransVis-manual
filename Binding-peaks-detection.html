@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.6.42">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Jun Zhang">
-<title>Quality assessment – RiboTransVis</title>
+<title>Binding region detection – RiboTransVis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -61,8 +61,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Ribo-QC.html" rel="next">
-<link href="./Serp-Object.html" rel="prev">
+<link href="./Gene-expression-analysis.html" rel="next">
+<link href="./Enrichment-analysis.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -106,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Quality-assessment.html">Quality assessment</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Binding-peaks-detection.html">Binding region detection</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -201,7 +201,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./Quality-assessment.html" class="sidebar-item-text sidebar-link active">
+            <a href="./Quality-assessment.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Quality assessment</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -332,7 +332,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Binding-peaks-detection.html" class="sidebar-item-text sidebar-link">
+  <a href="./Binding-peaks-detection.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Binding region detection</span></a>
   </div>
 </li>
@@ -385,18 +385,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li>
-<a href="#extracting-alignment-information-with-generate_summary" id="toc-extracting-alignment-information-with-generate_summary" class="nav-link active" data-scroll-target="#extracting-alignment-information-with-generate_summary">Extracting Alignment Information with generate_summary</a>
-  <ul class="collapse">
-<li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example:</a></li>
-  <li><a href="#column-descriptions" id="toc-column-descriptions" class="nav-link" data-scroll-target="#column-descriptions">Column Descriptions</a></li>
-  </ul>
-</li>
-  </ul><div class="toc-actions"><ul><li><a href="https://github.com/junjunlab/riboTransVis/edit/main/Quality-assessment.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/junjunlab/riboTransVis/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/junjunlab/riboTransVis/edit/main/Binding-peaks-detection.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/junjunlab/riboTransVis/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title">Quality assessment</h1>
+<h1 class="title">Binding region detection</h1>
 </div>
 
 
@@ -410,54 +405,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><section id="extracting-alignment-information-with-generate_summary" class="level2"><h2 class="anchored" data-anchor-id="extracting-alignment-information-with-generate_summary">Extracting Alignment Information with generate_summary</h2>
-<p>Ribosome profiling (Ribo-seq) typically requires detailed analysis of aligned reads — including which genes they map to, their read lengths, alignment positions, and more. These features are critical for downstream analyses such as P-site detection, triplet periodicity evaluation, and ribosome occupancy profiling.</p>
-<p>The RiboTrans function <code>generate_summary()</code> extracts comprehensive information about all mapped reads from BAM files, including:</p>
+</header><section id="introduction" class="level2"><h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Selective Ribosome Profiling (SeRP) is a powerful technique used to identify RNA regions that are bound by specific ribosome-associated factors, such as RNA-binding proteins or specialized ribosomal subunits. In contrast to traditional ribosome profiling, which captures all translating ribosomes on mRNAs, SeRP enriches for a subset of ribosomes engaged in specific interactions, enabling the discovery of functionally important regulatory sites at nucleotide or codon resolution.</p>
+<p>Identifying binding regions from SeRP data involves a comparative analysis between enriched (IP) and control (total) ribo-seq libraries. Regions bound by the target factor are expected to show elevated ribosome occupancy in the IP library relative to the total library. These regions can be divided broadly into two categories:</p>
+<p><strong>Strong binding regions:</strong> Sites where the enrichment ratio (IP / total) is significantly elevated over background and sustained across multiple nucleotides or codons. <strong>Weak binding regions:</strong> Sites with moderate enrichment relative to local background (e.g., the first 90 nt of a gene), which may reflect transient or low-affinity interactions but remain biologically meaningful when reproducible. The <strong>riboTransVis</strong> package provides two primary methods for binding region identification:</p>
 <ul>
-<li><p>The gene or transcript each read aligns to</p></li>
-<li><p>Read length</p></li>
-<li><p>Read start and end positions (in transcriptomic coordinates)</p></li>
-<li><p>…</p></li>
+<li><p><strong>find_strong_peaks():</strong> Detects high-confidence binding peaks by computing the local enrichment (IP vs.&nbsp;total RPMs) along transcripts, using configurable smoothing and peak-calling parameters. These peaks generally correspond to stable or high-affinity binding sites.</p></li>
+<li><p><strong>find_weak_peaks():</strong> Identifies lower-intensity peaks by comparing IP signal to transcript-specific background (e.g., first 90 nt). This is useful for detecting subtle footprint signatures that may be functionally relevant but not strongly enriched over total signal. Both methods support flexible settings for signal smoothing, read length filtering, peak width constraints, and output resolution (nucleotide- or codon-level). Additionally, P-site offset correction can be applied to align reads precisely to functional ribosome positions.</p></li>
 </ul>
-<p>The extracted data is stored in the Slot <code>"summary_info"</code> of the RiboTrans object and forms the foundation for the majority of downstream analyses.</p>
-<p>⚙️ If the parameter <code>mapping_type = "genome"</code> is used, the function will automatically convert genome-based coordinates into transcriptomic coordinates before storing the results.</p>
-<p>Because the output from <code>generate_summary</code> serves as the primary input for most later steps in the pipeline, running this function is a fundamental and essential part of RiboTrans analysis.</p>
-<section id="example" class="level3"><h3 class="anchored" data-anchor-id="example">Example:</h3>
-<p>The following code extracts alignment information from BAM files for each sample:</p>
+<p>Accurate detection of binding regions enables downstream interpretation of ribosome-associated regulatory events, including translation stalling, RNA-binding protein activity, and co-translational regulation, providing new insights into gene expression control at the post-transcriptional level.</p>
+</section><section id="example" class="level2"><h2 class="anchored" data-anchor-id="example">Example</h2>
+<p>Finding strong binded peaks:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># generate summary data for QC or other analysis</span></span>
-<span><span class="va">obj0</span> <span class="op">&lt;-</span> <span class="fu">generate_summary</span><span class="op">(</span>object <span class="op">=</span> <span class="va">obj0</span>, exp_type <span class="op">=</span> <span class="st">"ribo"</span>, nThreads <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">strp</span> <span class="op">&lt;-</span> <span class="fu">find_strong_peaks</span><span class="op">(</span>object <span class="op">=</span> <span class="va">obj</span>, </span>
+<span>                          do_offset_correct <span class="op">=</span> <span class="cn">T</span>,</span>
+<span>                          smooth <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                          window_size <span class="op">=</span> <span class="fl">45</span>,</span>
+<span>                          enrichment_threshold <span class="op">=</span> <span class="fl">1.5</span>,</span>
+<span>                          binding_width <span class="op">=</span> <span class="fl">15</span>,</span>
+<span>                          mode <span class="op">=</span> <span class="st">"codon"</span><span class="op">)</span></span>
+<span><span class="co"># check</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">strp</span><span class="op">)</span></span>
+<span><span class="co">#      sample sample_group             rname above start end mean_ratio binding_width</span></span>
+<span><span class="co"># 1 ssb1_rep1         ssb1    Q0055_mRNA|AI2  TRUE   127 142   2.492493            16</span></span>
+<span><span class="co"># 2 ssb1_rep1         ssb1   Q0130_mRNA|OLI1  TRUE    61  69   2.881696             9</span></span>
+<span><span class="co"># 3 ssb1_rep1         ssb1   Q0250_mRNA|COX2  TRUE   133 139   3.882078             7</span></span>
+<span><span class="co"># 4 ssb1_rep1         ssb1   Q0250_mRNA|COX2  TRUE   196 205   2.150074            10</span></span>
+<span><span class="co"># 5 ssb1_rep1         ssb1   Q0275_mRNA|COX3  TRUE   249 262   3.036979            14</span></span>
+<span><span class="co"># 6 ssb1_rep1         ssb1 YAL001C_mRNA|TFC3  TRUE    71  89   3.989795            19</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Finding weakbinded peaks:</p>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wakp</span> <span class="op">&lt;-</span> <span class="fu">find_weak_peaks</span><span class="op">(</span>object <span class="op">=</span> <span class="va">obj</span>, </span>
+<span>                        do_offset_correct <span class="op">=</span> <span class="cn">T</span>,</span>
+<span>                        smooth <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                        window_size <span class="op">=</span> <span class="fl">45</span>,</span>
+<span>                        enrichment_threshold <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>                        binding_width <span class="op">=</span> <span class="fl">15</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">obj0</span><span class="op">@</span><span class="va">summary_info</span><span class="op">)</span></span>
-<span><span class="co">#               rname  pos qwidth count  sample sample_group mstart mstop translen</span></span>
-<span><span class="co"># 1 YAL067C_mRNA|SEO1 1774     27     1 wt-rep1      wt-rep1     51  1829     1882</span></span>
-<span><span class="co"># 2 YAL067C_mRNA|SEO1 1771     27     1 wt-rep1      wt-rep1     51  1829     1882</span></span>
-<span><span class="co"># 3 YAL067C_mRNA|SEO1 1766     20     1 wt-rep1      wt-rep1     51  1829     1882</span></span>
-<span><span class="co"># 4 YAL067C_mRNA|SEO1 1761     27     1 wt-rep1      wt-rep1     51  1829     1882</span></span>
-<span><span class="co"># 5 YAL067C_mRNA|SEO1 1662     28     1 wt-rep1      wt-rep1     51  1829     1882</span></span>
-<span><span class="co"># 6 YAL067C_mRNA|SEO1 1632     25     1 wt-rep1      wt-rep1     51  1829     1882</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section><section id="column-descriptions" class="level3"><h3 class="anchored" data-anchor-id="column-descriptions">Column Descriptions</h3>
-<ul>
-<li><p><strong>rname</strong>: A compound field combining the transcript ID and gene name, separated by a vertical bar (<code>|</code>). If the gene name is missing in the GTF annotation, only the transcript ID is shown.</p></li>
-<li><p><strong>pos</strong>: The position (in transcriptomic coordinates) that the read maps to within the transcript.</p></li>
-<li><p><strong>qwidth</strong>: The width (i.e., length) of the read in nucleotides.</p></li>
-<li><p><strong>count</strong>: The number of reads that map to this exact position with the same length.</p></li>
-<li><p><strong>sample</strong>: The name of the sample from which the read originated.</p></li>
-<li><p><strong>sample_group</strong>: The user-defined group the sample belongs to. If no grouping was provided during setup, the sample name is used as the group name by default.</p></li>
-<li><p><strong>mstart / mstop</strong>: The start and end positions of the coding sequence (CDS) region on the transcript.</p></li>
-<li><p><strong>translen</strong>: The total length of the transcript in nucleotides.</p></li>
-</ul>
-<p>This detailed read-level summary forms the foundation for various downstream analyses — including ribosome occupancy, metagene profiling, and P-site calibration — making it an essential and informative step in the <strong>RiboTransVis</strong> workflow.</p>
-<p>The&nbsp;<strong><code>generate_summary</code></strong>&nbsp;function will save the data locally as&nbsp;<strong><code>tinfo.anno.rda</code></strong>&nbsp;by default. For large datasets, rerunning the analysis may be time-consuming. Therefore, you can set&nbsp;<strong><code>load_local = TRUE</code></strong>&nbsp;to directly load the locally saved data:</p>
-<div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">obj0</span> <span class="op">&lt;-</span> <span class="fu">generate_summary</span><span class="op">(</span>object <span class="op">=</span> <span class="va">obj0</span>, </span>
-<span>                         exp_type <span class="op">=</span> <span class="st">"ribo"</span>, </span>
-<span>                         load_local <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">wakp</span><span class="op">)</span></span>
+<span><span class="co">#      sample sample_group          rname above start end mean_ratio binding_width</span></span>
+<span><span class="co"># 1 ssb1_rep1         ssb1 Q0050_mRNA|AI1  TRUE   132 176   4.899083            45</span></span>
+<span><span class="co"># 2 ssb1_rep1         ssb1 Q0050_mRNA|AI1  TRUE   201 243   4.723704            43</span></span>
+<span><span class="co"># 3 ssb1_rep1         ssb1 Q0050_mRNA|AI1  TRUE   275 324  26.438532            50</span></span>
+<span><span class="co"># 4 ssb1_rep1         ssb1 Q0050_mRNA|AI1  TRUE   440 458   3.302752            19</span></span>
+<span><span class="co"># 5 ssb1_rep1         ssb1 Q0050_mRNA|AI1  TRUE   506 551   5.600319            46</span></span>
+<span><span class="co"># 6 ssb1_rep1         ssb1 Q0050_mRNA|AI1  TRUE   619 646   3.302752            28</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -874,13 +871,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./Serp-Object.html" class="pagination-link" aria-label="Serp object">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Serp object</span></span>
+      <a href="./Enrichment-analysis.html" class="pagination-link" aria-label="Enrichment analysis">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Enrichment analysis</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Ribo-QC.html" class="pagination-link" aria-label="Ribo-seq QC check">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Ribo-seq QC check</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Gene-expression-analysis.html" class="pagination-link" aria-label="Global gene expression analysis">
+        <span class="nav-page-text">Global gene expression analysis</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -891,7 +888,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/junjunlab/riboTransVis/edit/main/Quality-assessment.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/junjunlab/riboTransVis/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/junjunlab/riboTransVis/edit/main/Binding-peaks-detection.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/junjunlab/riboTransVis/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
